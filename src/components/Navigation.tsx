@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,7 +9,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -19,8 +19,8 @@ const Navigation = () => {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/case-studies', label: 'Case Studies' },
-    { href: '/innovation-space', label: 'Innovation Space' },
-    { href: '/ai-hub', label: 'AI Hub' },
+    { href: '/innovation-space', label: 'Innovation' },
+    { href: '/ai-hub', label: 'AI Hub', special: true },
     { href: '/contact', label: 'Contact' },
   ];
 
@@ -30,32 +30,41 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-card/95 backdrop-blur-md shadow-md'
+          ? 'bg-background/95 backdrop-blur-md shadow-md border-b border-border'
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <Link
             to="/"
-            className="font-serif text-xl font-semibold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 group"
           >
-            MG
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+              <span className="text-primary-foreground font-bold text-lg">M</span>
+            </div>
+            <span className="font-serif font-bold text-lg text-foreground hidden sm:block">
+              Mansi Gupta
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive(link.href)
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'text-primary bg-accent'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
               >
                 {link.label}
+                {link.special && (
+                  <Sparkles size={12} className="inline ml-1 text-secondary" />
+                )}
               </Link>
             ))}
           </div>
@@ -63,7 +72,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -72,20 +81,23 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-card/95 backdrop-blur-md shadow-lg border-t border-border">
-            <div className="flex flex-col py-4">
+          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-6 py-3 text-left text-sm font-medium transition-colors ${
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                     isActive(link.href)
-                      ? 'text-primary bg-accent/50'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                      ? 'text-primary bg-accent'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
                 >
                   {link.label}
+                  {link.special && (
+                    <Sparkles size={12} className="inline ml-1 text-secondary" />
+                  )}
                 </Link>
               ))}
             </div>
