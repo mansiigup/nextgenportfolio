@@ -42,10 +42,10 @@ const Navigation = () => {
             className="flex items-center gap-2 group"
           >
             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
+              <span className="text-primary-foreground font-bold text-lg">MG</span>
             </div>
             <span className="font-serif font-bold text-lg text-foreground hidden sm:block">
-              Mansi Gupta
+              Next Gen Innovation Lab
             </span>
           </Link>
 

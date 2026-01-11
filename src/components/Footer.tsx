@@ -22,10 +22,10 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">M</span>
-              </div>
-              <span className="font-serif font-bold text-lg text-foreground">Mansi Gupta</span>
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">MG</span>
+            </div>
+            <span className="font-serif font-bold text-lg text-foreground">Next Gen Innovation Lab</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               Product Lead • 0→1 Builder • AI Enthusiast
