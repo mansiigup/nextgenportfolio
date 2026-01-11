@@ -23,24 +23,20 @@ const HomeHero = () => {
             Mansi Gupta
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed">
-            Senior Product Manager crafting impactful products at the intersection of{' '}
-            <span className="text-foreground font-medium">UX</span>,{' '}
-            <span className="text-foreground font-medium">Growth</span>,{' '}
-            <span className="text-foreground font-medium">Execution</span> & {' '}
-            <span className="text-foreground font-medium">AI</span>
+          <p className="text-xl md:text-2xl text-foreground mb-4 max-w-3xl mx-auto leading-relaxed font-medium">
+            Product Lead | Innovate & Impact | Data & AI Enthusiast
           </p>
 
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Building 0→1 products that scale. Driving global expansion and AI-powered innovation for B2B & B2C SaaS.
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            A problem solver, driving product-led growth with more than 4.5+ years of experience in building 0 to 1 products, leveraging AI, data-driven insights, and user-centric innovation. Leading cross-functional teams to solve a problem by developing scalable, intelligent solutions that enhance engagement, optimize decision-making, and drive market expansion.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
-              to="/case-studies"
+              to="/about"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
             >
-              View Case Studies
+              Read More
               <ArrowRight size={18} />
             </Link>
             <Link
@@ -54,7 +50,7 @@ const HomeHero = () => {
 
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://www.linkedin.com/in/mansigupta4cl/"
+              href="https://www.linkedin.com/in/mansi-gupta-2201b7154/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
