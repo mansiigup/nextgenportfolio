@@ -24,8 +24,8 @@ const ContactHero = () => {
 
           <div className="inline-flex items-center gap-2 text-foreground">
             <Mail size={20} className="text-primary" />
-            <a href="mailto:mansi4cl@gmail.com" className="hover:text-primary transition-colors">
-              mansi4cl@gmail.com
+            <a href="mailto:nextgeninnovationlab@gmail.com" className="hover:text-primary transition-colors">
+              nextgeninnovationlab@gmail.com
             </a>
           </div>
         </div>

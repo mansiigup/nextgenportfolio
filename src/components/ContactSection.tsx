@@ -28,11 +28,11 @@ const ContactSection = () => {
               <ArrowUpRight size={16} />
             </a>
             <a
-              href="mailto:mansi4cl@gmail.com"
+              href="mailto:nextgeninnovationlab@gmail.com"
               className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground rounded-lg font-medium hover:bg-background transition-colors w-full sm:w-auto justify-center"
             >
               <Mail size={20} />
-              mansi4cl@gmail.com
+              nextgeninnovationlab@gmail.com
             </a>
           </div>
 

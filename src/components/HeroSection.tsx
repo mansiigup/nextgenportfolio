@@ -43,7 +43,7 @@ const HeroSection = () => {
               LinkedIn
             </a>
             <a
-              href="mailto:mansi4cl@gmail.com"
+              href="mailto:nextgeninnovationlab@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground rounded-lg font-medium hover:bg-card transition-colors"
             >
               <Mail size={18} />

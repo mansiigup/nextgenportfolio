@@ -78,11 +78,11 @@ const ImpactSlider = () => {
       </div>
 
       {/* Slider Container */}
-      <div className="relative max-w-4xl mx-auto">
+      <div className="relative max-w-6xl mx-auto px-4">
         {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
           aria-label="Previous slide"
         >
           <ChevronLeft size={20} />
@@ -90,40 +90,41 @@ const ImpactSlider = () => {
 
         <button
           onClick={goToNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
           aria-label="Next slide"
         >
           <ChevronRight size={20} />
         </button>
 
-        {/* Slider */}
+        {/* Slider - Shows all 4 boxes sliding together */}
         <div 
           ref={sliderRef}
-          className="overflow-hidden rounded-3xl"
+          className="overflow-hidden mx-8"
         >
           <div 
             className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            style={{ transform: `translateX(-${currentIndex * 25}%)` }}
           >
-            {impactStats.map((stat, index) => (
+            {/* Duplicate items for infinite loop effect */}
+            {[...impactStats, ...impactStats].map((stat, index) => (
               <div
                 key={index}
-                className="w-full flex-shrink-0 px-4"
+                className="w-1/4 flex-shrink-0 px-2"
               >
-                <div className={`bg-gradient-to-br ${stat.color} rounded-3xl p-10 md:p-12 text-center relative overflow-hidden`}>
+                <div className={`bg-gradient-to-br ${stat.color} rounded-2xl p-6 text-center relative overflow-hidden h-full min-h-[220px]`}>
                   {/* Background decoration */}
-                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                  <div className="absolute -left-10 -bottom-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+                  <div className="absolute -right-6 -top-6 w-20 h-20 bg-white/10 rounded-full blur-xl" />
+                  <div className="absolute -left-6 -bottom-6 w-16 h-16 bg-white/10 rounded-full blur-xl" />
                   
-                  <div className="relative z-10">
-                    <stat.icon size={48} className="mx-auto mb-6 text-white/90" />
-                    <p className="font-serif text-6xl md:text-7xl font-bold text-white mb-3">
+                  <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                    <stat.icon size={32} className="mb-3 text-white/90" />
+                    <p className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
                       {stat.value}
                     </p>
-                    <p className="text-xl md:text-2xl font-semibold text-white/95 mb-4">
+                    <p className="text-sm md:text-base font-semibold text-white/95 mb-2">
                       {stat.label}
                     </p>
-                    <p className="text-white/80 text-sm md:text-base max-w-md mx-auto">
+                    <p className="text-white/75 text-xs hidden md:block">
                       {stat.description}
                     </p>
                   </div>
