@@ -69,7 +69,7 @@ const ThoughtLeadership = () => {
 
         <div className="text-center mt-8">
           <a
-            href="https://www.linkedin.com/in/mansigupta4cl/"
+            href="https://www.linkedin.com/in/mansi-gupta-2201b7154/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
