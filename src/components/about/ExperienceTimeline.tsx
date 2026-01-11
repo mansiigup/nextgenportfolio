@@ -1,3 +1,5 @@
+import { Briefcase, TrendingUp, ArrowUpRight } from 'lucide-react';
+
 const experiences = [
   {
     title: 'Product Lead',
@@ -11,6 +13,7 @@ const experiences = [
       'Led team of 9 across product & engineering',
     ],
     promotion: 'Promoted from Associate PM to PM to Product Lead',
+    gradient: 'from-primary to-secondary',
   },
   {
     title: 'Associate Product Manager',
@@ -24,89 +27,87 @@ const experiences = [
       'Drove 20% increase in active user engagement',
     ],
     promotion: 'Founders Office - 0 to 1 Builder',
-  },
-];
-
-const education = [
-  {
-    degree: 'Master of Computer Applications',
-    focus: 'Technology & Product',
-  },
-  {
-    degree: 'Bachelor of Commerce (Hons)',
-    focus: 'Marketing & Finance',
-  },
-  {
-    degree: 'Research Publication',
-    focus: 'Sustainable Development - International Journal of Advanced Research',
+    gradient: 'from-secondary to-success',
   },
 ];
 
 const ExperienceTimeline = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
-            Experience Timeline
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-12">
-            Career Journey
-          </h2>
-
-          {/* Experience Timeline */}
-          <div className="relative mb-16">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2" />
-
-            {experiences.map((exp, index) => (
-              <div
-                key={exp.title + exp.company}
-                className={`relative flex flex-col md:flex-row gap-8 mb-12 ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 md:-translate-x-1/2 mt-1.5" />
-
-                {/* Content */}
-                <div className={`flex-1 ml-8 md:ml-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                  <p className="text-sm text-primary font-medium mb-1">{exp.period}</p>
-                  <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
-                  <p className="text-muted-foreground mb-1">{exp.company}</p>
-                  <p className="text-sm text-muted-foreground mb-3">{exp.location}</p>
-                  
-                  <ul className={`space-y-1 mb-3 ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
-                    {exp.highlights.map((highlight) => (
-                      <li key={highlight} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className={`w-1.5 h-1.5 bg-primary rounded-full shrink-0 mt-1.5 ${index % 2 === 0 ? 'md:order-2' : ''}`} />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="text-xs text-accent-foreground bg-accent inline-block px-2 py-1 rounded">
-                    {exp.promotion}
-                  </p>
-                </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1" />
-              </div>
-            ))}
+    <section className="py-20 bg-gradient-to-b from-card to-background relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-primary/5 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-gradient-to-r from-secondary/5 to-transparent rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mb-4">
+              <span className="text-sm font-medium text-primary">Experience Timeline</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <span className="text-gradient-slack">Career Journey</span>
+            </h2>
           </div>
 
-          {/* Education */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-6">Education & Research</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              {education.map((edu) => (
+          {/* Timeline */}
+          <div className="relative">
+            {/* Center line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-success transform -translate-x-1/2 hidden md:block" />
+
+            <div className="space-y-12">
+              {experiences.map((exp, index) => (
                 <div
-                  key={edu.degree}
-                  className="p-4 bg-card rounded-lg border border-border"
+                  key={exp.title + exp.company}
+                  className={`relative flex flex-col md:flex-row items-center gap-8 animate-fade-up ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                  style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <p className="font-medium text-foreground text-sm mb-1">{edu.degree}</p>
-                  <p className="text-xs text-muted-foreground">{edu.focus}</p>
+                  {/* Timeline dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+                    <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${exp.gradient} ring-4 ring-background shadow-lg`} />
+                  </div>
+
+                  {/* Content card */}
+                  <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
+                    <div className="group relative p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl">
+                      {/* Gradient overlay */}
+                      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                      
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-3">
+                            {exp.period}
+                          </span>
+                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                            {exp.title}
+                          </h3>
+                          <p className="text-muted-foreground font-medium">{exp.company}</p>
+                          <p className="text-sm text-muted-foreground">{exp.location}</p>
+                        </div>
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.gradient} flex items-center justify-center shrink-0`}>
+                          <Briefcase className="w-6 h-6 text-primary-foreground" />
+                        </div>
+                      </div>
+
+                      <ul className="space-y-2 mb-4">
+                        {exp.highlights.map((highlight) => (
+                          <li key={highlight} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <TrendingUp className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r ${exp.gradient} bg-opacity-10`}>
+                        <ArrowUpRight className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-medium text-foreground">{exp.promotion}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="hidden md:block flex-1" />
                 </div>
               ))}
             </div>
