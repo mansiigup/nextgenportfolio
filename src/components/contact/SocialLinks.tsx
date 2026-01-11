@@ -10,7 +10,7 @@ const SocialLinks = () => {
               <h3 className="font-semibold text-foreground mb-6">Connect With Me</h3>
               <div className="space-y-4">
                 <a
-                  href="https://www.linkedin.com/in/mansigupta4cl/"
+                  href="https://www.linkedin.com/in/mansi-gupta-2201b7154/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-background rounded-xl border border-border hover:shadow-md transition-all group"
@@ -20,7 +20,7 @@ const SocialLinks = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground group-hover:text-primary transition-colors">LinkedIn</p>
-                    <p className="text-sm text-muted-foreground">linkedin.com/in/mansigupta4cl</p>
+                    <p className="text-sm text-muted-foreground">linkedin.com/in/mansi-gupta-2201b7154</p>
                   </div>
                 </a>
 
