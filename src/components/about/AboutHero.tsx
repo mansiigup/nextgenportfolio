@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Target, Users, BarChart3, Lightbulb, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import defaultProfilePicture from '@/assets/profile-picture.png';
 
 const philosophyItems = [
   {
@@ -27,7 +28,7 @@ const philosophyItems = [
 
 const AboutHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [profileImage, setProfileImage] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState<string | null>(defaultProfilePicture);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % philosophyItems.length);
