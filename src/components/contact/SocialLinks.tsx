@@ -25,7 +25,7 @@ const SocialLinks = () => {
                 </a>
 
                 <a
-                  href="mailto:mansi4cl@gmail.com"
+                  href="mailto:nextgeninnovationlab@gmail.com"
                   className="flex items-center gap-4 p-4 bg-background rounded-xl border border-border hover:shadow-md transition-all group"
                 >
                   <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -33,7 +33,7 @@ const SocialLinks = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground group-hover:text-primary transition-colors">Email</p>
-                    <p className="text-sm text-muted-foreground">mansi4cl@gmail.com</p>
+                    <p className="text-sm text-muted-foreground">nextgeninnovationlab@gmail.com</p>
                   </div>
                 </a>
               </div>

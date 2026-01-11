@@ -71,7 +71,7 @@ const HomeHero = () => {
               </a>
               <span className="text-border">•</span>
               <a
-                href="mailto:mansi4cl@gmail.com"
+                href="mailto:nextgeninnovationlab@gmail.com"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail size={20} />
