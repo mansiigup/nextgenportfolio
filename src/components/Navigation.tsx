@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,21 +16,15 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#case-studies', label: 'Case Studies' },
-    { href: '#impact', label: 'Impact' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/case-studies', label: 'Case Studies' },
+    { href: '/innovation-space', label: 'Innovation Space' },
+    { href: '/ai-hub', label: 'AI Hub' },
+    { href: '/contact', label: 'Contact' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav
@@ -40,27 +36,27 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+          <Link
+            to="/"
             className="font-serif text-xl font-semibold text-foreground hover:text-primary transition-colors"
           >
             MG
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                to={link.href}
+                className={`text-sm font-medium transition-colors ${
+                  isActive(link.href)
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -79,13 +75,18 @@ const Navigation = () => {
           <div className="md:hidden absolute top-full left-0 right-0 bg-card/95 backdrop-blur-md shadow-lg border-t border-border">
             <div className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <button
+                <Link
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="px-6 py-3 text-left text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
+                  to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`px-6 py-3 text-left text-sm font-medium transition-colors ${
+                    isActive(link.href)
+                      ? 'text-primary bg-accent/50'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                  }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
