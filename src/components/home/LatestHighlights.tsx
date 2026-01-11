@@ -1,36 +1,30 @@
 import { Link } from 'react-router-dom';
 import { FileText, MessageSquare, Lightbulb, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
+import ImpactSlider from './ImpactSlider';
 
 const LatestHighlights = () => {
   const articles = [
     {
       type: 'Article',
-      title: 'Building AI-First Products: A PM Perspective',
+      title: 'Thought on Product Strategy',
       description: 'Lessons from integrating LLMs into production systems',
       icon: FileText,
       color: 'bg-primary/10 text-primary',
     },
     {
       type: 'LinkedIn Post',
-      title: 'The Art of Saying No in Product',
+      title: 'Integration',
       description: 'How prioritization drives 10x outcomes',
       icon: MessageSquare,
       color: 'bg-secondary/10 text-secondary',
     },
     {
       type: 'Case Study',
-      title: 'International Expansion Playbook',
+      title: 'Building Product that Matters',
       description: 'Scaling a SaaS product to 3 new markets',
       icon: Lightbulb,
       color: 'bg-success/10 text-success',
     },
-  ];
-
-  const quickStats = [
-    { value: '15+', label: 'Products Shipped', color: 'text-primary' },
-    { value: '3', label: 'Markets Expanded', color: 'text-secondary' },
-    { value: '5M+', label: 'Users Impacted', color: 'text-success' },
-    { value: '40%', label: 'Avg. Metric Lift', color: 'text-warning' },
   ];
 
   return (
@@ -39,11 +33,14 @@ const LatestHighlights = () => {
       <div className="absolute top-0 left-0 w-full h-1 gradient-slack" />
       
       <div className="container mx-auto px-6">
+        {/* Impact at a Glance Section */}
+        <ImpactSlider />
+
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 mt-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground mb-4">
             <Sparkles size={16} />
-            Latest & Greatest
+            Latest Updates
           </div>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
             Articles & Highlights
@@ -51,21 +48,6 @@ const LatestHighlights = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Thoughts on product strategy, AI integration, and building products that matter
           </p>
-        </div>
-
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {quickStats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-2xl p-6 text-center border border-border hover:shadow-lg transition-all hover:-translate-y-1"
-            >
-              <p className={`font-serif text-4xl font-bold ${stat.color} mb-2`}>
-                {stat.value}
-              </p>
-              <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
-            </div>
-          ))}
         </div>
 
         {/* Articles grid */}
@@ -132,7 +114,7 @@ const LatestHighlights = () => {
             to="/case-studies"
             className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background rounded-xl font-semibold hover:opacity-90 transition-all hover:scale-105"
           >
-            View All Case Studies
+            Explore My Work
             <ExternalLink size={18} />
           </Link>
         </div>

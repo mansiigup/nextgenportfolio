@@ -24,7 +24,7 @@ const HomeHero = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground animate-fade-up">
               <span className="w-2 h-2 bg-success rounded-full animate-pulse-soft" />
-              Open to new opportunities
+              Open for collaborations
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight animate-fade-up" style={{ animationDelay: '0.1s' }}>
