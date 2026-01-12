@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Rocket, Globe, Users, TrendingUp } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Rocket, Globe, Users, TrendingUp, Zap, IndianRupee, Brain } from 'lucide-react';
 
 const ImpactSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,7 +8,7 @@ const ImpactSlider = () => {
 
   const impactStats = [
     { 
-      value: '15+', 
+      value: '7+', 
       label: 'Products Shipped', 
       icon: Rocket,
       color: 'from-primary to-primary/70',
@@ -16,24 +16,38 @@ const ImpactSlider = () => {
     },
     { 
       value: '3', 
-      label: 'Markets Expanded', 
+      label: 'Continents Expanded', 
       icon: Globe,
       color: 'from-secondary to-secondary/70',
-      description: 'International expansion driving global growth'
+      description: 'Global expansion driving international growth'
     },
     { 
-      value: '5M+', 
+      value: '1.2M+', 
       label: 'Users Impacted', 
       icon: Users,
       color: 'from-success to-success/70',
       description: 'Building products that touch millions of lives'
     },
     { 
-      value: '40%', 
-      label: 'Avg. Metric Lift', 
-      icon: TrendingUp,
+      value: '200+', 
+      label: 'Launches & Releases', 
+      icon: Zap,
       color: 'from-warning to-warning/70',
-      description: 'Consistent improvement in key business metrics'
+      description: 'Continuous deployment and feature releases'
+    },
+    { 
+      value: '₹50M+', 
+      label: 'Revenue Generated', 
+      icon: IndianRupee,
+      color: 'from-primary to-secondary',
+      description: 'Direct business impact through product innovation'
+    },
+    { 
+      value: '4', 
+      label: 'Core AI Models', 
+      icon: Brain,
+      color: 'from-secondary to-primary',
+      description: 'STT, TTS, personalized recommendations & AI story generation models developed with Stanford, CMU & IIT Bombay'
     },
   ];
 
