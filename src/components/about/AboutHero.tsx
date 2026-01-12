@@ -73,7 +73,7 @@ const AboutHero = () => {
                     <img 
                       src={profileImage} 
                       alt="Profile" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-125"
                     />
                   ) : (
                     <div className="flex flex-col items-center justify-center text-muted-foreground">
@@ -101,24 +101,23 @@ const AboutHero = () => {
               </div>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-gradient-slack">Product Philosophy</span>
+                <span className="text-gradient-slack">Mansi Gupta</span>
               </h1>
+
+              {/* Quotation */}
+              <blockquote className="border-l-4 border-primary pl-4 mb-6 italic text-foreground/80">
+                "Your next breakthrough hides behind the courage to audit your own thinking."
+              </blockquote>
 
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed max-w-2xl">
                 <p>
-                  I'm a product leader with <span className="text-foreground font-semibold">4.5+ years of experience</span> building 
-                  and scaling B2B & B2C SaaS products. My approach: identify the problem, understand why it exists, 
-                  and solve it with scalable, intelligent solutions.
+                  A curious builder at heart for <span className="text-foreground font-semibold">4.5+ years</span>, driven by the thrill of turning bold ideas into intelligent, intuitive products. Fascinated by the endless possibilities of AI, data, and emerging technologies, with a passion for crafting experiences that feel seamless, smart, and human.
                 </p>
                 <p>
-                  I thrive in ambiguity—taking products from <span className="text-primary font-medium">zero to one</span>, 
-                  launching in new markets, and integrating cutting-edge AI. From driving <span className="text-success font-medium">₹40M+ revenue</span> to 
-                  expanding across <span className="text-secondary font-medium">4 countries</span>, I bring deep ownership and relentless focus on impact.
+                  Always exploring the edge where innovation meets real-world impact—whether it's reimagining how people interact with technology or scaling solutions that make life simpler and smarter. Believes that great products aren't just built—they're imagined, iterated, and inspired by the future we dare to create.
                 </p>
                 <p>
-                  My journey spans EdTech and FinTech, working with cross-functional teams of 9+, and directly 
-                  engaging with C-suite executives. Great products come from understanding users deeply, 
-                  making hard trade-offs confidently, and executing with relentless focus.
+                  I bring deep ownership and relentless focus on impact. My journey spans <span className="text-primary font-medium">EdTech</span> and <span className="text-secondary font-medium">FinTech</span>, directly engaging with C-suite executives. My approach: identify the problem, understand why it exists, and solve it with scalable, intelligent solutions.
                 </p>
               </div>
             </div>
