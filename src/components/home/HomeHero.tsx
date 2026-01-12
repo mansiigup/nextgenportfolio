@@ -22,8 +22,8 @@ const HomeHero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground animate-fade-up">
-              <span className="w-2 h-2 bg-success rounded-full animate-pulse-soft" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full text-sm font-medium text-foreground animate-fade-up shadow-lg">
+              <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
               Open for collaborations
             </div>
 
