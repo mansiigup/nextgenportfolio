@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Linkedin, Mail, Zap, Target, TrendingUp, Brain } from 'lucide-react';
+import { ArrowRight, Linkedin, Mail, BarChart3, Target, TrendingUp, Brain } from 'lucide-react';
 
 const HomeHero = () => {
   const highlights = [
-    { icon: Zap, label: '0→1 Products', color: 'text-secondary' },
+    { icon: BarChart3, label: 'Product Intelligence', color: 'text-secondary' },
     { icon: Target, label: 'Product-Led Growth', color: 'text-success' },
     { icon: TrendingUp, label: 'Data-Driven', color: 'text-warning' },
     { icon: Brain, label: 'AI Innovation', color: 'text-destructive' },

@@ -1,20 +1,11 @@
-import { Briefcase, TrendingUp, ArrowUpRight, GraduationCap, BookOpen, Award } from 'lucide-react';
+import { Briefcase, ArrowUpRight, Sparkles, Heart, Mountain, Palette, Globe, BookOpen, Gamepad2, Music, Camera } from 'lucide-react';
 
 const experiences = [
   {
     title: 'Product Lead',
     company: 'Freadom Edu',
-    subtitle: 'To Solve Reading Literacy - SaaS',
     period: 'Sep 2022 - Present',
-    location: 'B2B & B2C EdTech',
-    highlights: [
-      'Led portfolio expansion driving ₹40M+ revenue across 10,000+ schools',
-      'Expanded to 4 international markets: Finland, Korea, UAE & Morocco',
-      'Shipped 200+ releases across Android, iOS & Web platforms',
-      'Led cross-functional team of 9 members',
-      'Drove AI innovation with 4 models (STT, TTS, Recommendations, AI Generation)',
-      'Improved product delivery efficiency by 50% and stakeholder satisfaction by 80%',
-    ],
+    focus: 'To Solve Reading Literacy - B2B & B2C EdTech SaaS',
     keyAchievements: [
       'Deep Ownership',
       'PLG',
@@ -27,17 +18,9 @@ const experiences = [
   },
   {
     title: 'Associate Product Manager',
-    subtitle: "Founder's Office",
     company: 'Firstroot Inc.',
     period: 'Oct 2021 - Sep 2022',
-    location: 'B2B & B2C FinTech/EdTech',
-    highlights: [
-      'Increased product adoption by 25% across 5 new schools in California',
-      'Improved NPS score by 15% through user journey optimization',
-      'Conducted 10 market research studies on Web 3.0 technologies',
-      'Drove 20% increase in active user engagement',
-      'Optimized UX workflows reducing user friction points',
-    ],
+    focus: "Founder's Office - B2B & B2C FinTech/EdTech",
     keyAchievements: [
       'Web 3.0',
       'USA Market',
@@ -49,31 +32,15 @@ const experiences = [
   },
 ];
 
-const education = [
-  {
-    degree: "Master's in Computer Applications",
-    icon: GraduationCap,
-    gradient: 'from-primary to-secondary',
-  },
-  {
-    degree: 'B.Com (Hons) - Marketing & Finance',
-    icon: BookOpen,
-    gradient: 'from-secondary to-success',
-  },
-  {
-    degree: 'Co-Publisher: Sustainable Development Research',
-    subtitle: 'International Journal of Advanced Research & Innovative Ideas in Education',
-    icon: Award,
-    gradient: 'from-success to-warning',
-  },
-];
-
 const interests = [
-  'Sculpturing',
-  'Adventure Activities',
-  'Travelling',
-  'Research & Development',
-  'Art & Sketching',
+  { name: 'Sculpturing', icon: Sparkles, description: 'Creating three-dimensional art forms that express creativity and patience' },
+  { name: 'Adventure Activities', icon: Mountain, description: 'Trekking, camping, and exploring the great outdoors' },
+  { name: 'Travelling', icon: Globe, description: 'Discovering new cultures, cuisines, and perspectives across the world' },
+  { name: 'Research & Development', icon: BookOpen, description: 'Staying curious about emerging tech, AI trends, and product innovations' },
+  { name: 'Art & Sketching', icon: Palette, description: 'Visual storytelling through pencil sketches and digital illustrations' },
+  { name: 'Gaming', icon: Gamepad2, description: 'Strategy games that sharpen problem-solving and quick thinking' },
+  { name: 'Music', icon: Music, description: 'Finding inspiration in melodies and rhythms across genres' },
+  { name: 'Photography', icon: Camera, description: 'Capturing moments and telling stories through the lens' },
 ];
 
 const ExperienceTimeline = () => {
@@ -133,29 +100,19 @@ const ExperienceTimeline = () => {
                               {exp.title}
                             </h3>
                             <p className="text-foreground font-semibold">{exp.company}</p>
-                            <p className="text-sm text-muted-foreground">{exp.subtitle}</p>
-                            <p className="text-sm text-muted-foreground">{exp.location}</p>
+                            <p className="text-sm text-muted-foreground mt-1">{exp.focus}</p>
                           </div>
                           <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${exp.gradient} flex items-center justify-center shrink-0 shadow-lg`}>
                             <Briefcase className="w-7 h-7 text-primary-foreground" />
                           </div>
                         </div>
 
-                        <ul className="space-y-2 mb-6">
-                          {exp.highlights.map((highlight) => (
-                            <li key={highlight} className="flex items-start gap-2 text-sm text-muted-foreground group-hover:text-muted-foreground/80">
-                              <TrendingUp className="w-4 h-4 text-success shrink-0 mt-0.5" />
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-
                         {/* Key achievements tags */}
                         <div className="flex flex-wrap gap-2 mb-4">
                           {exp.keyAchievements.map((achievement) => (
                             <span
                               key={achievement}
-                              className="px-2 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-lg"
+                              className="px-3 py-1.5 text-xs font-medium bg-accent text-accent-foreground rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
                             >
                               {achievement}
                             </span>
@@ -177,59 +134,54 @@ const ExperienceTimeline = () => {
             </div>
           </div>
 
-          {/* Education & Interests Section */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Education */}
-            <div className="p-8 bg-card rounded-2xl border border-border">
-              <h3 className="font-semibold text-foreground mb-6 text-xl flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-primary-foreground" />
-                </div>
-                Education & Research
-              </h3>
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div
-                    key={edu.degree}
-                    className="flex items-start gap-4 p-4 bg-background rounded-xl border border-border/50 hover:border-primary/20 transition-colors"
-                  >
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${edu.gradient} flex items-center justify-center shrink-0`}>
-                      <edu.icon className="w-5 h-5 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">{edu.degree}</p>
-                      {edu.subtitle && (
-                        <p className="text-xs text-muted-foreground mt-1">{edu.subtitle}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+          {/* Beyond Work - Expanded */}
+          <div className="p-8 bg-card rounded-2xl border border-border">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-warning/10 to-destructive/10 rounded-full mb-4 border border-warning/20">
+                <Heart className="w-4 h-4 text-warning" />
+                <span className="text-sm font-medium text-warning">Beyond Work</span>
               </div>
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+                What Fuels My Creativity
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                When I'm not building products, you'll find me exploring new creative outlets. I believe diverse experiences fuel innovative thinking and bring fresh perspectives to problem-solving.
+              </p>
             </div>
 
-            {/* Interests */}
-            <div className="p-8 bg-card rounded-2xl border border-border">
-              <h3 className="font-semibold text-foreground mb-6 text-xl flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-warning to-destructive flex items-center justify-center">
-                  <span className="text-lg">✨</span>
-                </div>
-                Beyond Work
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {interests.map((interest) => (
-                  <div
-                    key={interest}
-                    className="group px-4 py-3 bg-background rounded-xl border border-border/50 hover:border-primary/20 hover:bg-primary/5 transition-all duration-300 cursor-default"
-                  >
-                    <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                      {interest}
-                    </span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {interests.map((interest, index) => (
+                <div
+                  key={interest.name}
+                  className="group p-5 bg-background rounded-xl border border-border/50 hover:border-primary/30 hover:bg-gradient-to-br hover:from-primary/5 hover:to-secondary/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warning/20 to-destructive/20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <interest.icon className="w-6 h-6 text-warning" />
                   </div>
-                ))}
+                  <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                    {interest.name}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {interest.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Fun fact callout */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl border border-primary/10">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shrink-0">
+                  <Sparkles className="w-5 h-5 text-primary-foreground" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1">Why it matters</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    These diverse interests help me approach product challenges from unique angles. Whether it's the patience learned from sculpturing, the strategic thinking from gaming, or the storytelling from photography—each passion contributes to how I build and think about products.
+                  </p>
+                </div>
               </div>
-              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
-                When I'm not building products, you'll find me exploring new creative outlets—from sculpturing to adventure activities. I believe diverse experiences fuel innovative thinking.
-              </p>
             </div>
           </div>
         </div>
