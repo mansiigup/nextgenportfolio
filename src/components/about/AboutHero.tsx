@@ -1,45 +1,54 @@
 import { useState, useEffect } from 'react';
-import { Target, Users, BarChart3, Lightbulb, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search } from 'lucide-react';
 import defaultProfilePicture from '@/assets/profile-picture.png';
 
-const philosophyItems = [
+const cycleSteps = [
   {
     icon: Target,
     title: 'Problem-First Thinking',
-    description: 'I start with "What is the problem?" before jumping to solutions. Understanding the why behind user pain points leads to products that truly matter.',
-  },
-  {
-    icon: Users,
-    title: 'User-Centric Innovation',
-    description: 'Deep user research and persona-driven design inform every decision. Real users, not assumptions, guide the product roadmap.',
+    description: 'Start with "What is the problem?" before jumping to solutions.',
+    color: 'from-primary to-primary/70',
   },
   {
     icon: BarChart3,
-    title: 'Data-Driven Decisions',
-    description: 'Metrics tell the story. I build dashboards, run experiments, and let data validate hypotheses while balancing qualitative insights.',
+    title: 'Product Analytics & Intelligence',
+    description: 'Data-driven insights to validate assumptions and guide decisions.',
+    color: 'from-secondary to-secondary/70',
   },
   {
-    icon: Lightbulb,
-    title: 'Calculated Trade-offs',
-    description: 'Every product decision involves trade-offs. I prioritize ruthlessly using frameworks like RICE and MoSCoW while maintaining stakeholder alignment.',
+    icon: Users,
+    title: 'Consumer Behavior & User Research',
+    description: 'Deep understanding of user needs, personas, and pain points.',
+    color: 'from-success to-success/70',
+  },
+  {
+    icon: Palette,
+    title: 'Design & Development',
+    description: 'Translating insights into intuitive, scalable product experiences.',
+    color: 'from-warning to-warning/70',
+  },
+  {
+    icon: Rocket,
+    title: 'Launch & Market',
+    description: 'Strategic go-to-market execution and stakeholder alignment.',
+    color: 'from-destructive to-destructive/70',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Test & Analyze',
+    description: 'Continuous experimentation, A/B testing, and iteration loops.',
+    color: 'from-primary to-secondary',
   },
 ];
 
 const AboutHero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [profileImage, setProfileImage] = useState<string | null>(defaultProfilePicture);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % philosophyItems.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + philosophyItems.length) % philosophyItems.length);
-  };
-
   useEffect(() => {
-    const timer = setInterval(nextSlide, 4000);
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % cycleSteps.length);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -52,6 +61,15 @@ const AboutHero = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  // Calculate positions for the circular layout
+  const getStepPosition = (index: number, total: number) => {
+    const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
+    const radius = 160; // Radius of the circle
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    return { x, y };
   };
 
   return (
@@ -123,73 +141,192 @@ const AboutHero = () => {
             </div>
           </div>
 
-          {/* Philosophy Slider */}
+          {/* Product Lifecycle Cycle */}
           <div className="relative">
-            <div className="flex items-center gap-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={prevSlide}
-                className="shrink-0 bg-card/50 hover:bg-card border border-border shadow-lg"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </Button>
+            <div className="text-center mb-8">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Product Development Cycle
+              </h3>
+              <p className="text-muted-foreground">My end-to-end approach to building products</p>
+            </div>
 
-              <div className="flex-1 overflow-hidden">
-                <div 
-                  className="flex transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
-                  {philosophyItems.map((item, index) => (
+            {/* Mobile View - Vertical Steps */}
+            <div className="lg:hidden">
+              <div className="relative">
+                {/* Connecting line */}
+                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-success" />
+                
+                <div className="space-y-4">
+                  {cycleSteps.map((step, index) => (
                     <div
-                      key={item.title}
-                      className="min-w-full px-2"
+                      key={step.title}
+                      className={`relative flex items-start gap-4 p-4 rounded-xl transition-all duration-300 ${
+                        index === activeStep
+                          ? 'bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30'
+                          : 'bg-card/50 border border-border/50'
+                      }`}
+                      onClick={() => setActiveStep(index)}
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        {philosophyItems.map((phi, idx) => (
-                          <div
-                            key={phi.title}
-                            className={`p-6 rounded-2xl border transition-all duration-300 ${
-                              idx === currentIndex 
-                                ? 'bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/30 shadow-lg scale-105' 
-                                : 'bg-card/80 border-border hover:border-primary/20'
-                            }`}
-                          >
-                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
-                              idx === currentIndex 
-                                ? 'bg-gradient-to-br from-primary to-secondary' 
-                                : 'bg-accent'
-                            }`}>
-                              <phi.icon className={`w-7 h-7 ${idx === currentIndex ? 'text-primary-foreground' : 'text-accent-foreground'}`} />
-                            </div>
-                            <h3 className="font-semibold text-foreground mb-2 text-lg">{phi.title}</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed">{phi.description}</p>
-                          </div>
-                        ))}
+                      <div className={`relative z-10 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                        index === activeStep
+                          ? `bg-gradient-to-br ${step.color}`
+                          : 'bg-accent'
+                      }`}>
+                        <step.icon className={`w-6 h-6 ${index === activeStep ? 'text-primary-foreground' : 'text-accent-foreground'}`} />
+                      </div>
+                      <div>
+                        <h4 className={`font-semibold ${index === activeStep ? 'text-primary' : 'text-foreground'}`}>
+                          {step.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">{step.description}</p>
+                      </div>
+                      {/* Step number */}
+                      <div className="absolute -left-2 top-6 w-5 h-5 rounded-full bg-background border-2 border-primary flex items-center justify-center">
+                        <span className="text-xs font-bold text-primary">{index + 1}</span>
                       </div>
                     </div>
                   ))}
                 </div>
+                
+                {/* Cycle indicator */}
+                <div className="mt-4 flex items-center justify-center gap-2 text-muted-foreground">
+                  <Search className="w-4 h-4" />
+                  <span className="text-sm">Continuous iteration loop</span>
+                </div>
               </div>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={nextSlide}
-                className="shrink-0 bg-card/50 hover:bg-card border border-border shadow-lg"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </Button>
             </div>
 
-            {/* Slider dots */}
+            {/* Desktop View - Circular Layout */}
+            <div className="hidden lg:flex justify-center items-center py-8">
+              <div className="relative w-[400px] h-[400px]">
+                {/* Center circle with animation */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center animate-pulse-soft">
+                  <div className="text-center">
+                    <Search className="w-8 h-8 text-primary mx-auto mb-1" />
+                    <span className="text-xs font-medium text-muted-foreground">Iterate</span>
+                  </div>
+                </div>
+
+                {/* Connecting circle path */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+                  <circle
+                    cx="200"
+                    cy="200"
+                    r="160"
+                    fill="none"
+                    stroke="url(#cycleGradient)"
+                    strokeWidth="2"
+                    strokeDasharray="8 4"
+                    className="opacity-30"
+                  />
+                  <defs>
+                    <linearGradient id="cycleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" />
+                      <stop offset="50%" stopColor="hsl(var(--secondary))" />
+                      <stop offset="100%" stopColor="hsl(var(--success))" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Cycle steps positioned in circle */}
+                {cycleSteps.map((step, index) => {
+                  const pos = getStepPosition(index, cycleSteps.length);
+                  return (
+                    <div
+                      key={step.title}
+                      className="absolute transition-all duration-500 cursor-pointer"
+                      style={{
+                        left: `calc(50% + ${pos.x}px)`,
+                        top: `calc(50% + ${pos.y}px)`,
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                      onClick={() => setActiveStep(index)}
+                    >
+                      <div className={`group relative flex flex-col items-center`}>
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg ${
+                          index === activeStep
+                            ? `bg-gradient-to-br ${step.color} scale-125`
+                            : 'bg-card border border-border hover:border-primary/50 hover:scale-110'
+                        }`}>
+                          <step.icon className={`w-7 h-7 ${index === activeStep ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
+                        </div>
+                        
+                        {/* Label - positioned based on location in circle */}
+                        <div className={`absolute whitespace-nowrap transition-all duration-300 ${
+                          pos.y < 0 ? 'bottom-full mb-2' : 'top-full mt-2'
+                        } ${index === activeStep ? 'opacity-100' : 'opacity-70'}`}>
+                          <span className={`text-xs font-medium ${index === activeStep ? 'text-primary' : 'text-muted-foreground'}`}>
+                            {step.title}
+                          </span>
+                        </div>
+
+                        {/* Step number badge */}
+                        <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
+                          index === activeStep
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted text-muted-foreground'
+                        }`}>
+                          {index + 1}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Arrows between steps */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
+                  {cycleSteps.map((_, index) => {
+                    const startPos = getStepPosition(index, cycleSteps.length);
+                    const endPos = getStepPosition((index + 1) % cycleSteps.length, cycleSteps.length);
+                    const midX = 200 + (startPos.x + endPos.x) / 2 * 0.7;
+                    const midY = 200 + (startPos.y + endPos.y) / 2 * 0.7;
+                    
+                    return (
+                      <path
+                        key={index}
+                        d={`M ${200 + startPos.x * 0.85} ${200 + startPos.y * 0.85} Q ${midX} ${midY} ${200 + endPos.x * 0.85} ${200 + endPos.y * 0.85}`}
+                        fill="none"
+                        stroke={index === activeStep ? 'hsl(var(--primary))' : 'hsl(var(--border))'}
+                        strokeWidth={index === activeStep ? 2 : 1}
+                        markerEnd="url(#arrowhead)"
+                        className="transition-all duration-300"
+                      />
+                    );
+                  })}
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                      <polygon points="0 0, 10 3.5, 0 7" fill="hsl(var(--primary))" />
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Active step detail card */}
+              <div className="ml-12 max-w-sm">
+                <div className={`p-6 rounded-2xl bg-gradient-to-br ${cycleSteps[activeStep].color} bg-opacity-10 border border-primary/20`}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cycleSteps[activeStep].color} flex items-center justify-center`}>
+                      {(() => {
+                        const Icon = cycleSteps[activeStep].icon;
+                        return <Icon className="w-5 h-5 text-primary-foreground" />;
+                      })()}
+                    </div>
+                    <span className="text-xs font-medium text-muted-foreground">Step {activeStep + 1} of {cycleSteps.length}</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">{cycleSteps[activeStep].title}</h4>
+                  <p className="text-muted-foreground">{cycleSteps[activeStep].description}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step indicators */}
             <div className="flex justify-center gap-2 mt-6">
-              {philosophyItems.map((_, index) => (
+              {cycleSteps.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => setActiveStep(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
+                    index === activeStep 
                       ? 'bg-primary w-8' 
                       : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                   }`}

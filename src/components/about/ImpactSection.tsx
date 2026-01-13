@@ -22,9 +22,9 @@ const impactMetrics = [
     icon: Globe,
     value: '3',
     label: 'Continents Expanded',
-    description: 'Finland, Korea, UAE & Morocco',
+    description: 'USA, India & Europe',
     gradient: 'from-secondary to-secondary/50',
-    detail: 'Drove product vision solving scalability & customization requirements through localized positioning & partnerships.',
+    detail: 'Drove product vision solving scalability & customization requirements through localized positioning & partnerships across North America, South Asia & European markets.',
   },
   {
     icon: Rocket,
@@ -52,11 +52,11 @@ const impactMetrics = [
   },
   {
     icon: Award,
-    value: '$200K',
-    label: 'Cloud Credits',
-    description: 'From AWS, GCP & Digital Ocean',
+    value: '$10K',
+    label: 'Cloud Optimization',
+    description: 'AWS, GCP & Digital Ocean savings',
     gradient: 'from-accent-foreground to-accent-foreground/50',
-    detail: 'Reduced infrastructure costs by $10,000 and improved operational efficiency through cloud optimization strategies.',
+    detail: 'Reduced infrastructure costs and improved operational efficiency through strategic cloud optimization across AWS, GCP & Digital Ocean.',
   },
   {
     icon: Zap,

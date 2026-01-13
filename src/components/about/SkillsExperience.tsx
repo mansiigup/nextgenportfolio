@@ -74,7 +74,6 @@ const frameworks = [
   { name: 'North Star Metric', category: 'Metrics' },
   { name: 'HEART Framework', category: 'Metrics' },
   { name: 'AARRR (Pirate)', category: 'Growth' },
-  { name: 'Jobs to Be Done', category: 'Research' },
   { name: "Lencioni's 5 Dysfunctions", category: 'Team' },
   { name: 'Eisenhower Matrix', category: 'Productivity' },
 ];
