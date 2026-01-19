@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search } from 'lucide-react';
+import { useState } from 'react';
+import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search, Layers, TrendingUp, RefreshCw } from 'lucide-react';
 import defaultProfilePicture from '@/assets/profile-picture.png';
 
-const cycleSteps = [
+const developmentCycle = [
   {
     icon: Target,
     title: 'Problem-First Thinking',
@@ -41,16 +41,49 @@ const cycleSteps = [
   },
 ];
 
-const AboutHero = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [profileImage, setProfileImage] = useState<string | null>(defaultProfilePicture);
+const strategyCycle = [
+  {
+    icon: Target,
+    title: 'Strategy & Vision',
+    description: 'Define product vision aligned with business goals and identify key opportunities.',
+    color: 'from-primary to-primary/70',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Discovery & Research',
+    description: 'Continuous user research to validate problems worth solving.',
+    color: 'from-secondary to-secondary/70',
+  },
+  {
+    icon: Layers,
+    title: 'Prioritization & Roadmap',
+    description: 'Balance priorities using RICE, impact/effort for strategic roadmaps.',
+    color: 'from-success to-success/70',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Execution & Delivery',
+    description: 'Lead cross-functional teams through agile development cycles.',
+    color: 'from-warning to-warning/70',
+  },
+  {
+    icon: Users,
+    title: 'Launch & Activation',
+    description: 'Execute GTM strategy focused on user activation and adoption.',
+    color: 'from-destructive to-destructive/70',
+  },
+  {
+    icon: BarChart3,
+    title: 'Measure & Iterate',
+    description: 'Analyze performance, gather insights, and iterate continuously.',
+    color: 'from-primary to-secondary',
+  },
+];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % cycleSteps.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
+const AboutHero = () => {
+  const [activeDevStep, setActiveDevStep] = useState(0);
+  const [activeStratStep, setActiveStratStep] = useState(0);
+  const [profileImage, setProfileImage] = useState<string | null>(defaultProfilePicture);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -64,13 +97,129 @@ const AboutHero = () => {
   };
 
   // Calculate positions for the circular layout
-  const getStepPosition = (index: number, total: number) => {
+  const getStepPosition = (index: number, total: number, radius: number = 100) => {
     const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
-    const radius = 160; // Radius of the circle
     const x = Math.cos(angle) * radius;
     const y = Math.sin(angle) * radius;
     return { x, y };
   };
+
+  const CycleVisualization = ({ 
+    steps, 
+    activeStep, 
+    setActiveStep, 
+    title, 
+    gradientId 
+  }: { 
+    steps: typeof developmentCycle; 
+    activeStep: number; 
+    setActiveStep: (n: number) => void;
+    title: string;
+    gradientId: string;
+  }) => (
+    <div className="relative">
+      <div className="text-center mb-4">
+        <h4 className="font-serif text-lg md:text-xl font-bold text-foreground">{title}</h4>
+      </div>
+      
+      <div className="relative w-[280px] h-[280px] mx-auto">
+        {/* Center circle with animation */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center animate-pulse-soft">
+          <div className="text-center">
+            <RefreshCw className="w-6 h-6 text-primary mx-auto animate-spin" style={{ animationDuration: '8s' }} />
+            <span className="text-[10px] font-medium text-muted-foreground">Iterate</span>
+          </div>
+        </div>
+
+        {/* Connecting circle path */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 280 280">
+          <circle
+            cx="140"
+            cy="140"
+            r="100"
+            fill="none"
+            stroke={`url(#${gradientId})`}
+            strokeWidth="2"
+            strokeDasharray="6 3"
+            className="opacity-40"
+          />
+          <defs>
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" />
+              <stop offset="50%" stopColor="hsl(var(--secondary))" />
+              <stop offset="100%" stopColor="hsl(var(--success))" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Cycle steps positioned in circle */}
+        {steps.map((step, index) => {
+          const pos = getStepPosition(index, steps.length, 100);
+          return (
+            <div
+              key={step.title}
+              className="absolute transition-all duration-500 cursor-pointer"
+              style={{
+                left: `calc(50% + ${pos.x}px)`,
+                top: `calc(50% + ${pos.y}px)`,
+                transform: 'translate(-50%, -50%)',
+              }}
+              onClick={() => setActiveStep(index)}
+            >
+              <div className="group relative flex flex-col items-center">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 shadow-lg ${
+                  index === activeStep
+                    ? `bg-gradient-to-br ${step.color} scale-125`
+                    : 'bg-card border border-border hover:border-primary/50 hover:scale-110'
+                }`}>
+                  <step.icon className={`w-5 h-5 ${index === activeStep ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
+                </div>
+                
+                {/* Step number badge */}
+                <div className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                  index === activeStep
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted text-muted-foreground'
+                }`}>
+                  {index + 1}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Active step detail card */}
+      <div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-card to-accent/10 border border-primary/20 min-h-[100px]">
+        <div className="flex items-center gap-2 mb-2">
+          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${steps[activeStep].color} flex items-center justify-center`}>
+            {(() => {
+              const Icon = steps[activeStep].icon;
+              return <Icon className="w-4 h-4 text-primary-foreground" />;
+            })()}
+          </div>
+          <span className="text-xs font-medium text-muted-foreground">Step {activeStep + 1}</span>
+        </div>
+        <h5 className="text-sm font-bold text-foreground mb-1">{steps[activeStep].title}</h5>
+        <p className="text-xs text-muted-foreground">{steps[activeStep].description}</p>
+      </div>
+
+      {/* Step indicators */}
+      <div className="flex justify-center gap-1.5 mt-3">
+        {steps.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveStep(index)}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              index === activeStep 
+                ? 'bg-primary w-5' 
+                : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <section className="pt-32 pb-20 bg-gradient-to-br from-primary/5 via-accent/10 to-background relative overflow-hidden">
@@ -141,197 +290,61 @@ const AboutHero = () => {
             </div>
           </div>
 
-          {/* Product Lifecycle Cycle */}
+          {/* Dual Cycle Section */}
           <div className="relative">
             <div className="text-center mb-8">
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
-                Product Development Cycle
+                My End-to-End Approach
               </h3>
-              <p className="text-muted-foreground">My end-to-end approach to building products</p>
+              <p className="text-muted-foreground">Two interconnected cycles driving product excellence</p>
             </div>
 
-            {/* Mobile View - Vertical Steps */}
-            <div className="lg:hidden">
-              <div className="relative">
-                {/* Connecting line */}
-                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-success" />
-                
-                <div className="space-y-4">
-                  {cycleSteps.map((step, index) => (
-                    <div
-                      key={step.title}
-                      className={`relative flex items-start gap-4 p-4 rounded-xl transition-all duration-300 ${
-                        index === activeStep
-                          ? 'bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30'
-                          : 'bg-card/50 border border-border/50'
-                      }`}
-                      onClick={() => setActiveStep(index)}
-                    >
-                      <div className={`relative z-10 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
-                        index === activeStep
-                          ? `bg-gradient-to-br ${step.color}`
-                          : 'bg-accent'
-                      }`}>
-                        <step.icon className={`w-6 h-6 ${index === activeStep ? 'text-primary-foreground' : 'text-accent-foreground'}`} />
-                      </div>
-                      <div>
-                        <h4 className={`font-semibold ${index === activeStep ? 'text-primary' : 'text-foreground'}`}>
-                          {step.title}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">{step.description}</p>
-                      </div>
-                      {/* Step number */}
-                      <div className="absolute -left-2 top-6 w-5 h-5 rounded-full bg-background border-2 border-primary flex items-center justify-center">
-                        <span className="text-xs font-bold text-primary">{index + 1}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Cycle indicator */}
-                <div className="mt-4 flex items-center justify-center gap-2 text-muted-foreground">
-                  <Search className="w-4 h-4" />
-                  <span className="text-sm">Continuous iteration loop</span>
-                </div>
-              </div>
+            {/* Mobile View - Stacked */}
+            <div className="lg:hidden space-y-8">
+              <CycleVisualization 
+                steps={strategyCycle}
+                activeStep={activeStratStep}
+                setActiveStep={setActiveStratStep}
+                title="Strategy Cycle"
+                gradientId="stratGradientMobile"
+              />
+              <CycleVisualization 
+                steps={developmentCycle}
+                activeStep={activeDevStep}
+                setActiveStep={setActiveDevStep}
+                title="Development Cycle"
+                gradientId="devGradientMobile"
+              />
             </div>
 
-            {/* Desktop View - Circular Layout */}
-            <div className="hidden lg:flex justify-center items-center py-8">
-              <div className="relative w-[400px] h-[400px]">
-                {/* Center circle with animation */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center animate-pulse-soft">
-                  <div className="text-center">
-                    <Search className="w-8 h-8 text-primary mx-auto mb-1" />
-                    <span className="text-xs font-medium text-muted-foreground">Iterate</span>
-                  </div>
-                </div>
-
-                {/* Connecting circle path */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="160"
-                    fill="none"
-                    stroke="url(#cycleGradient)"
-                    strokeWidth="2"
-                    strokeDasharray="8 4"
-                    className="opacity-30"
-                  />
-                  <defs>
-                    <linearGradient id="cycleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" />
-                      <stop offset="50%" stopColor="hsl(var(--secondary))" />
-                      <stop offset="100%" stopColor="hsl(var(--success))" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-
-                {/* Cycle steps positioned in circle */}
-                {cycleSteps.map((step, index) => {
-                  const pos = getStepPosition(index, cycleSteps.length);
-                  return (
-                    <div
-                      key={step.title}
-                      className="absolute transition-all duration-500 cursor-pointer"
-                      style={{
-                        left: `calc(50% + ${pos.x}px)`,
-                        top: `calc(50% + ${pos.y}px)`,
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                      onClick={() => setActiveStep(index)}
-                    >
-                      <div className={`group relative flex flex-col items-center`}>
-                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg ${
-                          index === activeStep
-                            ? `bg-gradient-to-br ${step.color} scale-125`
-                            : 'bg-card border border-border hover:border-primary/50 hover:scale-110'
-                        }`}>
-                          <step.icon className={`w-7 h-7 ${index === activeStep ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
-                        </div>
-                        
-                        {/* Label - positioned based on location in circle */}
-                        <div className={`absolute whitespace-nowrap transition-all duration-300 ${
-                          pos.y < 0 ? 'bottom-full mb-2' : 'top-full mt-2'
-                        } ${index === activeStep ? 'opacity-100' : 'opacity-70'}`}>
-                          <span className={`text-xs font-medium ${index === activeStep ? 'text-primary' : 'text-muted-foreground'}`}>
-                            {step.title}
-                          </span>
-                        </div>
-
-                        {/* Step number badge */}
-                        <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-                          index === activeStep
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-muted text-muted-foreground'
-                        }`}>
-                          {index + 1}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-
-                {/* Arrows between steps */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
-                  {cycleSteps.map((_, index) => {
-                    const startPos = getStepPosition(index, cycleSteps.length);
-                    const endPos = getStepPosition((index + 1) % cycleSteps.length, cycleSteps.length);
-                    const midX = 200 + (startPos.x + endPos.x) / 2 * 0.7;
-                    const midY = 200 + (startPos.y + endPos.y) / 2 * 0.7;
-                    
-                    return (
-                      <path
-                        key={index}
-                        d={`M ${200 + startPos.x * 0.85} ${200 + startPos.y * 0.85} Q ${midX} ${midY} ${200 + endPos.x * 0.85} ${200 + endPos.y * 0.85}`}
-                        fill="none"
-                        stroke={index === activeStep ? 'hsl(var(--primary))' : 'hsl(var(--border))'}
-                        strokeWidth={index === activeStep ? 2 : 1}
-                        markerEnd="url(#arrowhead)"
-                        className="transition-all duration-300"
-                      />
-                    );
-                  })}
-                  <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                      <polygon points="0 0, 10 3.5, 0 7" fill="hsl(var(--primary))" />
-                    </marker>
-                  </defs>
-                </svg>
-              </div>
-
-              {/* Active step detail card */}
-              <div className="ml-12 max-w-sm">
-                <div className={`p-6 rounded-2xl bg-gradient-to-br ${cycleSteps[activeStep].color} bg-opacity-10 border border-primary/20`}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cycleSteps[activeStep].color} flex items-center justify-center`}>
-                      {(() => {
-                        const Icon = cycleSteps[activeStep].icon;
-                        return <Icon className="w-5 h-5 text-primary-foreground" />;
-                      })()}
-                    </div>
-                    <span className="text-xs font-medium text-muted-foreground">Step {activeStep + 1} of {cycleSteps.length}</span>
-                  </div>
-                  <h4 className="text-xl font-bold text-foreground mb-2">{cycleSteps[activeStep].title}</h4>
-                  <p className="text-muted-foreground">{cycleSteps[activeStep].description}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Step indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {cycleSteps.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveStep(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeStep 
-                      ? 'bg-primary w-8' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                  }`}
+            {/* Desktop View - Side by Side */}
+            <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-start">
+              <div className="p-6 bg-card/50 rounded-2xl border border-border hover:border-primary/30 transition-all duration-300">
+                <CycleVisualization 
+                  steps={strategyCycle}
+                  activeStep={activeStratStep}
+                  setActiveStep={setActiveStratStep}
+                  title="Strategy Cycle"
+                  gradientId="stratGradient"
                 />
-              ))}
+              </div>
+              <div className="p-6 bg-card/50 rounded-2xl border border-border hover:border-primary/30 transition-all duration-300">
+                <CycleVisualization 
+                  steps={developmentCycle}
+                  activeStep={activeDevStep}
+                  setActiveStep={setActiveDevStep}
+                  title="Development Cycle"
+                  gradientId="devGradient"
+                />
+              </div>
+            </div>
+
+            {/* Connecting element */}
+            <div className="hidden lg:flex justify-center items-center -mt-4">
+              <div className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20">
+                <RefreshCw className="w-4 h-4 text-primary animate-spin" style={{ animationDuration: '6s' }} />
+                <span className="text-sm font-medium text-primary">Continuous Integration</span>
+              </div>
             </div>
           </div>
         </div>

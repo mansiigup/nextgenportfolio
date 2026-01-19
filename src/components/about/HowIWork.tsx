@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users2, Scale, Compass, MessageCircle, Target, Zap } from 'lucide-react';
+import { Users2, Scale, Compass, MessageCircle, Target, Zap, Globe, Heart, RefreshCw, TrendingUp } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const workStyles = [
@@ -93,6 +93,66 @@ const workStyles = [
     ],
     gradient: 'from-primary to-success',
   },
+  {
+    icon: Globe,
+    title: 'Market Intelligence',
+    shortDesc: 'Competitive insights & trends',
+    description:
+      'Deep understanding of market dynamics across USA, India, and Europe. Leveraging competitive analysis and trend forecasting to identify opportunities and stay ahead of the curve.',
+    details: [
+      'Continuous competitive landscape monitoring',
+      'Market trend analysis and opportunity identification',
+      'Customer segmentation and targeting strategies',
+      'Localization insights for multi-geography expansion',
+      'Industry benchmarking and best practices adoption',
+    ],
+    gradient: 'from-secondary to-warning',
+  },
+  {
+    icon: Heart,
+    title: 'Customer Empathy',
+    shortDesc: 'User-first problem solving',
+    description:
+      'Deeply invested in understanding user pain points through research, interviews, and data. Impacted 1.2M+ users by keeping their needs at the center of every product decision.',
+    details: [
+      'Regular user interviews and feedback sessions',
+      'Journey mapping to understand user pain points',
+      'Building products that solve real problems',
+      'Advocacy for user needs in product discussions',
+      'Empathy-driven design thinking approach',
+    ],
+    gradient: 'from-success to-primary',
+  },
+  {
+    icon: RefreshCw,
+    title: 'Feedback & Progression',
+    shortDesc: 'Continuous learning mindset',
+    description:
+      'Actively seek feedback from stakeholders, users, and team members. Use retrospectives and learnings to continuously improve processes, products, and personal growth.',
+    details: [
+      'Regular 360-degree feedback collection',
+      'Sprint retrospectives for team improvement',
+      'User feedback loops integrated into product cycle',
+      'Personal development through mentorship and learning',
+      'Adapting strategies based on market feedback',
+    ],
+    gradient: 'from-warning to-secondary',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Joy of Working',
+    shortDesc: 'Passion-driven excellence',
+    description:
+      'Bringing energy and enthusiasm to every project. Celebrating wins, fostering team collaboration, and maintaining a positive environment that drives innovation and results.',
+    details: [
+      'Creating a collaborative and positive team culture',
+      'Celebrating milestones and team achievements',
+      'Mentoring and supporting team member growth',
+      'Bringing creativity and fresh perspectives',
+      'Maintaining work-life balance for sustained excellence',
+    ],
+    gradient: 'from-primary to-destructive',
+  },
 ];
 
 const HowIWork = () => {
@@ -119,13 +179,13 @@ const HowIWork = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {workStyles.map((style, index) => (
             <button
               key={style.title}
               onClick={() => setSelectedStyle(style)}
-              className="group relative p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 text-left animate-fade-up cursor-pointer"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group relative p-5 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 text-left animate-fade-up cursor-pointer"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Hover gradient overlay */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${style.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -134,14 +194,14 @@ const HowIWork = () => {
               <div className={`absolute -inset-0.5 rounded-2xl bg-gradient-to-br ${style.gradient} opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-500`} />
               
               <div className="relative z-10">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${style.gradient} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                  <style.icon className="w-7 h-7 text-primary-foreground" />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${style.gradient} flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                  <style.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2 text-lg group-hover:text-primary transition-colors">{style.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{style.shortDesc}</p>
+                <h3 className="font-semibold text-foreground mb-1 text-base group-hover:text-primary transition-colors">{style.title}</h3>
+                <p className="text-muted-foreground text-xs leading-relaxed">{style.shortDesc}</p>
                 
-                <div className="flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span>Explore details</span>
+                <div className="flex items-center text-primary text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-3">
+                  <span>Explore</span>
                   <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
