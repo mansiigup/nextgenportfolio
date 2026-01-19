@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Code, Lightbulb, Rocket, Wrench, ChevronRight } from 'lucide-react';
+import { Code, Lightbulb, Rocket, Wrench, ChevronRight, Sparkles, Layers, Zap } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -65,32 +65,34 @@ const skillCategories = [
 ];
 
 const frameworks = [
-  { name: 'RICE Scoring', category: 'Prioritization' },
-  { name: 'MoSCoW', category: 'Prioritization' },
-  { name: 'Double Diamond', category: 'Design' },
-  { name: 'Design Thinking', category: 'Design' },
-  { name: 'Blue Ocean Strategy', category: 'Strategy' },
-  { name: 'Hook Model', category: 'Growth' },
-  { name: 'North Star Metric', category: 'Metrics' },
-  { name: 'HEART Framework', category: 'Metrics' },
-  { name: 'AARRR (Pirate)', category: 'Growth' },
-  { name: "Lencioni's 5 Dysfunctions", category: 'Team' },
-  { name: 'Eisenhower Matrix', category: 'Productivity' },
+  { name: 'RICE Scoring', category: 'Prioritization', icon: '📊' },
+  { name: 'MoSCoW', category: 'Prioritization', icon: '🎯' },
+  { name: 'Double Diamond', category: 'Design', icon: '💎' },
+  { name: 'Design Thinking', category: 'Design', icon: '🎨' },
+  { name: 'Blue Ocean Strategy', category: 'Strategy', icon: '🌊' },
+  { name: 'Hook Model', category: 'Growth', icon: '🪝' },
+  { name: 'North Star Metric', category: 'Metrics', icon: '⭐' },
+  { name: 'HEART Framework', category: 'Metrics', icon: '❤️' },
+  { name: 'AARRR (Pirate)', category: 'Growth', icon: '🏴‍☠️' },
+  { name: "Lencioni's 5 Dysfunctions", category: 'Team', icon: '👥' },
+  { name: 'Eisenhower Matrix', category: 'Productivity', icon: '⏰' },
 ];
 
 const techStack = [
-  { name: 'Python', type: 'Language' },
-  { name: 'Django', type: 'Framework' },
-  { name: 'React JS', type: 'Frontend' },
-  { name: 'Node JS', type: 'Backend' },
-  { name: 'PostgreSQL', type: 'Database' },
-  { name: 'Redis', type: 'Cache' },
-  { name: 'AWS EC2/S3', type: 'Cloud' },
-  { name: 'Unity', type: 'Game Dev' },
+  { name: 'Python', type: 'Language', color: 'from-primary to-primary/70' },
+  { name: 'Django', type: 'Framework', color: 'from-success to-success/70' },
+  { name: 'React JS', type: 'Frontend', color: 'from-secondary to-secondary/70' },
+  { name: 'Node JS', type: 'Backend', color: 'from-warning to-warning/70' },
+  { name: 'PostgreSQL', type: 'Database', color: 'from-destructive to-destructive/70' },
+  { name: 'Redis', type: 'Cache', color: 'from-primary to-secondary' },
+  { name: 'AWS EC2/S3', type: 'Cloud', color: 'from-warning to-primary' },
+  { name: 'Unity', type: 'Game Dev', color: 'from-secondary to-success' },
 ];
 
 const SkillsExperience = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [activeFramework, setActiveFramework] = useState<number | null>(null);
+  const [hoveredTech, setHoveredTech] = useState<number | null>(null);
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -101,6 +103,7 @@ const SkillsExperience = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mb-4 border border-primary/20">
+            <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Skills & Tooling</span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
@@ -111,75 +114,160 @@ const SkillsExperience = () => {
           </p>
         </div>
 
-        {/* Interactive Skills Grid */}
-        <div className="max-w-6xl mx-auto mb-16">
-          {/* Category tabs */}
-          <div className="flex flex-wrap gap-3 mb-8">
+        {/* Interactive Skills Grid with Animated Tabs */}
+        <div className="max-w-6xl mx-auto mb-20">
+          {/* Category tabs - Pill style */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             {skillCategories.map((category, index) => (
               <button
                 key={category.category}
                 onClick={() => setActiveCategory(index)}
-                className={`group flex items-center gap-2 px-4 py-3 rounded-xl border transition-all duration-300 ${
+                className={`group relative flex items-center gap-2 px-5 py-3 rounded-2xl border transition-all duration-500 overflow-hidden ${
                   activeCategory === index
-                    ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25'
+                    ? 'border-transparent shadow-xl'
                     : 'bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground'
                 }`}
               >
-                <category.icon className="w-5 h-5" />
-                <span className="font-medium text-sm">{category.category}</span>
+                {activeCategory === index && (
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-90`} />
+                )}
+                <category.icon className={`w-5 h-5 relative z-10 ${activeCategory === index ? 'text-primary-foreground' : ''}`} />
+                <span className={`font-medium text-sm relative z-10 ${activeCategory === index ? 'text-primary-foreground' : ''}`}>
+                  {category.category}
+                </span>
+                {activeCategory === index && (
+                  <Zap className="w-4 h-4 text-primary-foreground/60 relative z-10 animate-pulse" />
+                )}
               </button>
             ))}
           </div>
 
-          {/* Skills display */}
-          <div className="grid md:grid-cols-2 gap-4">
+          {/* Skills display - Hexagonal layout effect */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {skillCategories[activeCategory].skills.map((skill, index) => (
               <div
                 key={skill}
-                className="group flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-x-1 animate-fade-in"
+                className="group relative p-5 bg-card rounded-2xl border border-border hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${skillCategories[activeCategory].gradient}`} />
-                <span className="text-foreground font-medium">{skill}</span>
-                <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Hover gradient background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${skillCategories[activeCategory].gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                
+                {/* Glow effect */}
+                <div className={`absolute -inset-0.5 bg-gradient-to-br ${skillCategories[activeCategory].gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl`} />
+                
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${skillCategories[activeCategory].gradient} group-hover:scale-150 transition-transform duration-300`} />
+                  <span className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">{skill}</span>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Frameworks Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h3 className="font-semibold text-foreground mb-6 text-xl flex items-center gap-2">
-            <span className="w-8 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
+        {/* Frameworks Section - Interactive Cards */}
+        <div className="max-w-6xl mx-auto mb-20">
+          <h3 className="font-semibold text-foreground mb-8 text-2xl flex items-center gap-3">
+            <div className="w-10 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
+            <Layers className="w-6 h-6 text-primary" />
             Frameworks I Use
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {frameworks.map((framework, index) => (
               <div
                 key={framework.name}
-                className="group relative p-4 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className={`group relative p-5 bg-card rounded-2xl border transition-all duration-500 cursor-pointer overflow-hidden ${
+                  activeFramework === index 
+                    ? 'border-primary shadow-xl shadow-primary/20 scale-105' 
+                    : 'border-border hover:border-primary/30'
+                }`}
+                onMouseEnter={() => setActiveFramework(index)}
+                onMouseLeave={() => setActiveFramework(null)}
               >
-                <span className="text-xs text-primary/60 font-medium">{framework.category}</span>
-                <p className="text-sm font-semibold text-foreground mt-1">{framework.name}</p>
+                {/* Animated background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 transition-opacity duration-500 ${
+                  activeFramework === index ? 'opacity-100' : 'opacity-0'
+                }`} />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl">{framework.icon}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full transition-all duration-300 ${
+                      activeFramework === index
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-primary/10 text-primary/80'
+                    }`}>
+                      {framework.category}
+                    </span>
+                  </div>
+                  <p className={`text-sm font-semibold transition-colors duration-300 ${
+                    activeFramework === index ? 'text-primary' : 'text-foreground'
+                  }`}>
+                    {framework.name}
+                  </p>
+                </div>
+                
+                {/* Decorative corner accent */}
+                <div className={`absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-tl from-primary/20 to-transparent rounded-full blur-xl transition-opacity duration-500 ${
+                  activeFramework === index ? 'opacity-100' : 'opacity-0'
+                }`} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Tech Stack Ribbon */}
+        {/* Tech Stack - Animated Ribbon */}
         <div className="max-w-6xl mx-auto">
-          <h3 className="font-semibold text-foreground mb-6 text-xl flex items-center gap-2">
-            <span className="w-8 h-1 bg-gradient-to-r from-secondary to-success rounded-full" />
+          <h3 className="font-semibold text-foreground mb-8 text-2xl flex items-center gap-3">
+            <div className="w-10 h-1 bg-gradient-to-r from-secondary to-success rounded-full" />
+            <Code className="w-6 h-6 text-secondary" />
             Tech Stack
           </h3>
-          <div className="flex flex-wrap gap-3">
-            {techStack.map((tech) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {techStack.map((tech, index) => (
               <div
                 key={tech.name}
-                className="group px-4 py-3 bg-gradient-to-r from-card to-card/80 rounded-xl border border-border hover:border-primary/30 transition-all duration-300"
+                className="group relative cursor-pointer"
+                onMouseEnter={() => setHoveredTech(index)}
+                onMouseLeave={() => setHoveredTech(null)}
               >
-                <span className="text-xs text-muted-foreground">{tech.type}</span>
-                <p className="text-sm font-semibold text-foreground">{tech.name}</p>
+                <div className={`relative p-6 bg-card rounded-2xl border transition-all duration-500 overflow-hidden ${
+                  hoveredTech === index 
+                    ? 'border-transparent shadow-2xl scale-105' 
+                    : 'border-border hover:border-primary/30'
+                }`}>
+                  {/* Gradient background on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} transition-opacity duration-500 ${
+                    hoveredTech === index ? 'opacity-15' : 'opacity-0'
+                  }`} />
+                  
+                  {/* Animated glow */}
+                  <div className={`absolute -inset-1 bg-gradient-to-br ${tech.color} opacity-0 blur-xl transition-opacity duration-500 rounded-2xl ${
+                    hoveredTech === index ? 'opacity-30' : ''
+                  }`} />
+                  
+                  <div className="relative z-10">
+                    <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium mb-3 transition-all duration-300 ${
+                      hoveredTech === index
+                        ? 'bg-primary/20 text-primary'
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${tech.color}`} />
+                      {tech.type}
+                    </div>
+                    <p className={`text-lg font-bold transition-colors duration-300 ${
+                      hoveredTech === index ? 'text-primary' : 'text-foreground'
+                    }`}>
+                      {tech.name}
+                    </p>
+                  </div>
+                  
+                  {/* Decorative element */}
+                  <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${tech.color} rounded-full blur-2xl transition-opacity duration-500 ${
+                    hoveredTech === index ? 'opacity-40' : 'opacity-0'
+                  }`} />
+                </div>
               </div>
             ))}
           </div>
