@@ -6,9 +6,9 @@ const impactMetrics = [
     icon: TrendingUp,
     value: '10-20%',
     label: 'GTM Growth',
-    description: 'Go-to-market growth through strategic product positioning',
+    description: 'Strategy & data-driven growth across new B2B clients',
     gradient: 'from-success to-success/50',
-    detail: 'Drove 10-20% GTM growth by launching 6 new verticals, strategic market positioning, and scaling reach to 10,000+ B2B clients.',
+    detail: 'Drove 10-20% GTM growth by launching 6 new verticals, strategic market positioning, and scaling reach across new B2B clients globally.',
   },
   {
     icon: Users,

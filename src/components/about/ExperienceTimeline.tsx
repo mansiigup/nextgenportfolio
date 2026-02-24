@@ -14,7 +14,7 @@ const experiences = [
       'SDLC',
     ],
     promotion: 'Promoted: Associate PM → PM → Product Lead',
-    gradient: 'from-primary to-secondary',
+    gradient: 'from-primary/60 to-secondary/60',
   },
   {
     title: 'Associate Product Manager',

@@ -8,7 +8,7 @@ const certifications = [
   },
   {
     name: 'Product Analytics Certification',
-    issuer: 'Product Fox Community',
+    issuer: 'The Product Folks',
     type: 'Analytics Certification',
   },
   {
