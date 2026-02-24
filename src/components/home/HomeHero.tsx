@@ -5,7 +5,7 @@ const HomeHero = () => {
   const highlights = [
     { icon: BarChart3, label: 'Product Intelligence', color: 'text-secondary' },
     { icon: Target, label: 'Product-Led Growth', color: 'text-success' },
-    { icon: TrendingUp, label: 'Data-Driven', color: 'text-warning' },
+    { icon: TrendingUp, label: 'Strategy & Data-Driven', color: 'text-warning' },
     { icon: Brain, label: 'AI Innovation', color: 'text-destructive' },
   ];
 

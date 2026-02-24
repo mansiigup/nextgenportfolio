@@ -1,14 +1,14 @@
-import { TrendingUp, Globe, Users, Zap, DollarSign, Award, Brain, Rocket } from 'lucide-react';
+import { TrendingUp, Globe, Users, Zap, Award, Brain, Rocket } from 'lucide-react';
 import { useState } from 'react';
 
 const impactMetrics = [
   {
-    icon: DollarSign,
-    value: '₹50M+',
-    label: 'Revenue Generated',
-    description: 'Through portfolio expansion, growth initiatives & strategic market positioning',
+    icon: TrendingUp,
+    value: '10-20%',
+    label: 'GTM Growth',
+    description: 'Go-to-market growth through strategic product positioning',
     gradient: 'from-success to-success/50',
-    detail: 'Led product portfolio expansion driving 40+ Million Revenue by launching 6 new verticals and scaling reach to 10,000+ B2B clients.',
+    detail: 'Drove 10-20% GTM growth by launching 6 new verticals, strategic market positioning, and scaling reach to 10,000+ B2B clients.',
   },
   {
     icon: Users,
@@ -98,7 +98,7 @@ const ImpactSection = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
           {impactMetrics.map((metric, index) => (
             <div
               key={metric.label}

@@ -343,7 +343,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudy; index: number }) =>
               : 'bg-accent text-accent-foreground hover:bg-accent/80'
           }`}
         >
-          {isExpanded ? 'Show less' : 'Read full case study'}
+          {isExpanded ? 'Show less' : 'View details'}
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
       </div>

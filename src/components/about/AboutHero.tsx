@@ -340,7 +340,7 @@ const AboutHero = () => {
             </div>
 
             {/* Connecting element */}
-            <div className="hidden lg:flex justify-center items-center -mt-4">
+            <div className="hidden lg:flex justify-center items-center mt-6">
               <div className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20">
                 <RefreshCw className="w-4 h-4 text-primary animate-spin" style={{ animationDuration: '6s' }} />
                 <span className="text-sm font-medium text-primary">Continuous Integration</span>

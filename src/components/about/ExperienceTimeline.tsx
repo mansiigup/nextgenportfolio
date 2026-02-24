@@ -58,14 +58,14 @@ const ExperienceTimeline = () => {
               <span className="text-sm font-medium text-primary">Experience Timeline</span>
             </div>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
-              <span className="text-gradient-slack">Career Journey</span>
+              <span className="text-foreground">Career Journey</span>
             </h2>
           </div>
 
           {/* Timeline */}
           <div className="relative mb-20">
             {/* Center line - desktop */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-success transform -translate-x-1/2 hidden md:block rounded-full" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-muted-foreground/30 via-muted-foreground/20 to-muted-foreground/10 transform -translate-x-1/2 hidden md:block rounded-full" />
 
             <div className="space-y-16">
               {experiences.map((exp, index) => (

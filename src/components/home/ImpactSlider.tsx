@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Rocket, Globe, Users, TrendingUp, Zap, IndianRupee, Brain } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Rocket, Globe, Users, TrendingUp, Zap, Brain } from 'lucide-react';
 
 const ImpactSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,11 +36,11 @@ const ImpactSlider = () => {
       description: 'Continuous deployment and feature releases'
     },
     { 
-      value: '₹50M+', 
-      label: 'Revenue Generated', 
-      icon: IndianRupee,
+      value: '10-20%', 
+      label: 'GTM Growth', 
+      icon: TrendingUp,
       color: 'from-primary to-secondary',
-      description: 'Direct business impact through product innovation'
+      description: 'Go-to-market growth through strategic product positioning'
     },
     { 
       value: '4', 

@@ -44,7 +44,7 @@ const caseStudies: CaseStudy[] = [
     ],
     execution: 'Implemented structured planning with bi-monthly release cycles. Built stakeholder rollout plans with school administrators as key partners. Created vertical-specific onboarding workflows and distribution-led product readiness frameworks.',
     metrics: [
-      { label: 'Revenue', value: '₹40M+' },
+      { label: 'GTM Growth', value: '10-20%' },
       { label: 'Schools', value: '10,000+' },
       { label: 'Students', value: '1.2M+' },
       { label: 'Verticals', value: '6' }
@@ -186,7 +186,7 @@ const caseStudies: CaseStudy[] = [
     metrics: [
       { label: 'AI Models', value: '4' },
       { label: 'Research Partners', value: '3' },
-      { label: 'A/B Tests', value: '20+' },
+      { label: 'A/B Tests', value: '5+' },
       { label: 'Engagement Lift', value: '50-60%' }
     ],
     products: ['STT Fluency Model', 'TTS Model', 'Personalized Recommendation Engine', 'AI Story + Image Generation'],
@@ -419,7 +419,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudy; index: number }) =>
             isExpanded ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground hover:bg-accent/80'
           }`}
         >
-          {isExpanded ? 'Show less' : 'Read full case study'}
+          {isExpanded ? 'Show less' : 'View details'}
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
       </div>
@@ -530,7 +530,7 @@ const FreadomCaseStudies = () => {
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full">12 Impact Studies</span>
-          <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">₹40M+ Revenue</span>
+          <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">10-20% GTM Growth</span>
           <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">200+ Releases</span>
           <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">4 Countries</span>
         </div>

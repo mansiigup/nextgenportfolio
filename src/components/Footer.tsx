@@ -9,7 +9,7 @@ const Footer = () => {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/case-studies', label: 'Case Studies' },
+    { href: '/case-studies', label: 'Impact Studies' },
     { href: '/innovation-space', label: 'Innovation' },
     { href: '/ai-hub', label: 'AI Hub' },
     { href: '/contact', label: 'Contact' },

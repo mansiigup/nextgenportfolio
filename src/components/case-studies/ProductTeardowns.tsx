@@ -36,7 +36,7 @@ const ProductTeardowns = () => {
             Product Teardowns
           </p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Learning from the Best
+            Product Teardowns
           </h2>
           <p className="text-muted-foreground text-lg">
             Deep dives into products I admire—understanding what makes them work and extracting lessons for my own practice.
