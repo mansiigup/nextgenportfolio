@@ -4,7 +4,6 @@ import AIHubHero from '@/components/ai-hub/AIHubHero';
 import AIProducts from '@/components/ai-hub/AIProducts';
 import PMWorkflows from '@/components/ai-hub/PMWorkflows';
 import AIExperiments from '@/components/ai-hub/AIExperiments';
-import AIResources from '@/components/ai-hub/AIResources';
 
 const AIHub = () => {
   return (
@@ -14,7 +13,6 @@ const AIHub = () => {
       <AIProducts />
       <PMWorkflows />
       <AIExperiments />
-      <AIResources />
       <Footer />
     </div>
   );

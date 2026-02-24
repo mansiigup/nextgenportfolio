@@ -1,25 +1,25 @@
-import { FlaskConical, Github, ExternalLink } from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
 
 const projects = [
   {
     title: 'AI Content Curator',
     description: 'A prototype tool that uses LLMs to curate and summarize educational content based on learning objectives and student reading levels.',
-    status: 'In Progress',
-    tech: ['Python', 'Claude API', 'React'],
+    status: 'Concept',
+    tech: ['Concept'],
     learnings: 'Prompt engineering is crucial—small changes in prompts dramatically affect output quality for educational content.',
   },
   {
     title: 'Product Metrics Dashboard Template',
     description: 'An open-source Looker Studio template for product teams to quickly set up North Star metrics, cohort analysis, and funnel visualization.',
-    status: 'Completed',
-    tech: ['Looker Studio', 'SQL', 'BigQuery'],
+    status: 'Concept',
+    tech: ['Concept'],
     learnings: 'Most teams struggle not with building dashboards but knowing which metrics matter—documentation is as important as the template.',
   },
   {
     title: 'Parent Engagement Tracker',
     description: 'A lightweight tool to help EdTech products measure and improve parent engagement in student learning journeys.',
     status: 'Concept',
-    tech: ['Figma Prototype', 'User Research'],
+    tech: ['Concept'],
     learnings: 'Parent engagement is the missing link in EdTech retention—but the solution needs to respect their time constraints.',
   },
 ];
@@ -64,13 +64,7 @@ const ExperimentalProjects = () => {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button className="p-2 text-muted-foreground hover:text-foreground transition-colors">
-                    <Github size={18} />
-                  </button>
-                  <button className="p-2 text-muted-foreground hover:text-foreground transition-colors">
-                    <ExternalLink size={18} />
-                  </button>
+              <div className="flex items-center gap-2">
                 </div>
               </div>
 

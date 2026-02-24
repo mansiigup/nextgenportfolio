@@ -15,6 +15,7 @@ const skillCategories = [
       'Go-to-Market Strategy',
       'Competitive Analysis',
       'Market Research',
+      'Prototyping & Wireframing',
     ],
   },
   {
@@ -45,6 +46,9 @@ const skillCategories = [
       'Redis, Celery, PostgreSQL',
       'AWS / GCP / Digital Ocean',
       'OAuth & JWT Authentication',
+      'Cursor AI & Lovable',
+      'ChatGPT & Claude AI',
+      'Perplexity & Copilot',
     ],
   },
   {
@@ -117,7 +121,7 @@ const SkillsExperience = () => {
         {/* Interactive Skills Grid with Animated Tabs */}
         <div className="max-w-6xl mx-auto mb-20">
           {/* Category tabs - Pill style */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div className="flex flex-wrap justify-center gap-3 mb-10 text-center">
             {skillCategories.map((category, index) => (
               <button
                 key={category.category}
@@ -224,7 +228,7 @@ const SkillsExperience = () => {
             <Code className="w-6 h-6 text-secondary" />
             Tech Stack
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {techStack.map((tech, index) => (
               <div
                 key={tech.name}

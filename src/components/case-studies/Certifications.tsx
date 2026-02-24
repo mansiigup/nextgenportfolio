@@ -1,35 +1,20 @@
-import { Award, ExternalLink } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 const certifications = [
   {
-    name: 'Product Management',
-    issuer: 'Great Learning',
+    name: 'Product School Micro Certification',
+    issuer: 'Product School',
     type: 'Professional Certificate',
   },
   {
-    name: 'Product Analytics',
-    issuer: 'Mixpanel',
-    type: 'Platform Certification',
+    name: 'Product Analytics Certification',
+    issuer: 'Product Fox Community',
+    type: 'Analytics Certification',
   },
   {
-    name: 'SQL for Data Analysis',
-    issuer: 'Multiple Platforms',
-    type: 'Technical Skill',
-  },
-  {
-    name: 'Agile & Scrum',
-    issuer: 'Industry Standard',
-    type: 'Methodology',
-  },
-  {
-    name: 'Design Thinking',
-    issuer: 'IDEO/Stanford d.school',
-    type: 'Framework',
-  },
-  {
-    name: 'AI/ML for Product Managers',
-    issuer: 'Various Courses',
-    type: 'Domain Knowledge',
+    name: 'Google Cloud GenAI Skillset',
+    issuer: 'Google Cloud',
+    type: 'AI/ML Certification',
   },
 ];
 
@@ -53,20 +38,19 @@ const Certifications = () => {
           {certifications.map((cert) => (
             <div
               key={cert.name}
-              className="group p-4 bg-card rounded-xl border border-border hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer"
+              className="group p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all hover:-translate-y-1"
             >
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5 text-accent-foreground" />
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                  <Award className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm mb-1 truncate">{cert.name}</h3>
-                  <p className="text-xs text-muted-foreground mb-1">{cert.issuer}</p>
+                  <h3 className="font-semibold text-foreground text-sm mb-1">{cert.name}</h3>
+                  <p className="text-xs text-muted-foreground mb-2">{cert.issuer}</p>
                   <span className="inline-block px-2 py-0.5 text-xs bg-accent text-accent-foreground rounded">
                     {cert.type}
                   </span>
                 </div>
-                <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </div>
             </div>
           ))}

@@ -6,24 +6,19 @@ const LatestHighlights = () => {
   const articles = [
     {
       type: 'Article',
-      title: 'Thought on Product Strategy',
-      description: 'Lessons from integrating LLMs into production systems',
+      title: 'Thought on Full Stack Product Builder',
+      description: 'The growth of full stack product & AI',
       icon: FileText,
       color: 'bg-primary/10 text-primary',
+      link: 'https://www.linkedin.com/posts/mansi-gupta-2201b7154_the-growth-of-full-stack-product-ai-activity-7425240419954851840-f7SH?utm_source=share&utm_medium=member_desktop&rcm=ACoAACUMd3gBtslqyg4BnKMjO0_XXqHE1hyP97w',
     },
     {
       type: 'LinkedIn Post',
-      title: 'Integration',
-      description: 'How prioritization drives 10x outcomes',
+      title: 'Daily Series of Learning How to Grow Your Mind',
+      description: 'Insights on personal and professional growth',
       icon: MessageSquare,
       color: 'bg-secondary/10 text-secondary',
-    },
-    {
-      type: 'Case Study',
-      title: 'Building Product that Matters',
-      description: 'Scaling a SaaS product to 3 new markets',
-      icon: Lightbulb,
-      color: 'bg-success/10 text-success',
+      link: 'https://www.linkedin.com/in/mansi-gupta-2201b7154/',
     },
   ];
 
@@ -45,16 +40,16 @@ const LatestHighlights = () => {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
             Articles & Highlights
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Thoughts on product strategy, AI integration, and building products that matter
-          </p>
         </div>
 
         {/* Articles grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           {articles.map((article, index) => (
-            <div
+            <a
               key={index}
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group bg-card rounded-2xl p-6 border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 ${article.color}`}>
@@ -65,11 +60,11 @@ const LatestHighlights = () => {
                 {article.title}
               </h3>
               <p className="text-muted-foreground text-sm mb-4">{article.description}</p>
-              <button className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all">
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all">
                 Read more
                 <ArrowRight size={14} />
-              </button>
-            </div>
+              </span>
+            </a>
           ))}
         </div>
 
