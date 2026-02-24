@@ -1,5 +1,6 @@
 import { Trophy, FileText, Code, ExternalLink, Sparkles } from 'lucide-react';
 
+
 const honors = [
   {
     icon: Trophy,
@@ -80,9 +81,20 @@ const HonorsSection = () => {
                     {honor.title}
                   </h3>
                   <p className="text-sm font-medium text-primary mb-3">{honor.organization}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {honor.description}
                   </p>
+                  {honor.link && honor.link !== '#' && (
+                    <a
+                      href={honor.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-accent text-accent-foreground rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                    >
+                      Read More
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
 
                 {/* Hover glow */}

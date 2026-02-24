@@ -21,7 +21,7 @@ const companies = [
     role: 'Product Lead',
     period: '2022 – Present',
     focus: 'EdTech • Reading Literacy • Global Expansion',
-    caseStudyCount: 4,
+    caseStudyCount: 12,
     color: 'from-emerald-500 to-teal-500'
   }
 ];
