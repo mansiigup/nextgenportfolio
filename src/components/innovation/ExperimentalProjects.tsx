@@ -106,7 +106,7 @@ const ExperimentalProjects = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground">{project.title}</h3>
-                          <span className="text-xs font-medium px-2 py-0.5 rounded bg-accent text-accent-foreground">
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded ${project.status === 'Live' ? 'bg-primary/15 text-primary' : 'bg-accent text-accent-foreground'}`}>
                             {project.status}
                           </span>
                         </div>
