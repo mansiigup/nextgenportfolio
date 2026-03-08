@@ -1,6 +1,6 @@
 import { Brain, Cpu, Workflow, Sparkles, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState, useEffect } from 'react';
 
 const cards = [

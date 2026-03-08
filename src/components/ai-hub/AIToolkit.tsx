@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { ExternalLink } from 'lucide-react';
 
 const aiTools = [
