@@ -1,6 +1,6 @@
 import { Workflow, FileText, Search, BarChart3, Users, ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState } from 'react';
 
 const workflows = [
