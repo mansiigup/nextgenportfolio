@@ -100,8 +100,6 @@ const HomeHero = () => {
             <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
               <Link
                 to="/about"
-                onMouseEnter={() => playSound('hover')}
-                onClick={() => playSound('click')}
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
               >
                 Read More
