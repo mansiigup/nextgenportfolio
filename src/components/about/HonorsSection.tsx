@@ -13,12 +13,12 @@ const honors = [
   },
   {
     icon: FileText,
-    title: 'Research Paper Honor',
-    organization: 'Academic Recognition',
-    description: 'Honored for contributions to research in AI and educational technology, publishing work that bridges the gap between academic innovation and practical product implementation.',
+    title: 'Published Research Paper',
+    organization: 'IJARIIE — Volume 4, Issue 3, 2018',
+    description: 'Published a research paper titled "Sustainable Environmental Management at Jai Maruti Gas Cylinders Limited, Gwalior, Madhya Pradesh" in the International Journal of Advance Research and Innovative Ideas in Education (ISSN: 2395-4396, Paper ID: 8364).',
     gradient: 'from-primary to-secondary',
     badge: 'Published',
-    link: '#',
+    link: '/documents/research_paper_certificate.pdf',
   },
   {
     icon: Code,
