@@ -44,7 +44,7 @@ const aiProducts = [
 
 const AIProducts = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
