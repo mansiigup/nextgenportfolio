@@ -128,7 +128,6 @@ const HomeHero = () => {
               <span className="text-border">•</span>
               <a
                 href="mailto:nextgeninnovationlab@gmail.com"
-                onMouseEnter={() => playSound('hover')}
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105"
               >
                 <Mail size={20} />
