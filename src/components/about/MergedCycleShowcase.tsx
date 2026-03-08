@@ -195,7 +195,6 @@ const MergedCycleShowcase = () => {
         {PHASES.map((phase, i) => {
           const colors = PHASE_COLORS[i];
           const isActive = i === activePhase;
-          const isExpanded = i === expandedPhase;
           const Icon = phase.icon;
 
           return (
