@@ -92,7 +92,7 @@ const HomeHero = () => {
               Product Lead | Innovate & Impact | Data & AI Enthusiast
             </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.3s' }}>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.3s' }}>
               A problem solver, driving product-led growth with more than 5 years of experience in building 0 to 1 products, leveraging AI, data-driven insights, and user-centric innovation. Leading cross-functional teams to solve a problem by developing scalable, intelligent solutions that enhance engagement, optimize decision-making, and drive market expansion.
             </p>
 
