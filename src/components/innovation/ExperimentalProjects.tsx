@@ -59,7 +59,7 @@ const projects: Project[] = [
 const ExperimentalProjects = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
 
   return (
     <section className="py-20 bg-background relative">
