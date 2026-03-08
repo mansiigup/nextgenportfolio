@@ -202,11 +202,10 @@ const MergedCycleShowcase = () => {
           return (
             <div
               key={phase.id}
-              className={`relative rounded-xl border backdrop-blur-sm transition-all duration-500 cursor-pointer overflow-hidden group
+              className={`relative rounded-xl border backdrop-blur-sm transition-all duration-500 cursor-pointer overflow-hidden group hover:scale-[1.02]
                 ${isActive ? `${colors.border} shadow-lg ${colors.glow}` : 'border-border/50 hover:border-border'}
-                ${isExpanded ? 'ring-1 ring-primary/20' : ''}
               `}
-              onClick={() => setExpandedPhase(isExpanded ? null : i)}
+              onClick={() => setDialogPhase(i)}
             >
               {/* Phase number watermark */}
               <div className={`absolute -top-4 -right-2 text-7xl font-bold pointer-events-none select-none transition-opacity duration-500 ${isActive ? 'opacity-10' : 'opacity-[0.04]'} ${colors.text}`}>
@@ -227,9 +226,6 @@ const MergedCycleShowcase = () => {
                       <span className={`text-[10px] tracking-wider uppercase ${colors.text} opacity-70`}>Phase {phase.number}</span>
                     </div>
                   </div>
-                  <button className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => { e.stopPropagation(); setExpandedPhase(isExpanded ? null : i); }}>
-                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                  </button>
                 </div>
 
                 {/* Dual lane pills */}
@@ -241,42 +237,10 @@ const MergedCycleShowcase = () => {
                 {/* Merged description */}
                 <p className="text-xs text-muted-foreground leading-relaxed">{phase.merged}</p>
 
-                {/* Expanded content */}
-                {isExpanded && (
-                  <div className="mt-4 pt-4 border-t border-border/50 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                    {/* Strategy & Dev layers */}
-                    <div className="grid grid-cols-1 gap-2">
-                      <div className={`p-3 rounded-lg bg-card/50 border ${colors.border}`}>
-                        <span className={`text-[10px] tracking-wider uppercase ${colors.text} font-medium`}>◎ Strategy Layer</span>
-                        <p className="text-xs text-muted-foreground mt-1">{phase.stratDesc}</p>
-                      </div>
-                      <div className="p-3 rounded-lg bg-card/50 border border-border">
-                        <span className="text-[10px] tracking-wider uppercase text-muted-foreground font-medium">⬡ Dev Layer</span>
-                        <p className="text-xs text-muted-foreground mt-1">{phase.devDesc}</p>
-                      </div>
-                    </div>
-
-                    {/* Deliverables */}
-                    <div>
-                      <span className="text-[10px] tracking-wider uppercase text-muted-foreground mb-2 block">Deliverables</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {phase.outputs.map((output) => (
-                          <span key={output} className={`text-[10px] px-2.5 py-1 rounded-full border ${colors.badge}`}>
-                            {output}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* View questions button */}
-                    <button
-                      onClick={(e) => { e.stopPropagation(); setDialogPhase(i); }}
-                      className={`w-full text-xs py-2 rounded-lg border ${colors.border} ${colors.text} hover:bg-card/50 transition-colors font-medium`}
-                    >
-                      View Guiding Questions →
-                    </button>
-                  </div>
-                )}
+                {/* Click hint */}
+                <div className={`mt-3 text-[10px] ${colors.text} opacity-60 font-medium`}>
+                  Click to explore →
+                </div>
               </div>
             </div>
           );
