@@ -25,6 +25,7 @@ const projects: Project[] = [
     accentColor: 'border-l-ring',
     link: 'https://nipun-setu.lovable.app/',
     logo: nipunSetuLogo,
+    personaLink: '/documents/nipunsetu_personas.html',
   },
   {
     title: 'AI Content Curator',
