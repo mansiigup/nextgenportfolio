@@ -10,6 +10,7 @@ const honors = [
     gradient: 'from-warning to-amber-500',
     badge: 'Winner',
     link: 'https://acceleratelearning.stanford.edu/funding/create-ai-challenge/',
+    external: true,
   },
   {
     icon: FileText,
