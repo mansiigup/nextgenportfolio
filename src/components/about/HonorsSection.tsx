@@ -5,11 +5,11 @@ const honors = [
   {
     icon: Trophy,
     title: 'Create+AI Challenge Winner',
-    organization: 'Stanford Accelerator Learning Program',
-    description: 'Won the Create+AI Challenge conducted by the Stanford Accelerator Learning Program, in collaboration with Freadom Edu. Recognized for innovative AI-driven solutions in educational technology.',
+    organization: 'Stanford Accelerator Learning Program × Freadom Edu',
+    description: 'Won the Create+AI Challenge conducted by the Stanford Accelerator Learning Program as part of the Freadom Edu product team. Recognized for innovative AI-driven solutions in educational technology.',
     gradient: 'from-warning to-amber-500',
     badge: 'Winner',
-    link: '#',
+    link: 'https://acceleratelearning.stanford.edu/funding/create-ai-challenge/',
   },
   {
     icon: FileText,
