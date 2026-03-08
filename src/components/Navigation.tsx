@@ -86,7 +86,7 @@ const Navigation = () => {
                 setSoundEnabled(!soundEnabled);
                 playSound('toggle');
               }}
-              className="ml-2 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300"
+              className="ml-2 p-2 rounded-lg text-background/60 hover:text-background hover:bg-background/10 transition-all duration-300"
               aria-label={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
             >
               {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
