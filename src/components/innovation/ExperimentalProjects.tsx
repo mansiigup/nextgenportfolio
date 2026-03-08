@@ -28,14 +28,6 @@ const projects: Project[] = [
     personaLink: '/documents/nipunsetu_personas.html',
   },
   {
-    title: 'AI Content Curator',
-    description: 'A prototype tool that uses LLMs to curate and summarize educational content based on learning objectives and student reading levels.',
-    status: 'Concept',
-    tech: ['Concept'],
-    learnings: 'Prompt engineering is crucial—small changes in prompts dramatically affect output quality for educational content.',
-    accentColor: 'border-l-primary',
-  },
-  {
     title: 'Product Metrics Dashboard Template',
     description: 'An open-source Looker Studio template for product teams to quickly set up North Star metrics, cohort analysis, and funnel visualization.',
     status: 'Concept',
