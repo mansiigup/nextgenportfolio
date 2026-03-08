@@ -74,7 +74,7 @@ const aiTools = [
     emoji: '✨',
   },
   {
-    name: 'Figma AI',
+    name: 'Figma AI / Stitch AI',
     category: 'Design AI',
     use: 'Auto-layout suggestions, design system consistency, asset generation',
     color: 'from-primary/20 to-primary/5',
