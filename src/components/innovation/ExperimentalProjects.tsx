@@ -1,6 +1,7 @@
 import { FlaskConical, ChevronDown, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import nipunSetuLogo from '@/assets/nipun-setu-logo.png';
 
 interface Project {
   title: string;
@@ -10,6 +11,7 @@ interface Project {
   learnings: string;
   accentColor: string;
   link?: string;
+  logo?: string;
 }
 
 const projects: Project[] = [
@@ -21,6 +23,7 @@ const projects: Project[] = [
     learnings: 'The world doesn\'t have a learning problem — it has a navigation problem. Generic courses fail because they ignore context: a BBA graduate pivoting to analytics needs a fundamentally different path than a CS graduate.',
     accentColor: 'border-l-ring',
     link: 'https://nipun-setu.lovable.app/',
+    logo: nipunSetuLogo,
   },
   {
     title: 'AI Content Curator',
@@ -101,9 +104,15 @@ const ExperimentalProjects = () => {
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <FlaskConical className="w-5 h-5 text-primary" />
-                        </div>
+                        {project.logo ? (
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                            <img src={project.logo} alt={project.title} className="w-10 h-10 object-contain" />
+                          </div>
+                        ) : (
+                          <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <FlaskConical className="w-5 h-5 text-primary" />
+                          </div>
+                        )}
                         <div>
                           <h3 className="font-semibold text-foreground">{project.title}</h3>
                           <span className={`text-xs font-medium px-2 py-0.5 rounded ${project.status === 'Live' ? 'bg-primary/15 text-primary' : 'bg-accent text-accent-foreground'}`}>
