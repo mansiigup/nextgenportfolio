@@ -17,9 +17,9 @@ const ContactHero = () => {
             Let's Start a Conversation
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            I'm always open to discussing product leadership roles, interesting projects, 
-            or opportunities to drive meaningful impact. Whether you're a founder, hiring 
-            manager, or fellow PM—I'd love to hear from you.
+            I'm always open to discussing interesting projects, collaborations, 
+            or opportunities to drive meaningful impact. Whether you're a founder, 
+            or fellow PM—I'd love to hear from you.
           </p>
 
           <div className="inline-flex items-center gap-2 text-foreground">
