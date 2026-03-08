@@ -168,7 +168,7 @@ const HomeHero = () => {
 
                 <div className="mt-6 p-4 bg-accent rounded-xl">
                   <p className="text-sm text-muted-foreground text-center">
-                    <span className="font-bold text-foreground">4.5+ years</span> building products that{' '}
+                    <span className="font-bold text-foreground">5 years</span> building products that{' '}
                     <span className="font-bold text-primary">scale</span> and{' '}
                     <span className="font-bold text-success">impact millions</span>
                   </p>
