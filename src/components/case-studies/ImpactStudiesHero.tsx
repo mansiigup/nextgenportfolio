@@ -1,4 +1,4 @@
-import { TrendingUp, Briefcase, Search, Award } from 'lucide-react';
+import { TrendingUp, Briefcase, Award } from 'lucide-react';
 
 const ImpactStudiesHero = () => {
   const sections = [
