@@ -50,7 +50,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollProgress />
-          <CustomCursor />
+          
           <ScrollToTop />
           <AppRoutes />
         </BrowserRouter>
