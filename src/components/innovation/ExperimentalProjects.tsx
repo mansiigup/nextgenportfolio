@@ -53,6 +53,7 @@ const projects: Project[] = [
     tech: ['AI/LLM', 'FoodTech', 'Computer Vision', 'Real-time Tracking'],
     learnings: 'Dining doesn\'t have a food problem — it has a communication problem. Six distinct pain points (menu confusion, language barriers, waiting anxiety, expectation mismatch, fine dining comprehension, silent disconnect) all trace back to one root cause: broken information flow between kitchen and table.',
     accentColor: 'border-l-primary',
+    personaLink: '/documents/dineiq_portfolio.html',
   },
 ];
 
