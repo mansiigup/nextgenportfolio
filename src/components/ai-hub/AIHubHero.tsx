@@ -34,7 +34,7 @@ const words = ['Builds', 'Thinks', 'Ships', 'Scales'];
 
 const AIHubHero = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const [isWordVisible, setIsWordVisible] = useState(true);

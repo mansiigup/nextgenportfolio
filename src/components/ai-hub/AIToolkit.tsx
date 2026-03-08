@@ -112,7 +112,7 @@ const aiTools = [
 
 const AIToolkit = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
 
   return (
     <section className="py-20 bg-card relative">
