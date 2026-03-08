@@ -14,6 +14,7 @@ interface Project {
   link?: string;
   logo?: string;
   personaLink?: string;
+  portfolioLink?: string;
 }
 
 const projects: Project[] = [
@@ -53,6 +54,7 @@ const projects: Project[] = [
     tech: ['AI/LLM', 'FoodTech', 'Computer Vision', 'Real-time Tracking'],
     learnings: 'Dining doesn\'t have a food problem — it has a communication problem. Six distinct pain points (menu confusion, language barriers, waiting anxiety, expectation mismatch, fine dining comprehension, silent disconnect) all trace back to one root cause: broken information flow between kitchen and table.',
     accentColor: 'border-l-primary',
+    portfolioLink: '/documents/dineiq_portfolio.html',
   },
 ];
 
@@ -184,6 +186,17 @@ const ExperimentalProjects = () => {
                           className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
                         >
                           View Personas <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                      {project.portfolioLink && (
+                        <a
+                          href={project.portfolioLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                        >
+                          View Portfolio <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
                     </div>
