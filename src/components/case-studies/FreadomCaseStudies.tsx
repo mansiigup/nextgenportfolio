@@ -324,7 +324,7 @@ const caseStudies: CaseStudy[] = [
     ],
     execution: 'Designed baseline vs endline measurement frameworks, built assessment instrumentation into the product, created comprehensive reporting systems, and managed study execution across 30,000+ students.',
     metrics: [
-      { label: 'Students', value: '23,000' },
+      { label: 'Students', value: '30,000+' },
       { label: 'Measurement', value: 'Baseline→Endline' },
       { label: 'Reporting', value: 'Comprehensive' },
       { label: 'Evidence', value: 'Rigorous' }
