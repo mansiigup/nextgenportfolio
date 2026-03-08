@@ -151,7 +151,7 @@ const HomeHero = () => {
                   {highlights.map((item, index) => (
                     <div
                       key={index}
-                      onMouseEnter={() => playSound('hover')}
+                      
                       className={`bg-background rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-2 hover:scale-105 ${item.hoverBg} group`}
                     >
                       <item.icon size={32} className={`mx-auto mb-3 ${item.color} group-hover:scale-110 transition-transform duration-300`} />
