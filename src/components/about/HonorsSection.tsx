@@ -92,8 +92,9 @@ const HonorsSection = () => {
                         href={honor.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0"
+                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0 cursor-pointer z-10"
                         title="Learn more"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
