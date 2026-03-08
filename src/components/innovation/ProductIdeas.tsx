@@ -298,9 +298,16 @@ const ProductIdeas = () => {
           </Carousel>
 
           {/* Navigation controls */}
-          <div className="flex items-center justify-between mt-6">
-            {/* Dot indicators */}
-            <div className="flex gap-1.5 flex-wrap">
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={() => api?.scrollPrev()}
+              className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
+              aria-label="Previous idea"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <div className="flex gap-1.5">
               {Array.from({ length: count }).map((_, index) => (
                 <button
                   key={index}
@@ -315,23 +322,13 @@ const ProductIdeas = () => {
               ))}
             </div>
 
-            {/* Arrow buttons */}
-            <div className="flex gap-2">
-              <button
-                onClick={() => api?.scrollPrev()}
-                className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
-                aria-label="Previous idea"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={() => api?.scrollNext()}
-                className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
-                aria-label="Next idea"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
+            <button
+              onClick={() => api?.scrollNext()}
+              className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
+              aria-label="Next idea"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
 
           {/* Keyboard hint */}
