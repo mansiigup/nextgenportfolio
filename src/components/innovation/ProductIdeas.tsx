@@ -156,6 +156,7 @@ const ProductIdeas = () => {
   const [count, setCount] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const { playSound } = useSound();
 
   useEffect(() => {
     if (!api) return;
