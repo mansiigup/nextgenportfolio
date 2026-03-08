@@ -296,7 +296,7 @@ const AboutHero = () => {
 
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed max-w-2xl">
                 <p>
-                  A curious builder at heart for <span className="text-foreground font-semibold">4.5+ years</span>, driven by the thrill of turning bold ideas into intelligent, intuitive products. Fascinated by the endless possibilities of AI, data, and emerging technologies, with a passion for crafting experiences that feel seamless, smart, and human.
+                  A curious builder at heart for <span className="text-foreground font-semibold">5 Years</span>, driven by the thrill of turning bold ideas into intelligent, intuitive products. Fascinated by the endless possibilities of AI, data, and emerging technologies, with a passion for crafting experiences that feel seamless, smart, and human.
                 </p>
                 <p>
                   Always exploring the edge where innovation meets real-world impact—whether it's reimagining how people interact with technology or scaling solutions that make life simpler and smarter. Believes that great products aren't just built—they're imagined, iterated, and inspired by the future we dare to create.
