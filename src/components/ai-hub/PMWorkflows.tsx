@@ -80,7 +80,7 @@ const PMWorkflows = () => {
                 isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${300 + index * 120}ms`, animationFillMode: 'forwards' }}
-              onMouseEnter={() => { setHoveredIndex(index); playSound('hover'); }}
+              onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Gradient top accent */}
