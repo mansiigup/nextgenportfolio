@@ -101,9 +101,9 @@ const caseStudies: CaseStudy[] = [
     execution: 'Built release governance frameworks, implemented rollout strategies with feature flags, established QA workflows and stability metrics, and created structured prioritization across all platforms.',
     metrics: [
       { label: 'Releases', value: '200+' },
-      { label: 'Team Size', value: '9' },
+      { label: 'Products', value: '5' },
       { label: 'Platforms', value: '3' },
-      { label: 'Stability', value: 'Improved' }
+      { label: 'Team Size', value: '9' }
     ],
     products: ['fREADom Reading App', 'CBSE Reading App', 'Teacher Platform', 'CMS Tools', 'Assessment Tools'],
     features: ['Release governance frameworks', 'Phased rollout with feature flags', 'QA workflows + stability metrics', 'Structured prioritization across platforms'],
