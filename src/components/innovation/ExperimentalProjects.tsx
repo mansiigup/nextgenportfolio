@@ -35,14 +35,6 @@ const projects: Project[] = [
     learnings: 'Most teams struggle not with building dashboards but knowing which metrics matter—documentation is as important as the template.',
     accentColor: 'border-l-secondary',
   },
-  {
-    title: 'Parent Engagement Tracker',
-    description: 'A lightweight tool to help EdTech products measure and improve parent engagement in student learning journeys.',
-    status: 'Concept',
-    tech: ['Concept'],
-    learnings: 'Parent engagement is the missing link in EdTech retention—but the solution needs to respect their time constraints.',
-    accentColor: 'border-l-destructive',
-  },
 ];
 
 const ExperimentalProjects = () => {
