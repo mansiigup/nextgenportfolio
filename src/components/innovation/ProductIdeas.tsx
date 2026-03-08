@@ -302,7 +302,7 @@ const ProductIdeas = () => {
           {/* Navigation controls */}
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
-              onClick={() => { api?.scrollPrev(); playSound('click'); }}
+              onClick={() => api?.scrollPrev()}
               className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
               aria-label="Previous idea"
             >
