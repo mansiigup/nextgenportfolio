@@ -37,7 +37,7 @@ const caseStudies: CaseStudy[] = [
     timeline: 'Oct 2021 – Sep 2022',
     context: 'FirstRoot is a B2B2C SaaS platform that teaches financial literacy through participatory budgeting in K-12 schools. Schools adopt the program, teachers implement it, and students engage through the app.',
     problem: 'Despite strong product value and early pilot success, adoption growth in California was slower than expected.',
-    keyChallenge: 'Schools weren\'t rejecting the product because it was ineffective — they weren\'t adopting because community awareness was low, trust-building was missing, and stakeholders (teachers, principals, PTAs) didn\'t clearly understand the outcomes.',
+    keyChallenge: 'The product demonstrated clear effectiveness, and scaling adoption presented an opportunity to focus on stronger distribution through community awareness, trust-building, and clearer outcome communication with key stakeholders such as teachers, principals, and PTAs.',
     goal: 'Increase adoption across new CA schools and improve pipeline conversion from interest → pilot → implementation.',
     approach: [
       'Identified the real growth blocker through market and competitor positioning analysis',
