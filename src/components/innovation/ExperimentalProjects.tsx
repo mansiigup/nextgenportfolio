@@ -36,6 +36,14 @@ const projects: Project[] = [
     accentColor: 'border-l-secondary',
     link: 'https://growthtrackingdashboard.lovable.app',
   },
+  {
+    title: 'CompatIQ',
+    description: 'A universal compatibility assessment framework that captures responses across multiple parameters — personality, values, work style, expectations — before two parties meet. Whether it\'s finding the right life partner, co-founder, or hiring the ideal candidate, CompatIQ generates a data-driven compatibility score to enable smarter, more intentional connections.',
+    status: 'Concept',
+    tech: ['Assessment Design', 'Matching Algorithms', 'HR Tech', 'Relationship Tech'],
+    learnings: 'Compatibility isn\'t one-dimensional — the same person can be a great cultural fit but a poor skill fit. Multi-parameter frameworks surface nuances that gut feeling misses.',
+    accentColor: 'border-l-destructive',
+  },
 ];
 
 const ExperimentalProjects = () => {
