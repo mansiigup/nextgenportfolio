@@ -77,24 +77,28 @@ const HonorsSection = () => {
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-serif text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                    {honor.title}
-                  </h3>
-                  <p className="text-sm font-medium text-primary mb-3">{honor.organization}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-serif text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                        {honor.title}
+                      </h3>
+                      <p className="text-sm font-medium text-primary mb-3">{honor.organization}</p>
+                    </div>
+                    {honor.link && honor.link !== '#' && (
+                      <a
+                        href={honor.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0"
+                        title="Learn more"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {honor.description}
                   </p>
-                  {honor.link && honor.link !== '#' && (
-                    <a
-                      href={honor.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-accent text-accent-foreground rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
-                    >
-                      Read More
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
                 </div>
 
                 {/* Hover glow */}
