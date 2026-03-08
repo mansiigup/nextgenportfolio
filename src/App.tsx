@@ -45,16 +45,13 @@ const AppRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <SoundProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollProgress />
-          
-          <ScrollToTop />
-          <AppRoutes />
-        </BrowserRouter>
-      </SoundProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <ScrollProgress />
+        <ScrollToTop />
+        <AppRoutes />
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
