@@ -63,8 +63,8 @@ const Navigation = () => {
                 onClick={() => playSound('click')}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
                   isActive(link.href)
-                    ? 'text-primary bg-accent'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'text-primary-foreground bg-primary/30'
+                    : 'text-background/70 hover:text-background hover:bg-background/10'
                 }`}
               >
                 {link.label}
