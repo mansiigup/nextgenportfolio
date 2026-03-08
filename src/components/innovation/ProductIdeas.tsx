@@ -313,7 +313,7 @@ const ProductIdeas = () => {
               {Array.from({ length: count }).map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => { scrollTo(index); playSound('pop'); }}
+                  onClick={() => scrollTo(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === current
                       ? 'bg-primary w-8'
