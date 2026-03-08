@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search, Layers, TrendingUp, RefreshCw, Download } from 'lucide-react';
+import MergedCycleShowcase from './MergedCycleShowcase';
 import defaultProfilePicture from '@/assets/profile-picture.png';
 
 const developmentCycle = [
