@@ -24,12 +24,13 @@ const honors = [
   },
   {
     icon: Code,
-    title: 'Buildathon Participant',
-    organization: 'Innovation Challenge',
-    description: 'Participated in a Buildathon, demonstrating rapid product development skills and the ability to turn ideas into functional prototypes under time constraints.',
+    title: 'Nipun Setu — AI Career Platform',
+    organization: '75:15:1 Women\'s Day AI Builder Challenge × Future World Alliance',
+    description: 'Built Nipun Setu, an AI-powered career growth platform, as part of the 75:15:1 Women\'s Day AI Builder Challenge. It uses PathAI to create personalized learning roadmaps, daily tasks with credit rewards, and connects users with verified experts — solving the problem that 96% of online learners never finish courses.',
     gradient: 'from-success to-emerald-500',
-    badge: 'Participant',
-    link: '#',
+    badge: 'Builder',
+    link: 'https://nipun-setu.lovable.app/',
+    external: true,
   },
 ];
 
