@@ -48,7 +48,7 @@ const Navigation = () => {
             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
               <span className="text-primary-foreground font-bold text-lg">MG</span>
             </div>
-            <span className="font-serif font-bold text-lg text-foreground hidden sm:block group-hover:text-primary transition-colors duration-300">
+            <span className="font-serif font-bold text-lg text-background hidden sm:block group-hover:text-primary-foreground transition-colors duration-300">
               Next Gen Innovation Lab
             </span>
           </Link>
