@@ -119,7 +119,6 @@ const PHASE_COLORS = [
 
 const MergedCycleShowcase = () => {
   const [activePhase, setActivePhase] = useState(0);
-  const [expandedPhase, setExpandedPhase] = useState<number | null>(null);
   const [dialogPhase, setDialogPhase] = useState<number | null>(null);
 
   useEffect(() => {
