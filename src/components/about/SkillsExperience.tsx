@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Code, Lightbulb, Rocket, Wrench, Sparkles, Layers, Zap, Bot, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
@@ -89,6 +89,9 @@ const techStack = [
 ];
 
 const SkillsCarousel = ({ skills, gradient }: { skills: string[]; gradient: string }) => {
+  // Duplicate skills for seamless looping
+  const duplicatedSkills = [...skills, ...skills, ...skills];
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     dragFree: true,
@@ -99,12 +102,11 @@ const SkillsCarousel = ({ skills, gradient }: { skills: string[]; gradient: stri
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  // Auto-scroll
   useEffect(() => {
     if (!emblaApi) return;
     const interval = setInterval(() => {
       emblaApi.scrollNext();
-    }, 2500);
+    }, 1800);
     return () => clearInterval(interval);
   }, [emblaApi]);
 
@@ -123,11 +125,11 @@ const SkillsCarousel = ({ skills, gradient }: { skills: string[]; gradient: stri
         <ChevronRight className="w-4 h-4" />
       </button>
 
-      <div ref={emblaRef} className="overflow-hidden mx-8">
+      <div ref={emblaRef} className="overflow-hidden mx-4">
         <div className="flex gap-3">
-          {skills.map((skill) => (
+          {duplicatedSkills.map((skill, idx) => (
             <div
-              key={skill}
+              key={`${skill}-${idx}`}
               className="flex-[0_0_auto] group/chip relative px-5 py-3 bg-card rounded-2xl border border-border hover:border-transparent transition-all duration-500 hover:shadow-xl hover:-translate-y-1 cursor-pointer overflow-hidden"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover/chip:opacity-10 transition-opacity duration-500`} />
@@ -148,14 +150,39 @@ const SkillsExperience = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeFramework, setActiveFramework] = useState<number | null>(null);
   const [hoveredTech, setHoveredTech] = useState<number | null>(null);
+  const autoRotateRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Auto-rotate tabs
+  useEffect(() => {
+    autoRotateRef.current = setInterval(() => {
+      setActiveCategory((prev) => (prev + 1) % skillCategories.length);
+    }, 4000);
+    return () => {
+      if (autoRotateRef.current) clearInterval(autoRotateRef.current);
+    };
+  }, []);
+
+  const handleTabClick = (index: number) => {
+    setActiveCategory(index);
+    // Pause auto-rotate on manual click
+    if (autoRotateRef.current) clearInterval(autoRotateRef.current);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    // Resume after 10s
+    pauseTimeoutRef.current = setTimeout(() => {
+      autoRotateRef.current = setInterval(() => {
+        setActiveCategory((prev) => (prev + 1) % skillCategories.length);
+      }, 4000);
+    }, 10000);
+  };
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-primary/5 to-transparent" />
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-secondary/5 to-transparent" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto mb-16">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mb-4 border border-primary/20">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Skills & Tooling</span>
@@ -168,34 +195,39 @@ const SkillsExperience = () => {
           </p>
         </div>
 
-        {/* Interactive Skills with Carousel */}
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="flex flex-wrap justify-center gap-3 mb-10 text-center">
+        {/* Tab Navigation — underline ribbon style */}
+        <div className="max-w-7xl mx-auto mb-20">
+          <div className="flex overflow-x-auto gap-0 mb-10 border-b border-border scrollbar-hide">
             {skillCategories.map((category, index) => (
               <button
                 key={category.category}
-                onClick={() => setActiveCategory(index)}
-                className={`group relative flex items-center gap-2 px-5 py-3 rounded-2xl border transition-all duration-500 overflow-hidden ${
+                onClick={() => handleTabClick(index)}
+                className={`relative flex items-center gap-2.5 px-6 py-4 transition-all duration-300 whitespace-nowrap ${
                   activeCategory === index
-                    ? 'border-transparent shadow-xl'
-                    : 'bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {activeCategory === index && (
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-90`} />
-                )}
-                <category.icon className={`w-5 h-5 relative z-10 ${activeCategory === index ? 'text-primary-foreground' : ''}`} />
-                <span className={`font-medium text-sm relative z-10 ${activeCategory === index ? 'text-primary-foreground' : ''}`}>
+                <category.icon className={`w-5 h-5 transition-all duration-300 ${
+                  activeCategory === index ? 'text-primary drop-shadow-[0_0_6px_hsl(var(--primary)/0.5)]' : ''
+                }`} />
+                <span className={`text-base transition-all duration-300 ${
+                  activeCategory === index ? 'font-bold' : 'font-medium'
+                }`}>
                   {category.category}
                 </span>
                 {activeCategory === index && (
-                  <Zap className="w-4 h-4 text-primary-foreground/60 relative z-10 animate-pulse" />
+                  <Zap className="w-4 h-4 text-primary/60 animate-pulse" />
                 )}
+                {/* Active underline */}
+                <div className={`absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-gradient-to-r ${category.gradient} transition-all duration-500 ${
+                  activeCategory === index ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                }`} />
               </button>
             ))}
           </div>
 
-          {/* Carousel for active category */}
+          {/* Carousel — wider */}
           <SkillsCarousel
             key={activeCategory}
             skills={skillCategories[activeCategory].skills}
@@ -204,7 +236,7 @@ const SkillsExperience = () => {
         </div>
 
         {/* Frameworks Section */}
-        <div className="max-w-6xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto mb-20">
           <h3 className="font-semibold text-foreground mb-8 text-2xl flex items-center gap-3">
             <div className="w-10 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
             <Layers className="w-6 h-6 text-primary" />
@@ -251,7 +283,7 @@ const SkillsExperience = () => {
         </div>
 
         {/* Tech Stack */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h3 className="font-semibold text-foreground mb-8 text-2xl flex items-center gap-3">
             <div className="w-10 h-1 bg-gradient-to-r from-secondary to-success rounded-full" />
             <Code className="w-6 h-6 text-secondary" />
