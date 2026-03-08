@@ -107,8 +107,6 @@ const HomeHero = () => {
               </Link>
               <Link
                 to="/contact"
-                onMouseEnter={() => playSound('hover')}
-                onClick={() => playSound('click')}
                 className="group inline-flex items-center gap-2 px-6 py-3 border-2 border-border text-foreground rounded-xl font-semibold hover:bg-accent hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
               >
                 <Mail size={18} className="group-hover:scale-110 transition-transform" />
