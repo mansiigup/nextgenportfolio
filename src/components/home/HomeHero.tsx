@@ -93,7 +93,7 @@ const HomeHero = () => {
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.3s' }}>
-              A problem solver, driving product-led growth with more than 4.5+ years of experience in building 0 to 1 products, leveraging AI, data-driven insights, and user-centric innovation. Leading cross-functional teams to solve a problem by developing scalable, intelligent solutions that enhance engagement, optimize decision-making, and drive market expansion.
+              A problem solver, driving product-led growth with more than 5 years of experience in building 0 to 1 products, leveraging AI, data-driven insights, and user-centric innovation. Leading cross-functional teams to solve a problem by developing scalable, intelligent solutions that enhance engagement, optimize decision-making, and drive market expansion.
             </p>
 
             {/* CTA Buttons */}
