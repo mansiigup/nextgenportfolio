@@ -188,6 +188,17 @@ const ExperimentalProjects = () => {
                           View Personas <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
+                      {project.portfolioLink && (
+                        <a
+                          href={project.portfolioLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                        >
+                          View Portfolio <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
