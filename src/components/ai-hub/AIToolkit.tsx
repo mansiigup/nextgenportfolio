@@ -101,6 +101,13 @@ const aiTools = [
     color: 'from-warning/20 to-warning/5',
     emoji: '📊',
   },
+  {
+    name: 'Supabase',
+    category: 'Backend Platform',
+    use: 'Database, auth, edge functions, real-time APIs, storage',
+    color: 'from-success/20 to-success/5',
+    emoji: '⚡',
+  },
 ];
 
 const AIToolkit = () => {
