@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Target, BarChart3, Palette, Rocket, LineChart, RefreshCw, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { Target, BarChart3, Palette, Rocket, LineChart, RefreshCw, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const PHASES = [
