@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Linkedin, Mail, BarChart3, Target, TrendingUp, Brain } from 'lucide-react';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState, useEffect } from 'react';
 
 const roles = [
