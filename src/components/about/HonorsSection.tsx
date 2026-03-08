@@ -10,6 +10,7 @@ const honors = [
     gradient: 'from-warning to-amber-500',
     badge: 'Winner',
     link: 'https://acceleratelearning.stanford.edu/funding/create-ai-challenge/',
+    external: true,
   },
   {
     icon: FileText,
@@ -19,15 +20,17 @@ const honors = [
     gradient: 'from-primary to-secondary',
     badge: 'Published',
     link: '/documents/research_paper_certificate.pdf',
+    external: false,
   },
   {
     icon: Code,
-    title: 'Buildathon Participant',
-    organization: 'Innovation Challenge',
-    description: 'Participated in a Buildathon, demonstrating rapid product development skills and the ability to turn ideas into functional prototypes under time constraints.',
+    title: 'Nipun Setu — AI Career Platform',
+    organization: '75:15:1 Women\'s Day AI Builder Challenge × Future World Alliance',
+    description: 'Built Nipun Setu, an AI-powered career growth platform, as part of the 75:15:1 Women\'s Day AI Builder Challenge. It uses PathAI to create personalized learning roadmaps, daily tasks with credit rewards, and connects users with verified experts — solving the problem that 96% of online learners never finish courses.',
     gradient: 'from-success to-emerald-500',
-    badge: 'Participant',
-    link: '#',
+    badge: 'Builder',
+    link: 'https://nipun-setu.lovable.app/',
+    external: true,
   },
 ];
 
@@ -89,8 +92,9 @@ const HonorsSection = () => {
                         href={honor.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0"
+                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0 cursor-pointer z-10"
                         title="Learn more"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
