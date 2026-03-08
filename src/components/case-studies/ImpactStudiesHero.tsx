@@ -1,9 +1,8 @@
-import { TrendingUp, Briefcase, Search, Award } from 'lucide-react';
+import { TrendingUp, Briefcase, Award } from 'lucide-react';
 
 const ImpactStudiesHero = () => {
   const sections = [
     { icon: Briefcase, label: 'Professional Products', count: '2 Companies' },
-    { icon: Search, label: 'Product Teardowns', count: '4 Products' },
     { icon: Award, label: 'Certifications', count: '6 Credentials' },
   ];
 
