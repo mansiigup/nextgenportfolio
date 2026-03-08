@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
-import { useSound } from '@/components/SoundProvider';
+
 import {
   Carousel,
   CarouselContent,
@@ -156,7 +156,7 @@ const ProductIdeas = () => {
   const [count, setCount] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  const { playSound } = useSound();
+  
 
   useEffect(() => {
     if (!api) return;
@@ -302,7 +302,7 @@ const ProductIdeas = () => {
           {/* Navigation controls */}
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
-              onClick={() => { api?.scrollPrev(); playSound('click'); }}
+              onClick={() => api?.scrollPrev()}
               className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
               aria-label="Previous idea"
             >
@@ -313,7 +313,7 @@ const ProductIdeas = () => {
               {Array.from({ length: count }).map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => { scrollTo(index); playSound('pop'); }}
+                  onClick={() => scrollTo(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === current
                       ? 'bg-primary w-8'
@@ -325,7 +325,7 @@ const ProductIdeas = () => {
             </div>
 
             <button
-              onClick={() => { api?.scrollNext(); playSound('click'); }}
+              onClick={() => api?.scrollNext()}
               className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
               aria-label="Next idea"
             >

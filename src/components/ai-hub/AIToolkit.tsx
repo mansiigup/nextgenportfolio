@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { ExternalLink } from 'lucide-react';
 
 const aiTools = [
@@ -112,7 +112,7 @@ const aiTools = [
 
 const AIToolkit = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
 
   return (
     <section className="py-20 bg-card relative">
@@ -152,7 +152,7 @@ const AIToolkit = () => {
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${200 + index * 40}ms`, animationFillMode: 'forwards' }}
-                onMouseEnter={() => playSound('hover')}
+                
               >
                 <div className={`absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-gradient-to-r ${tool.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 <div className="text-xl mb-2 group-hover:scale-125 transition-transform duration-300">

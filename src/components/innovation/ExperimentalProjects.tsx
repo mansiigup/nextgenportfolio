@@ -1,7 +1,7 @@
 import { FlaskConical, ChevronDown, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import nipunSetuLogo from '@/assets/nipun-setu-logo.png';
 
 interface Project {
@@ -59,7 +59,7 @@ const projects: Project[] = [
 const ExperimentalProjects = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
 
   return (
     <section className="py-20 bg-background relative">
@@ -101,7 +101,7 @@ const ExperimentalProjects = () => {
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 } ${isExpanded ? 'shadow-lg ring-1 ring-primary/10' : ''}`}
                 style={{ animationDelay: `${300 + index * 150}ms`, animationFillMode: 'forwards' }}
-                onClick={() => { setExpandedIndex(isExpanded ? null : index); playSound(isExpanded ? 'pop' : 'click'); }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between">

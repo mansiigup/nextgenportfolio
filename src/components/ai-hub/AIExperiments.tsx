@@ -1,6 +1,6 @@
 import { Sparkles, ChevronDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState } from 'react';
 
 const experiments = [
@@ -29,7 +29,7 @@ const experiments = [
 
 const AIExperiments = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
@@ -71,7 +71,7 @@ const AIExperiments = () => {
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 } ${isExpanded ? 'shadow-lg ring-1 ring-primary/10' : ''}`}
                 style={{ animationDelay: `${300 + index * 120}ms`, animationFillMode: 'forwards' }}
-                onClick={() => { setExpandedIndex(isExpanded ? null : index); playSound(isExpanded ? 'pop' : 'click'); }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between">

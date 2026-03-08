@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Linkedin, Mail, BarChart3, Target, TrendingUp, Brain } from 'lucide-react';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState, useEffect } from 'react';
 
 const roles = [
@@ -12,7 +12,7 @@ const roles = [
 ];
 
 const HomeHero = () => {
-  const { playSound } = useSound();
+  
   const [roleIndex, setRoleIndex] = useState(0);
   const [isRoleVisible, setIsRoleVisible] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -100,8 +100,6 @@ const HomeHero = () => {
             <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
               <Link
                 to="/about"
-                onMouseEnter={() => playSound('hover')}
-                onClick={() => playSound('click')}
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg"
               >
                 Read More
@@ -109,8 +107,6 @@ const HomeHero = () => {
               </Link>
               <Link
                 to="/contact"
-                onMouseEnter={() => playSound('hover')}
-                onClick={() => playSound('click')}
                 className="group inline-flex items-center gap-2 px-6 py-3 border-2 border-border text-foreground rounded-xl font-semibold hover:bg-accent hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
               >
                 <Mail size={18} className="group-hover:scale-110 transition-transform" />
@@ -124,7 +120,6 @@ const HomeHero = () => {
                 href="https://www.linkedin.com/in/mansi-gupta-2201b7154/"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => playSound('hover')}
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105"
               >
                 <Linkedin size={20} />
@@ -133,7 +128,6 @@ const HomeHero = () => {
               <span className="text-border">•</span>
               <a
                 href="mailto:nextgeninnovationlab@gmail.com"
-                onMouseEnter={() => playSound('hover')}
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105"
               >
                 <Mail size={20} />
@@ -157,7 +151,7 @@ const HomeHero = () => {
                   {highlights.map((item, index) => (
                     <div
                       key={index}
-                      onMouseEnter={() => playSound('hover')}
+                      
                       className={`bg-background rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-2 hover:scale-105 ${item.hoverBg} group`}
                     >
                       <item.icon size={32} className={`mx-auto mb-3 ${item.color} group-hover:scale-110 transition-transform duration-300`} />

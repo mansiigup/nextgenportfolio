@@ -1,6 +1,6 @@
 import { Brain, Cpu, Workflow, Sparkles, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState, useEffect } from 'react';
 
 const cards = [
@@ -34,7 +34,7 @@ const words = ['Builds', 'Thinks', 'Ships', 'Scales'];
 
 const AIHubHero = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const [isWordVisible, setIsWordVisible] = useState(true);
@@ -147,7 +147,7 @@ const AIHubHero = () => {
                   animationFillMode: 'forwards',
                   perspective: '1000px',
                 }}
-                onMouseEnter={() => { setHoveredCard(index); playSound('hover'); }}
+                onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div

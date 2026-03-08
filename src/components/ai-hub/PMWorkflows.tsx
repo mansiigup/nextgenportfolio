@@ -1,6 +1,6 @@
 import { Workflow, FileText, Search, BarChart3, Users, ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useSound } from '@/components/SoundProvider';
+
 import { useState } from 'react';
 
 const workflows = [
@@ -40,7 +40,7 @@ const workflows = [
 
 const PMWorkflows = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -80,7 +80,7 @@ const PMWorkflows = () => {
                 isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${300 + index * 120}ms`, animationFillMode: 'forwards' }}
-              onMouseEnter={() => { setHoveredIndex(index); playSound('hover'); }}
+              onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Gradient top accent */}
