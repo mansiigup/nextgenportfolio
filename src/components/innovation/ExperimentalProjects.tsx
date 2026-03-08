@@ -1,8 +1,27 @@
-import { FlaskConical, ChevronDown } from 'lucide-react';
+import { FlaskConical, ChevronDown, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  status: string;
+  tech: string[];
+  learnings: string;
+  accentColor: string;
+  link?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'Nipun Setu',
+    description: 'An AI-powered career navigation platform that builds personalised learning roadmaps for 8 distinct user personas — from fresh graduates to career pivoters to founders — solving the universal "navigation problem" where 500M+ people need to upskill but 96% drop out of generic courses.',
+    status: 'Live',
+    tech: ['React', 'AI/LLM', 'EdTech', 'Career Navigation'],
+    learnings: 'The world doesn\'t have a learning problem — it has a navigation problem. Generic courses fail because they ignore context: a BBA graduate pivoting to analytics needs a fundamentally different path than a CS graduate.',
+    accentColor: 'border-l-ring',
+    link: 'https://nipun-setu.lovable.app/',
+  },
   {
     title: 'AI Content Curator',
     description: 'A prototype tool that uses LLMs to curate and summarize educational content based on learning objectives and student reading levels.',
@@ -87,7 +106,7 @@ const ExperimentalProjects = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground">{project.title}</h3>
-                          <span className="text-xs font-medium px-2 py-0.5 rounded bg-accent text-accent-foreground">
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded ${project.status === 'Live' ? 'bg-primary/15 text-primary' : 'bg-accent text-accent-foreground'}`}>
                             {project.status}
                           </span>
                         </div>
@@ -122,6 +141,18 @@ const ExperimentalProjects = () => {
                         {project.learnings}
                       </p>
                     </div>
+
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                      >
+                        View Live <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
