@@ -11,6 +11,7 @@ interface Project {
   learnings: string;
   accentColor: string;
   link?: string;
+  logo?: string;
 }
 
 const projects: Project[] = [
