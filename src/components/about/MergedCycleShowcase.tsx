@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Target, BarChart3, Palette, Rocket, LineChart, RefreshCw, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { Target, BarChart3, Palette, Rocket, LineChart, RefreshCw, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const PHASES = [
@@ -112,14 +112,13 @@ const PHASE_COLORS = [
   { bg: 'from-orange-500/20 to-orange-600/10', border: 'border-orange-500/30', text: 'text-orange-400', glow: 'shadow-orange-500/20', badge: 'bg-orange-500/20 text-orange-400 border-orange-500/30' },
   { bg: 'from-yellow-500/20 to-amber-600/10', border: 'border-yellow-500/30', text: 'text-yellow-400', glow: 'shadow-yellow-500/20', badge: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' },
   { bg: 'from-emerald-500/20 to-green-600/10', border: 'border-emerald-500/30', text: 'text-emerald-400', glow: 'shadow-emerald-500/20', badge: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
-  { bg: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/30', text: 'text-blue-400', glow: 'shadow-blue-500/20', badge: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+  { bg: 'from-blue-500/25 to-blue-600/15', border: 'border-blue-500/40', text: 'text-blue-400', glow: 'shadow-blue-500/25', badge: 'bg-blue-500/25 text-blue-400 border-blue-500/40' },
   { bg: 'from-violet-500/20 to-purple-600/10', border: 'border-violet-500/30', text: 'text-violet-400', glow: 'shadow-violet-500/20', badge: 'bg-violet-500/20 text-violet-400 border-violet-500/30' },
   { bg: 'from-cyan-500/20 to-teal-600/10', border: 'border-cyan-500/30', text: 'text-cyan-400', glow: 'shadow-cyan-500/20', badge: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' },
 ];
 
 const MergedCycleShowcase = () => {
   const [activePhase, setActivePhase] = useState(0);
-  const [expandedPhase, setExpandedPhase] = useState<number | null>(null);
   const [dialogPhase, setDialogPhase] = useState<number | null>(null);
 
   useEffect(() => {
@@ -154,7 +153,7 @@ const MergedCycleShowcase = () => {
             const isActive = i === activePhase;
             const colors = ['#f97316', '#eab308', '#10b981', '#3b82f6', '#8b5cf6', '#06b6d4'];
             return (
-              <g key={phase.id} onClick={() => { setActivePhase(i); setExpandedPhase(i === expandedPhase ? null : i); }} className="cursor-pointer">
+              <g key={phase.id} onClick={() => { setActivePhase(i); setDialogPhase(i); }} className="cursor-pointer">
                 {i < PHASES.length - 1 && (
                   <line x1={x + 16} y1={y} x2={x + 38} y2={y} stroke={colors[i]} strokeWidth="2" opacity="0.3" strokeDasharray="4 2" />
                 )}
@@ -196,17 +195,15 @@ const MergedCycleShowcase = () => {
         {PHASES.map((phase, i) => {
           const colors = PHASE_COLORS[i];
           const isActive = i === activePhase;
-          const isExpanded = i === expandedPhase;
           const Icon = phase.icon;
 
           return (
             <div
               key={phase.id}
-              className={`relative rounded-xl border backdrop-blur-sm transition-all duration-500 cursor-pointer overflow-hidden group
+              className={`relative rounded-xl border backdrop-blur-sm transition-all duration-500 cursor-pointer overflow-hidden group hover:scale-[1.02]
                 ${isActive ? `${colors.border} shadow-lg ${colors.glow}` : 'border-border/50 hover:border-border'}
-                ${isExpanded ? 'ring-1 ring-primary/20' : ''}
               `}
-              onClick={() => setExpandedPhase(isExpanded ? null : i)}
+              onClick={() => setDialogPhase(i)}
             >
               {/* Phase number watermark */}
               <div className={`absolute -top-4 -right-2 text-7xl font-bold pointer-events-none select-none transition-opacity duration-500 ${isActive ? 'opacity-10' : 'opacity-[0.04]'} ${colors.text}`}>
@@ -227,9 +224,6 @@ const MergedCycleShowcase = () => {
                       <span className={`text-[10px] tracking-wider uppercase ${colors.text} opacity-70`}>Phase {phase.number}</span>
                     </div>
                   </div>
-                  <button className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => { e.stopPropagation(); setExpandedPhase(isExpanded ? null : i); }}>
-                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                  </button>
                 </div>
 
                 {/* Dual lane pills */}
@@ -241,71 +235,72 @@ const MergedCycleShowcase = () => {
                 {/* Merged description */}
                 <p className="text-xs text-muted-foreground leading-relaxed">{phase.merged}</p>
 
-                {/* Expanded content */}
-                {isExpanded && (
-                  <div className="mt-4 pt-4 border-t border-border/50 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                    {/* Strategy & Dev layers */}
-                    <div className="grid grid-cols-1 gap-2">
-                      <div className={`p-3 rounded-lg bg-card/50 border ${colors.border}`}>
-                        <span className={`text-[10px] tracking-wider uppercase ${colors.text} font-medium`}>◎ Strategy Layer</span>
-                        <p className="text-xs text-muted-foreground mt-1">{phase.stratDesc}</p>
-                      </div>
-                      <div className="p-3 rounded-lg bg-card/50 border border-border">
-                        <span className="text-[10px] tracking-wider uppercase text-muted-foreground font-medium">⬡ Dev Layer</span>
-                        <p className="text-xs text-muted-foreground mt-1">{phase.devDesc}</p>
-                      </div>
-                    </div>
-
-                    {/* Deliverables */}
-                    <div>
-                      <span className="text-[10px] tracking-wider uppercase text-muted-foreground mb-2 block">Deliverables</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {phase.outputs.map((output) => (
-                          <span key={output} className={`text-[10px] px-2.5 py-1 rounded-full border ${colors.badge}`}>
-                            {output}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* View questions button */}
-                    <button
-                      onClick={(e) => { e.stopPropagation(); setDialogPhase(i); }}
-                      className={`w-full text-xs py-2 rounded-lg border ${colors.border} ${colors.text} hover:bg-card/50 transition-colors font-medium`}
-                    >
-                      View Guiding Questions →
-                    </button>
-                  </div>
-                )}
+                {/* Click hint */}
+                <div className={`mt-3 text-[10px] ${colors.text} opacity-60 font-medium`}>
+                  Click to explore →
+                </div>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Questions Dialog */}
+      {/* Phase Detail Dialog */}
       <Dialog open={dialogPhase !== null} onOpenChange={() => setDialogPhase(null)}>
-        <DialogContent className="max-w-md">
-          {dialogPhase !== null && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="font-serif">
-                  {PHASES[dialogPhase].label} × {PHASES[dialogPhase].devLabel}
-                </DialogTitle>
-                <DialogDescription>
-                  Guiding questions for Phase {PHASES[dialogPhase].number}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-3 mt-2">
-                {PHASES[dialogPhase].questions.map((q, qi) => (
-                  <div key={qi} className={`flex gap-3 p-3 rounded-lg bg-accent/30 border border-border/50`}>
-                    <span className={`text-xs font-bold ${PHASE_COLORS[dialogPhase].text} shrink-0 mt-0.5`}>0{qi + 1}</span>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{q}</p>
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
+          {dialogPhase !== null && (() => {
+            const phase = PHASES[dialogPhase];
+            const colors = PHASE_COLORS[dialogPhase];
+            return (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-xl">
+                    {phase.label} <span className={colors.text}>×</span> {phase.devLabel}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm">
+                    Phase {phase.number} — {phase.merged}
+                  </DialogDescription>
+                </DialogHeader>
+
+                {/* Strategy & Dev layers */}
+                <div className="grid grid-cols-1 gap-3 mt-4">
+                  <div className={`p-4 rounded-lg bg-accent/20 border ${colors.border}`}>
+                    <span className={`text-[11px] tracking-wider uppercase ${colors.text} font-semibold`}>◎ Strategy Layer</span>
+                    <p className="text-sm text-foreground/70 mt-1.5 leading-relaxed">{phase.stratDesc}</p>
                   </div>
-                ))}
-              </div>
-            </>
-          )}
+                  <div className="p-4 rounded-lg bg-accent/20 border border-border">
+                    <span className="text-[11px] tracking-wider uppercase text-muted-foreground font-semibold">⬡ Dev Layer</span>
+                    <p className="text-sm text-foreground/70 mt-1.5 leading-relaxed">{phase.devDesc}</p>
+                  </div>
+                </div>
+
+                {/* Guiding Questions */}
+                <div className="mt-5">
+                  <h4 className="text-xs tracking-wider uppercase text-muted-foreground font-semibold mb-3">Guiding Questions</h4>
+                  <div className="space-y-2.5">
+                    {phase.questions.map((q, qi) => (
+                      <div key={qi} className={`flex gap-3 p-3 rounded-lg bg-accent/30 border border-border/50`}>
+                        <span className={`text-xs font-bold ${colors.text} shrink-0 mt-0.5`}>0{qi + 1}</span>
+                        <p className="text-sm text-foreground/80 leading-relaxed">{q}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Deliverables */}
+                <div className="mt-5">
+                  <h4 className="text-xs tracking-wider uppercase text-muted-foreground font-semibold mb-3">Expected Deliverables</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {phase.outputs.map((output) => (
+                      <span key={output} className={`text-xs px-3 py-1.5 rounded-full border ${colors.badge} font-medium`}>
+                        {output}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </DialogContent>
       </Dialog>
     </div>
