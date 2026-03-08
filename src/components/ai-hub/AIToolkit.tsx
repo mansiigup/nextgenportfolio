@@ -143,27 +143,28 @@ const AIToolkit = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {aiTools.map((tool, index) => (
-            <div
-              key={tool.name}
-              className={`group relative p-5 bg-background/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 cursor-default ${
-                isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${200 + index * 60}ms`, animationFillMode: 'forwards' }}
-              onMouseEnter={() => playSound('hover')}
-            >
-              {/* Gradient accent */}
-              <div className={`absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-gradient-to-r ${tool.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
-              <div className="text-2xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                {tool.emoji}
+        <div className="max-w-4xl mx-auto overflow-x-auto pb-4 scrollbar-thin">
+          <div className="flex gap-3 w-max">
+            {aiTools.map((tool, index) => (
+              <div
+                key={tool.name}
+                className={`group relative flex-shrink-0 w-40 p-4 bg-background/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 cursor-default ${
+                  isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${200 + index * 40}ms`, animationFillMode: 'forwards' }}
+                onMouseEnter={() => playSound('hover')}
+              >
+                <div className={`absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-gradient-to-r ${tool.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="text-xl mb-2 group-hover:scale-125 transition-transform duration-300">
+                  {tool.emoji}
+                </div>
+                <h3 className="font-semibold text-foreground text-xs mb-0.5 truncate">{tool.name}</h3>
+                <p className="text-[10px] text-primary/70 font-medium mb-1 truncate">{tool.category}</p>
+                <p className="text-[10px] text-muted-foreground leading-snug line-clamp-2">{tool.use}</p>
               </div>
-              <h3 className="font-semibold text-foreground text-sm mb-1">{tool.name}</h3>
-              <p className="text-xs text-primary/70 font-medium mb-2">{tool.category}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{tool.use}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground/40 text-center mt-3">Scroll →</p>
         </div>
       </div>
     </section>
