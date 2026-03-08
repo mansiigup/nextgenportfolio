@@ -310,7 +310,7 @@ const caseStudies: CaseStudy[] = [
     id: 'impact-evaluation',
     icon: Target,
     iconColor: 'from-green-500 to-emerald-500',
-    title: 'Proving Learning Outcomes: Baseline vs Endline Reading Impact for 23,000 Students',
+    title: 'Proving Learning Outcomes: Baseline vs Endline Reading Impact for 30,000+ Students',
     shortTitle: 'Impact Evaluation Study',
     roleTheme: 'Impact + Measurement + Education Outcomes',
     timeline: '2023 - Present',
