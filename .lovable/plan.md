@@ -1,21 +1,20 @@
 
 
-## Integrate Product Development Template Download
+## Update Browser Favicon
 
-### What
-Add a download button for the uploaded DOCX file beneath the Development Cycle card, allowing visitors to download and use the "Product Development Template."
+Copy the uploaded MG logo image to the public directory and update `index.html` to reference it as the favicon.
 
 ### Steps
 
-1. **Copy the uploaded file** to `public/documents/product_development_template.docx` (public folder so it's directly downloadable via URL)
-
-2. **Add a download CTA** below the Development Cycle visualization (both mobile and desktop views) — a styled button with a `Download` icon from lucide-react, linking to the file with `download` attribute
-
-3. **Styling**: Use a gradient button matching the Development Cycle's theme, with a `Download` icon and text "Download Product Development Template"
+1. **Copy the uploaded image** (`user-uploads://MG_logo-removebg-preview.png`) to `public/favicon.png`
+2. **Update `index.html`** to add a `<link rel="icon">` tag pointing to `/favicon.png`
 
 ### Technical Details
 
-- Import `Download` from `lucide-react` in `AboutHero.tsx`
-- Add an `<a href="/documents/product_development_template.docx" download>` wrapped button below each Development Cycle card instance (mobile + desktop)
-- Style consistently with the existing "Continuous Integration" connecting element
+In `index.html`, add inside the `<head>` tag:
+```html
+<link rel="icon" href="/favicon.png" type="image/png">
+```
+
+This will replace the default `favicon.ico` with the purple MG logo in the browser tab.
 

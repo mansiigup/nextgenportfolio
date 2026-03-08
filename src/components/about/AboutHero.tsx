@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search, Layers, TrendingUp, RefreshCw } from 'lucide-react';
+import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search, Layers, TrendingUp, RefreshCw, Download } from 'lucide-react';
 import defaultProfilePicture from '@/assets/profile-picture.png';
 
 const developmentCycle = [
@@ -332,6 +332,12 @@ const AboutHero = () => {
                 title="Development Cycle"
                 gradientId="devGradientMobile"
               />
+              <a href="/documents/product_development_template.docx" download className="flex justify-center mt-4">
+                <div className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-md cursor-pointer">
+                  <Download className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-primary">Download Product Development Template</span>
+                </div>
+              </a>
             </div>
 
             {/* Desktop View - Side by Side */}
@@ -353,6 +359,12 @@ const AboutHero = () => {
                   title="Development Cycle"
                   gradientId="devGradient"
                 />
+                <a href="/documents/product_development_template.docx" download className="flex justify-center mt-4">
+                  <div className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-md cursor-pointer">
+                    <Download className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium text-primary">Download Product Development Template</span>
+                  </div>
+                </a>
               </div>
             </div>
 
