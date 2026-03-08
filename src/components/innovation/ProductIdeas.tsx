@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
-import { useSound } from '@/components/SoundProvider';
+
 import {
   Carousel,
   CarouselContent,
