@@ -101,7 +101,7 @@ const ExperimentalProjects = () => {
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 } ${isExpanded ? 'shadow-lg ring-1 ring-primary/10' : ''}`}
                 style={{ animationDelay: `${300 + index * 150}ms`, animationFillMode: 'forwards' }}
-                onClick={() => { setExpandedIndex(isExpanded ? null : index); playSound(isExpanded ? 'pop' : 'click'); }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between">

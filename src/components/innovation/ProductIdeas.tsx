@@ -325,7 +325,7 @@ const ProductIdeas = () => {
             </div>
 
             <button
-              onClick={() => { api?.scrollNext(); playSound('click'); }}
+              onClick={() => api?.scrollNext()}
               className="p-2.5 rounded-xl border border-border bg-card/80 hover:bg-primary/10 hover:border-primary/30 text-muted-foreground hover:text-primary transition-all duration-300"
               aria-label="Next idea"
             >

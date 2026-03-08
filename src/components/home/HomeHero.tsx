@@ -12,7 +12,7 @@ const roles = [
 ];
 
 const HomeHero = () => {
-  const { playSound } = useSound();
+  
   const [roleIndex, setRoleIndex] = useState(0);
   const [isRoleVisible, setIsRoleVisible] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
