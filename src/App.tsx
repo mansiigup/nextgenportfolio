@@ -4,6 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { SoundProvider } from "@/components/SoundProvider";
+import ScrollProgress from "@/components/ScrollProgress";
+import CustomCursor from "@/components/CustomCursor";
+import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
@@ -22,23 +26,35 @@ const ScrollToTop = () => {
   return null;
 };
 
+const AppRoutes = () => {
+  return (
+    <PageTransition>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/innovation-space" element={<InnovationSpace />} />
+        <Route path="/ai-hub" element={<AIHub />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </PageTransition>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/innovation-space" element={<InnovationSpace />} />
-          <Route path="/ai-hub" element={<AIHub />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <SoundProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollProgress />
+          <CustomCursor />
+          <ScrollToTop />
+          <AppRoutes />
+        </BrowserRouter>
+      </SoundProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
