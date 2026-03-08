@@ -40,7 +40,7 @@ const workflows = [
 
 const PMWorkflows = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const { playSound } = useSound();
+  
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
