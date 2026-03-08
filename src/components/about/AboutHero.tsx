@@ -325,10 +325,10 @@ const AboutHero = () => {
                 title="Strategy Cycle"
                 gradientId="stratGradientMobile"
               />
-              <a href="#" className="flex justify-center mt-4 pointer-events-none opacity-60">
+              <a href="/documents/the_strategy_cycle_template.docx" download className="flex justify-center mt-4 hover:scale-105 transition-transform">
                 <div className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20">
                   <Download className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium text-primary">Strategy Template — Coming Soon</span>
+                  <span className="text-sm font-medium text-primary">Download Strategy Template</span>
                 </div>
               </a>
               <CycleVisualization 
