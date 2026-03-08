@@ -45,6 +45,14 @@ const projects: Project[] = [
     accentColor: 'border-l-destructive',
     link: 'https://align-iq-score.lovable.app',
   },
+  {
+    title: 'DineIQ',
+    description: 'The world\'s first AI dining companion that eliminates confusion, anxiety, and disappointment from dining out. From smart menu translation and AI dish previews to live order tracking and silent concierge communication — DineIQ transforms every restaurant visit into a confident, immersive experience for travelers, families, business diners, and anyone with dietary needs.',
+    status: 'Evaluation',
+    tech: ['AI/LLM', 'FoodTech', 'Computer Vision', 'Real-time Tracking'],
+    learnings: 'Dining doesn\'t have a food problem — it has a communication problem. Six distinct pain points (menu confusion, language barriers, waiting anxiety, expectation mismatch, fine dining comprehension, silent disconnect) all trace back to one root cause: broken information flow between kitchen and table.',
+    accentColor: 'border-l-primary',
+  },
 ];
 
 const ExperimentalProjects = () => {
