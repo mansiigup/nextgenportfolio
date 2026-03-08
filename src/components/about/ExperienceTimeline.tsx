@@ -66,6 +66,8 @@ const ExperienceTimeline = () => {
           <div className="relative mb-20">
             {/* Center line - desktop */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-muted-foreground/30 via-muted-foreground/20 to-muted-foreground/10 transform -translate-x-1/2 hidden md:block rounded-full" />
+            {/* Left line - mobile */}
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-muted-foreground/30 via-muted-foreground/20 to-muted-foreground/10 md:hidden rounded-full" />
 
             <div className="space-y-16">
               {experiences.map((exp, index) => (
