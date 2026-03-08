@@ -23,6 +23,7 @@ const projects: Project[] = [
     learnings: 'The world doesn\'t have a learning problem — it has a navigation problem. Generic courses fail because they ignore context: a BBA graduate pivoting to analytics needs a fundamentally different path than a CS graduate.',
     accentColor: 'border-l-ring',
     link: 'https://nipun-setu.lovable.app/',
+    logo: nipunSetuLogo,
   },
   {
     title: 'AI Content Curator',
