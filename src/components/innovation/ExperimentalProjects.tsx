@@ -1,6 +1,7 @@
 import { FlaskConical, ChevronDown, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useSound } from '@/components/SoundProvider';
 import nipunSetuLogo from '@/assets/nipun-setu-logo.png';
 
 interface Project {
