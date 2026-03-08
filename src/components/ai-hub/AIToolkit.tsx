@@ -108,6 +108,20 @@ const aiTools = [
     color: 'from-success/20 to-success/5',
     emoji: '⚡',
   },
+  {
+    name: 'Grok',
+    category: 'Conversational AI',
+    use: 'Real-time info, witty brainstorming, X/Twitter insights',
+    color: 'from-primary/20 to-primary/5',
+    emoji: '🚀',
+  },
+  {
+    name: 'NotebookLM',
+    category: 'Research AI',
+    use: 'Document Q&A, audio overviews, source-grounded research',
+    color: 'from-secondary/20 to-secondary/5',
+    emoji: '📓',
+  },
 ];
 
 const AIToolkit = () => {
