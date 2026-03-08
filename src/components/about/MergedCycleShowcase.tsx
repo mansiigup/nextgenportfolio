@@ -245,29 +245,62 @@ const MergedCycleShowcase = () => {
         })}
       </div>
 
-      {/* Questions Dialog */}
+      {/* Phase Detail Dialog */}
       <Dialog open={dialogPhase !== null} onOpenChange={() => setDialogPhase(null)}>
-        <DialogContent className="max-w-md">
-          {dialogPhase !== null && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="font-serif">
-                  {PHASES[dialogPhase].label} × {PHASES[dialogPhase].devLabel}
-                </DialogTitle>
-                <DialogDescription>
-                  Guiding questions for Phase {PHASES[dialogPhase].number}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-3 mt-2">
-                {PHASES[dialogPhase].questions.map((q, qi) => (
-                  <div key={qi} className={`flex gap-3 p-3 rounded-lg bg-accent/30 border border-border/50`}>
-                    <span className={`text-xs font-bold ${PHASE_COLORS[dialogPhase].text} shrink-0 mt-0.5`}>0{qi + 1}</span>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{q}</p>
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
+          {dialogPhase !== null && (() => {
+            const phase = PHASES[dialogPhase];
+            const colors = PHASE_COLORS[dialogPhase];
+            return (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-xl">
+                    {phase.label} <span className={colors.text}>×</span> {phase.devLabel}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm">
+                    Phase {phase.number} — {phase.merged}
+                  </DialogDescription>
+                </DialogHeader>
+
+                {/* Strategy & Dev layers */}
+                <div className="grid grid-cols-1 gap-3 mt-4">
+                  <div className={`p-4 rounded-lg bg-accent/20 border ${colors.border}`}>
+                    <span className={`text-[11px] tracking-wider uppercase ${colors.text} font-semibold`}>◎ Strategy Layer</span>
+                    <p className="text-sm text-foreground/70 mt-1.5 leading-relaxed">{phase.stratDesc}</p>
                   </div>
-                ))}
-              </div>
-            </>
-          )}
+                  <div className="p-4 rounded-lg bg-accent/20 border border-border">
+                    <span className="text-[11px] tracking-wider uppercase text-muted-foreground font-semibold">⬡ Dev Layer</span>
+                    <p className="text-sm text-foreground/70 mt-1.5 leading-relaxed">{phase.devDesc}</p>
+                  </div>
+                </div>
+
+                {/* Guiding Questions */}
+                <div className="mt-5">
+                  <h4 className="text-xs tracking-wider uppercase text-muted-foreground font-semibold mb-3">Guiding Questions</h4>
+                  <div className="space-y-2.5">
+                    {phase.questions.map((q, qi) => (
+                      <div key={qi} className={`flex gap-3 p-3 rounded-lg bg-accent/30 border border-border/50`}>
+                        <span className={`text-xs font-bold ${colors.text} shrink-0 mt-0.5`}>0{qi + 1}</span>
+                        <p className="text-sm text-foreground/80 leading-relaxed">{q}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Deliverables */}
+                <div className="mt-5">
+                  <h4 className="text-xs tracking-wider uppercase text-muted-foreground font-semibold mb-3">Expected Deliverables</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {phase.outputs.map((output) => (
+                      <span key={output} className={`text-xs px-3 py-1.5 rounded-full border ${colors.badge} font-medium`}>
+                        {output}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </DialogContent>
       </Dialog>
     </div>
