@@ -310,7 +310,7 @@ const caseStudies: CaseStudy[] = [
     id: 'impact-evaluation',
     icon: Target,
     iconColor: 'from-green-500 to-emerald-500',
-    title: 'Proving Learning Outcomes: Baseline vs Endline Reading Impact for 23,000 Students',
+    title: 'Proving Learning Outcomes: Baseline vs Endline Reading Impact for 30,000+ Students',
     shortTitle: 'Impact Evaluation Study',
     roleTheme: 'Impact + Measurement + Education Outcomes',
     timeline: '2023 - Present',
@@ -322,9 +322,9 @@ const caseStudies: CaseStudy[] = [
       'Built assessment instrumentation directly into the product rather than external tools',
       'Created stakeholder-friendly reporting alongside academic-style analysis'
     ],
-    execution: 'Designed baseline vs endline measurement frameworks, built assessment instrumentation into the product, created comprehensive reporting systems, and managed study execution across 23,000 students.',
+    execution: 'Designed baseline vs endline measurement frameworks, built assessment instrumentation into the product, created comprehensive reporting systems, and managed study execution across 30,000+ students.',
     metrics: [
-      { label: 'Students', value: '23,000' },
+      { label: 'Students', value: '30,000+' },
       { label: 'Measurement', value: 'Baseline→Endline' },
       { label: 'Reporting', value: 'Comprehensive' },
       { label: 'Evidence', value: 'Rigorous' }
