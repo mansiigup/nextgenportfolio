@@ -83,6 +83,20 @@ const strategyCycle = [
 const AboutHero = () => {
   const [activeDevStep, setActiveDevStep] = useState(0);
   const [activeStratStep, setActiveStratStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStratStep((prev) => (prev + 1) % strategyCycle.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveDevStep((prev) => (prev + 1) % developmentCycle.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   const [profileImage, setProfileImage] = useState<string | null>(defaultProfilePicture);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
