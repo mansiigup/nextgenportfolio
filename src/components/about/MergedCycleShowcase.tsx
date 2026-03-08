@@ -153,7 +153,7 @@ const MergedCycleShowcase = () => {
             const isActive = i === activePhase;
             const colors = ['#f97316', '#eab308', '#10b981', '#3b82f6', '#8b5cf6', '#06b6d4'];
             return (
-              <g key={phase.id} onClick={() => { setActivePhase(i); setExpandedPhase(i === expandedPhase ? null : i); }} className="cursor-pointer">
+              <g key={phase.id} onClick={() => { setActivePhase(i); setDialogPhase(i); }} className="cursor-pointer">
                 {i < PHASES.length - 1 && (
                   <line x1={x + 16} y1={y} x2={x + 38} y2={y} stroke={colors[i]} strokeWidth="2" opacity="0.3" strokeDasharray="4 2" />
                 )}
