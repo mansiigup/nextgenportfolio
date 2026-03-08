@@ -72,7 +72,6 @@ const caseStudies: CaseStudy[] = [
     ],
     execution: 'Worked closely with localization teams for content adaptation. Conducted user research in each market. Built configurable feature flags and region-based customization for partners.',
     metrics: [
-      { label: 'Countries', value: '4+' },
       { label: 'Localization', value: '100%' },
       { label: 'Partnerships', value: 'Strategic' },
       { label: 'Time to Market', value: '<6mo' }
