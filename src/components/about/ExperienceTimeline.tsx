@@ -78,9 +78,13 @@ const ExperienceTimeline = () => {
                   }`}
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {/* Timeline dot */}
+                  {/* Timeline dot - desktop */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
                     <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.gradient} ring-4 ring-background shadow-lg z-10`} />
+                  </div>
+                  {/* Timeline dot - mobile */}
+                  <div className="absolute left-4 transform -translate-x-1/2 md:hidden flex flex-col items-center">
+                    <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${exp.gradient} ring-3 ring-background shadow-lg z-10`} />
                   </div>
 
                   {/* Content card */}
