@@ -52,11 +52,11 @@ const HomeHero = () => {
       {/* Animated background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
+          className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
           style={{ transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
         />
         <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float-slower"
+          className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/10 rounded-full blur-3xl animate-float-slower"
           style={{ transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
         />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent rounded-full blur-3xl" />
@@ -92,7 +92,7 @@ const HomeHero = () => {
               Product Lead | Innovate & Impact | Data & AI Enthusiast
             </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.3s' }}>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.3s' }}>
               A problem solver, driving product-led growth with more than 5 years of experience in building 0 to 1 products, leveraging AI, data-driven insights, and user-centric innovation. Leading cross-functional teams to solve a problem by developing scalable, intelligent solutions that enhance engagement, optimize decision-making, and drive market expansion.
             </p>
 

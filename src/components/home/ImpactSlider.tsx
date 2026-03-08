@@ -1,10 +1,23 @@
 import { useEffect, useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Rocket, Globe, Users, TrendingUp, Zap, Brain } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ImpactSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const itemsPerView = isMobile ? 1 : isTablet ? 2 : 4;
+  const slidePercent = 100 / itemsPerView;
 
   const impactStats = [
     { 
@@ -51,37 +64,38 @@ const ImpactSlider = () => {
     },
   ];
 
+  const maxIndex = Math.max(0, impactStats.length - itemsPerView);
+
   useEffect(() => {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % impactStats.length);
+      setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1));
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, impactStats.length]);
+  }, [isAutoPlaying, maxIndex]);
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    setCurrentIndex(Math.min(index, maxIndex));
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + impactStats.length) % impactStats.length);
+    setCurrentIndex((prev) => (prev - 1 + maxIndex + 1) % (maxIndex + 1));
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % impactStats.length);
+    setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1));
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   return (
     <div className="mb-8">
-      {/* Section Title */}
       <div className="text-center mb-10">
         <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
           Impact at a Glance
@@ -91,9 +105,7 @@ const ImpactSlider = () => {
         </p>
       </div>
 
-      {/* Slider Container */}
       <div className="relative max-w-6xl mx-auto px-4">
-        {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
@@ -110,23 +122,21 @@ const ImpactSlider = () => {
           <ChevronRight size={20} />
         </button>
 
-        {/* Slider - Shows all 4 boxes sliding together */}
         <div 
           ref={sliderRef}
           className="overflow-hidden mx-8"
         >
           <div 
             className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 25}%)` }}
+            style={{ transform: `translateX(-${currentIndex * slidePercent}%)` }}
           >
-            {/* Duplicate items for infinite loop effect */}
-            {[...impactStats, ...impactStats].map((stat, index) => (
+            {impactStats.map((stat, index) => (
               <div
                 key={index}
-                className="w-1/4 flex-shrink-0 px-2"
+                className="flex-shrink-0 px-2"
+                style={{ width: `${slidePercent}%` }}
               >
-                <div className={`bg-gradient-to-br ${stat.color} rounded-2xl p-6 text-center relative overflow-hidden h-full min-h-[220px]`}>
-                  {/* Background decoration */}
+                <div className={`bg-gradient-to-br ${stat.color} rounded-2xl p-6 text-center relative overflow-hidden h-full min-h-[180px] md:min-h-[220px]`}>
                   <div className="absolute -right-6 -top-6 w-20 h-20 bg-white/10 rounded-full blur-xl" />
                   <div className="absolute -left-6 -bottom-6 w-16 h-16 bg-white/10 rounded-full blur-xl" />
                   
@@ -148,9 +158,8 @@ const ImpactSlider = () => {
           </div>
         </div>
 
-        {/* Dots Navigation */}
         <div className="flex justify-center gap-2 mt-6">
-          {impactStats.map((_, index) => (
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}

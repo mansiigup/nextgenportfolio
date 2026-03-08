@@ -66,6 +66,8 @@ const ExperienceTimeline = () => {
           <div className="relative mb-20">
             {/* Center line - desktop */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-muted-foreground/30 via-muted-foreground/20 to-muted-foreground/10 transform -translate-x-1/2 hidden md:block rounded-full" />
+            {/* Left line - mobile */}
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-muted-foreground/30 via-muted-foreground/20 to-muted-foreground/10 md:hidden rounded-full" />
 
             <div className="space-y-16">
               {experiences.map((exp, index) => (
@@ -76,13 +78,17 @@ const ExperienceTimeline = () => {
                   }`}
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {/* Timeline dot */}
+                  {/* Timeline dot - desktop */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
                     <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.gradient} ring-4 ring-background shadow-lg z-10`} />
                   </div>
+                  {/* Timeline dot - mobile */}
+                  <div className="absolute left-4 transform -translate-x-1/2 md:hidden flex flex-col items-center">
+                    <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${exp.gradient} ring-3 ring-background shadow-lg z-10`} />
+                  </div>
 
                   {/* Content card */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-20' : 'md:pl-20'}`}>
+                  <div className={`flex-1 pl-8 md:pl-0 ${index % 2 === 0 ? 'md:pr-20' : 'md:pl-20'}`}>
                     <div className="group relative p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-2xl">
                       {/* Gradient overlay */}
                       <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -149,7 +155,7 @@ const ExperienceTimeline = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {interests.map((interest, index) => (
                 <div
                   key={interest.name}

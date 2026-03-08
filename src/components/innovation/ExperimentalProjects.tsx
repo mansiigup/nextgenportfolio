@@ -142,11 +142,11 @@ const ExperimentalProjects = () => {
                     />
                   </div>
 
-                  <p className="text-muted-foreground text-sm mt-4 ml-14">{project.description}</p>
+                  <p className="text-muted-foreground text-sm mt-4 ml-0 sm:ml-14">{project.description}</p>
 
                   {/* Expandable content */}
                   <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ml-14 ${
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ml-0 sm:ml-14 ${
                       isExpanded ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0'
                     }`}
                   >
