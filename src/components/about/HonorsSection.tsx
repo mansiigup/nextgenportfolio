@@ -20,6 +20,7 @@ const honors = [
     gradient: 'from-primary to-secondary',
     badge: 'Published',
     link: '/documents/research_paper_certificate.pdf',
+    external: false,
   },
   {
     icon: Code,
