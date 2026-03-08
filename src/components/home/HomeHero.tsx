@@ -120,7 +120,6 @@ const HomeHero = () => {
                 href="https://www.linkedin.com/in/mansi-gupta-2201b7154/"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => playSound('hover')}
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105"
               >
                 <Linkedin size={20} />
