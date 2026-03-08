@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { SoundProvider } from "@/components/SoundProvider";
 import ScrollProgress from "@/components/ScrollProgress";
-import CustomCursor from "@/components/CustomCursor";
+
 import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
 import About from "./pages/About";
