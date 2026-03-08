@@ -73,7 +73,7 @@ const Navigation = () => {
                 )}
                 {/* Active indicator line */}
                 <span
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary rounded-full transition-all duration-300 ${
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary-foreground rounded-full transition-all duration-300 ${
                     isActive(link.href) ? 'w-6' : 'w-0 group-hover:w-4'
                   }`}
                 />
