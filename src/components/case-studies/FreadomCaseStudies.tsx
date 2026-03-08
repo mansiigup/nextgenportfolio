@@ -59,7 +59,7 @@ const caseStudies: CaseStudy[] = [
     icon: Globe,
     iconColor: 'from-blue-500 to-indigo-500',
     title: 'Taking a School SaaS Global: Scaling into Finland, Korea, UAE & Morocco',
-    shortTitle: 'Global Expansion to 4+ Countries',
+    shortTitle: 'New Region Expansion',
     roleTheme: 'Expansion PM (Growth + Partnerships + Product Scalability)',
     timeline: '2023 - Present',
     context: 'The product was built for Indian markets with limited scalability for international requirements. Each target market had unique curriculum standards, language needs, and regulatory considerations.',
