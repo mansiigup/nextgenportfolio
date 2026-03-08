@@ -30,10 +30,11 @@ const projects: Project[] = [
   {
     title: 'Product Metrics Dashboard Template',
     description: 'An open-source Looker Studio template for product teams to quickly set up North Star metrics, cohort analysis, and funnel visualization.',
-    status: 'Concept',
+    status: 'Live',
     tech: ['Concept'],
     learnings: 'Most teams struggle not with building dashboards but knowing which metrics matter—documentation is as important as the template.',
     accentColor: 'border-l-secondary',
+    link: 'https://growthtrackingdashboard.lovable.app',
   },
 ];
 
