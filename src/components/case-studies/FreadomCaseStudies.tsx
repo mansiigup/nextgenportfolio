@@ -322,7 +322,7 @@ const caseStudies: CaseStudy[] = [
       'Built assessment instrumentation directly into the product rather than external tools',
       'Created stakeholder-friendly reporting alongside academic-style analysis'
     ],
-    execution: 'Designed baseline vs endline measurement frameworks, built assessment instrumentation into the product, created comprehensive reporting systems, and managed study execution across 23,000 students.',
+    execution: 'Designed baseline vs endline measurement frameworks, built assessment instrumentation into the product, created comprehensive reporting systems, and managed study execution across 30,000+ students.',
     metrics: [
       { label: 'Students', value: '23,000' },
       { label: 'Measurement', value: 'Baseline→Endline' },
