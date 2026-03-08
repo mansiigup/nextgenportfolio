@@ -437,12 +437,6 @@ const FreadomCaseStudies = () => {
           As Product Lead, I drive product strategy, AI integration, global expansion, analytics infrastructure, 
           and operational excellence across the entire product portfolio.
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full">12 Impact Studies</span>
-          <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">10-20% GTM Growth</span>
-          <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">200+ Releases</span>
-          <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full">4 Countries</span>
-        </div>
       </div>
 
       <div className="grid gap-6">
