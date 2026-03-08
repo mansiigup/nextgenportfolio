@@ -33,8 +33,8 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/90 backdrop-blur-xl shadow-md border-b border-border/50'
-          : 'bg-transparent'
+          ? 'bg-foreground/95 backdrop-blur-xl shadow-lg border-b border-foreground/10'
+          : 'bg-foreground/90 backdrop-blur-md'
       }`}
     >
       <div className="container mx-auto px-6">
@@ -48,7 +48,7 @@ const Navigation = () => {
             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
               <span className="text-primary-foreground font-bold text-lg">MG</span>
             </div>
-            <span className="font-serif font-bold text-lg text-foreground hidden sm:block group-hover:text-primary transition-colors duration-300">
+            <span className="font-serif font-bold text-lg text-background hidden sm:block group-hover:text-primary-foreground transition-colors duration-300">
               Next Gen Innovation Lab
             </span>
           </Link>
@@ -63,8 +63,8 @@ const Navigation = () => {
                 onClick={() => playSound('click')}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
                   isActive(link.href)
-                    ? 'text-primary bg-accent'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'text-primary-foreground bg-primary/30'
+                    : 'text-background/70 hover:text-background hover:bg-background/10'
                 }`}
               >
                 {link.label}
@@ -73,7 +73,7 @@ const Navigation = () => {
                 )}
                 {/* Active indicator line */}
                 <span
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary rounded-full transition-all duration-300 ${
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary-foreground rounded-full transition-all duration-300 ${
                     isActive(link.href) ? 'w-6' : 'w-0 group-hover:w-4'
                   }`}
                 />
@@ -86,7 +86,7 @@ const Navigation = () => {
                 setSoundEnabled(!soundEnabled);
                 playSound('toggle');
               }}
-              className="ml-2 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300"
+              className="ml-2 p-2 rounded-lg text-background/60 hover:text-background hover:bg-background/10 transition-all duration-300"
               aria-label={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
             >
               {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
@@ -99,7 +99,7 @@ const Navigation = () => {
               setIsMobileMenuOpen(!isMobileMenuOpen);
               playSound('pop');
             }}
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+            className="md:hidden p-2 rounded-lg text-background hover:bg-background/10 transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -112,7 +112,7 @@ const Navigation = () => {
             isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="py-4 border-t border-border">
+          <div className="py-4 border-t border-background/10">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 <Link
@@ -124,8 +124,8 @@ const Navigation = () => {
                   }}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive(link.href)
-                      ? 'text-primary bg-accent'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      ? 'text-primary-foreground bg-primary/30'
+                      : 'text-background/70 hover:text-background hover:bg-background/10'
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
