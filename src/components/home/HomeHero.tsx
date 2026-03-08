@@ -4,7 +4,7 @@ import { ArrowRight, Linkedin, Mail, BarChart3, Target, TrendingUp, Brain } from
 import { useState, useEffect } from 'react';
 
 const roles = [
-  'Product Lead',
+  'Full-Stack Product Builder',
   'AI Innovator',
   'Growth Strategist',
   'Data Enthusiast',
