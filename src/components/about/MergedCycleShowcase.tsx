@@ -112,7 +112,7 @@ const PHASE_COLORS = [
   { bg: 'from-orange-500/20 to-orange-600/10', border: 'border-orange-500/30', text: 'text-orange-400', glow: 'shadow-orange-500/20', badge: 'bg-orange-500/20 text-orange-400 border-orange-500/30' },
   { bg: 'from-yellow-500/20 to-amber-600/10', border: 'border-yellow-500/30', text: 'text-yellow-400', glow: 'shadow-yellow-500/20', badge: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' },
   { bg: 'from-emerald-500/20 to-green-600/10', border: 'border-emerald-500/30', text: 'text-emerald-400', glow: 'shadow-emerald-500/20', badge: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
-  { bg: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/30', text: 'text-blue-400', glow: 'shadow-blue-500/20', badge: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+  { bg: 'from-blue-500/25 to-blue-600/15', border: 'border-blue-500/40', text: 'text-blue-400', glow: 'shadow-blue-500/25', badge: 'bg-blue-500/25 text-blue-400 border-blue-500/40' },
   { bg: 'from-violet-500/20 to-purple-600/10', border: 'border-violet-500/30', text: 'text-violet-400', glow: 'shadow-violet-500/20', badge: 'bg-violet-500/20 text-violet-400 border-violet-500/30' },
   { bg: 'from-cyan-500/20 to-teal-600/10', border: 'border-cyan-500/30', text: 'text-cyan-400', glow: 'shadow-cyan-500/20', badge: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' },
 ];
