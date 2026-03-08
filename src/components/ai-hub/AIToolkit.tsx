@@ -18,6 +18,20 @@ const aiTools = [
     emoji: '🧠',
   },
   {
+    name: 'Claude Code',
+    category: 'AI Coding Agent',
+    use: 'Agentic coding, codebase exploration, multi-file edits, terminal commands',
+    color: 'from-warning/20 to-warning/5',
+    emoji: '🛠️',
+  },
+  {
+    name: 'Claude Artifacts',
+    category: 'Interactive Prototyping',
+    use: 'Quick interactive demos, code snippets, visual prototypes in conversation',
+    color: 'from-warning/20 to-warning/5',
+    emoji: '📦',
+  },
+  {
     name: 'Cursor',
     category: 'AI Code Editor',
     use: 'AI-assisted coding, debugging, and rapid prototyping',
