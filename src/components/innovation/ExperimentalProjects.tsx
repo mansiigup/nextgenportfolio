@@ -119,7 +119,13 @@ const ExperimentalProjects = () => {
                         )}
                         <div>
                           <h3 className="font-semibold text-foreground">{project.title}</h3>
-                          <span className={`text-xs font-medium px-2 py-0.5 rounded ${project.status === 'Live' ? 'bg-primary/15 text-primary' : 'bg-accent text-accent-foreground'}`}>
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded inline-flex items-center gap-1.5 ${project.status === 'Live' ? 'bg-primary/15 text-primary' : 'bg-accent text-accent-foreground'}`}>
+                            {project.status === 'Live' && (
+                              <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                              </span>
+                            )}
                             {project.status}
                           </span>
                         </div>
