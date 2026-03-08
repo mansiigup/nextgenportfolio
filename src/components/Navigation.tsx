@@ -99,7 +99,7 @@ const Navigation = () => {
               setIsMobileMenuOpen(!isMobileMenuOpen);
               playSound('pop');
             }}
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+            className="md:hidden p-2 rounded-lg text-background hover:bg-background/10 transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
