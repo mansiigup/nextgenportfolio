@@ -12,6 +12,7 @@ interface Project {
   accentColor: string;
   link?: string;
   logo?: string;
+  personaLink?: string;
 }
 
 const projects: Project[] = [
@@ -24,6 +25,7 @@ const projects: Project[] = [
     accentColor: 'border-l-ring',
     link: 'https://nipun-setu.lovable.app/',
     logo: nipunSetuLogo,
+    personaLink: '/documents/nipunsetu_personas.html',
   },
   {
     title: 'AI Content Curator',
@@ -151,17 +153,30 @@ const ExperimentalProjects = () => {
                       </p>
                     </div>
 
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
-                      >
-                        View Live <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
+                    <div className="flex flex-wrap gap-3 mt-4">
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                        >
+                          View Live <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                      {project.personaLink && (
+                        <a
+                          href={project.personaLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                        >
+                          View Personas <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

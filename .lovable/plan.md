@@ -1,16 +1,20 @@
 
 
-## Open Persona Document in New Tab
+## Update Browser Favicon
 
-### What
-Add the persona HTML file to the public directory and link it from the Nipun Setu project card so it opens in a new browser tab (not downloaded).
+Copy the uploaded MG logo image to the public directory and update `index.html` to reference it as the favicon.
 
-### Changes
+### Steps
 
-1. **Save `nipunsetu_personas.html` to `public/documents/`** — HTML files served from `public/` open directly in the browser.
+1. **Copy the uploaded image** (`user-uploads://MG_logo-removebg-preview.png`) to `public/favicon.png`
+2. **Update `index.html`** to add a `<link rel="icon">` tag pointing to `/favicon.png`
 
-2. **Update `src/components/innovation/ExperimentalProjects.tsx`**:
-   - Add a `personaLink` optional field to the `Project` interface
-   - Set `personaLink: '/documents/nipunsetu_personas.html'` on the Nipun Setu project
-   - Render a second link button ("View Personas") next to "View Live" in the expanded content, opening in a new tab
+### Technical Details
+
+In `index.html`, add inside the `<head>` tag:
+```html
+<link rel="icon" href="/favicon.png" type="image/png">
+```
+
+This will replace the default `favicon.ico` with the purple MG logo in the browser tab.
 
