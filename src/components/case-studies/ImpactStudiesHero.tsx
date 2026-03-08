@@ -33,7 +33,7 @@ const ImpactStudiesHero = () => {
           </p>
 
           {/* Section Preview Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {sections.map((section, index) => (
               <div
                 key={section.label}
