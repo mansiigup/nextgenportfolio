@@ -12,6 +12,7 @@ interface Project {
   accentColor: string;
   link?: string;
   logo?: string;
+  personaLink?: string;
 }
 
 const projects: Project[] = [
