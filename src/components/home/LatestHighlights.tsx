@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
-import { FileText, MessageSquare, Lightbulb, ArrowRight, Sparkles, ExternalLink, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { FileText, MessageSquare, Lightbulb, ArrowRight, Sparkles, ExternalLink, Trophy } from 'lucide-react';
 import ImpactSlider from './ImpactSlider';
 
 const LatestHighlights = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   const articles = [
     {
       type: 'Article',
@@ -34,24 +30,6 @@ const LatestHighlights = () => {
     },
   ];
 
-  // Auto-play for articles slider
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % articles.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, articles.length]);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 6000);
-  };
-
-  const goPrev = () => goToSlide((currentSlide - 1 + articles.length) % articles.length);
-  const goNext = () => goToSlide((currentSlide + 1) % articles.length);
-
   return (
     <section className="py-24 bg-muted/30 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 gradient-slack" />
@@ -70,66 +48,30 @@ const LatestHighlights = () => {
           </h2>
         </div>
 
-        {/* Articles Slider */}
-        <div className="relative max-w-3xl mx-auto mb-12">
-          <button
-            onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
-            aria-label="Previous"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={goNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-foreground hover:bg-accent hover:border-primary transition-all shadow-lg"
-            aria-label="Next"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          <div className="overflow-hidden rounded-2xl">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        {/* Articles grid - 3 in a row */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {articles.map((article, index) => (
+            <a
+              key={index}
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-card rounded-2xl p-6 border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
-              {articles.map((article, index) => (
-                <a
-                  key={index}
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-full flex-shrink-0 bg-card p-8 border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 ${article.color}`}>
-                    <article.icon size={14} />
-                    {article.type}
-                  </div>
-                  <h3 className="font-serif text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4">{article.description}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all">
-                    Read more
-                    <ArrowRight size={14} />
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {articles.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? 'bg-primary w-8' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 ${article.color}`}>
+                <article.icon size={14} />
+                {article.type}
+              </div>
+              <h3 className="font-serif text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {article.title}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-4">{article.description}</p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all">
+                Read more
+                <ArrowRight size={14} />
+              </span>
+            </a>
+          ))}
         </div>
 
         {/* Quick links */}
