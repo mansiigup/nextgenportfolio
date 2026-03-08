@@ -75,7 +75,7 @@ const LatestHighlights = () => {
         </div>
 
         {/* Quick links */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           <Link
             to="/innovation-space"
             className="group relative overflow-hidden bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-primary-foreground hover:shadow-xl transition-all"
@@ -102,6 +102,22 @@ const LatestHighlights = () => {
               <p className="opacity-90 mb-4">AI-powered workflows, tools, and experiments</p>
               <span className="inline-flex items-center gap-2 font-semibold">
                 Discover
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </div>
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+          </Link>
+
+          <Link
+            to="/case-studies"
+            className="group relative overflow-hidden bg-gradient-to-br from-destructive to-warning rounded-2xl p-8 text-destructive-foreground hover:shadow-xl transition-all"
+          >
+            <div className="relative z-10">
+              <Trophy size={32} className="mb-4" />
+              <h3 className="font-serif text-2xl font-bold mb-2">Impact Studies</h3>
+              <p className="opacity-90 mb-4">Real-world case studies and measurable outcomes</p>
+              <span className="inline-flex items-center gap-2 font-semibold">
+                View Impact
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
