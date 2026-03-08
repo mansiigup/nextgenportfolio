@@ -52,7 +52,7 @@ const HomeHero = () => {
       {/* Animated background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
+          className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
           style={{ transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
         />
         <div
