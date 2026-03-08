@@ -37,7 +37,7 @@ const AboutSection = () => {
 
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              I&apos;m a product leader with 4.5+ years of experience building and scaling B2B & B2C SaaS products. 
+              I&apos;m a product leader with 5 years of experience building and scaling B2B & B2C SaaS products. 
               My approach is simple: <span className="text-foreground font-medium">identify the problem, understand why it exists, 
               and solve it with scalable, intelligent solutions.</span>
             </p>
