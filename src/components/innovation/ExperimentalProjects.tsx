@@ -14,6 +14,7 @@ interface Project {
   link?: string;
   logo?: string;
   personaLink?: string;
+  portfolioLink?: string;
 }
 
 const projects: Project[] = [
