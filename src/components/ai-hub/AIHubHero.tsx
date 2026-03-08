@@ -147,7 +147,7 @@ const AIHubHero = () => {
                   animationFillMode: 'forwards',
                   perspective: '1000px',
                 }}
-                onMouseEnter={() => { setHoveredCard(index); playSound('hover'); }}
+                onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div
