@@ -54,7 +54,7 @@ const ProfessionalProducts = () => {
               <button
                 key={company.id}
                 onClick={() => setActiveCompany(company.id)}
-                className={`group relative p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 min-w-[280px] text-left ${
+                className={`group relative p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 w-full sm:min-w-[280px] text-left ${
                   activeCompany === company.id
                     ? 'border-primary bg-accent shadow-lg'
                     : 'border-border bg-card hover:border-primary/50 hover:shadow-md'

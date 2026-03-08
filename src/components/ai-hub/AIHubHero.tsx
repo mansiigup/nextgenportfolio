@@ -1,7 +1,7 @@
 import { Brain, Cpu, Workflow, Sparkles, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-
 import { useState, useEffect } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const cards = [
   {
@@ -34,6 +34,7 @@ const words = ['Builds', 'Thinks', 'Ships', 'Scales'];
 
 const AIHubHero = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const isMobile = useIsMobile();
   
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
@@ -52,6 +53,7 @@ const AIHubHero = () => {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 15;
       const y = (e.clientY / window.innerHeight - 0.5) * 15;
@@ -59,22 +61,26 @@ const AIHubHero = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
+
+  const handleCardInteraction = (index: number) => {
+    if (isMobile) {
+      setHoveredCard(hoveredCard === index ? null : index);
+    }
+  };
 
   return (
     <section className="pt-32 pb-20 bg-gradient-to-br from-accent via-background to-background relative overflow-hidden">
-      {/* Animated orbs with parallax */}
       <div
-        className="absolute top-16 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
+        className="absolute top-16 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow"
         style={{ transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
       />
       <div
-        className="absolute bottom-10 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float-slower"
+        className="absolute bottom-10 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/5 rounded-full blur-3xl animate-float-slower"
         style={{ transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-3xl animate-float-slower" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-primary/[0.03] rounded-full blur-3xl animate-float-slower" />
 
-      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <div
@@ -90,7 +96,6 @@ const AIHubHero = () => {
         ))}
       </div>
 
-      {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -126,7 +131,7 @@ const AIHubHero = () => {
           </h1>
 
           <p
-            className={`text-muted-foreground text-lg max-w-2xl mb-14 transition-all duration-700 delay-200 ${
+            className={`text-muted-foreground text-base md:text-lg max-w-2xl mb-14 transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
@@ -135,7 +140,7 @@ const AIHubHero = () => {
             AI-first features.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {cards.map((card, index) => (
               <div
                 key={card.title}
@@ -147,11 +152,12 @@ const AIHubHero = () => {
                   animationFillMode: 'forwards',
                   perspective: '1000px',
                 }}
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => handleCardInteraction(index)}
+                onMouseEnter={() => !isMobile && setHoveredCard(index)}
+                onMouseLeave={() => !isMobile && setHoveredCard(null)}
               >
                 <div
-                  className="relative w-full transition-transform duration-500"
+                  className="relative w-full transition-transform duration-500 min-h-[200px]"
                   style={{
                     transformStyle: 'preserve-3d',
                     transform: hoveredCard === index ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -159,7 +165,7 @@ const AIHubHero = () => {
                 >
                   {/* Front */}
                   <div
-                    className="p-6 bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg"
+                    className="absolute inset-0 p-6 bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
                     <div className={`absolute inset-x-0 top-0 h-1 rounded-t-xl bg-gradient-to-r ${card.gradient} opacity-60`} />
@@ -169,7 +175,7 @@ const AIHubHero = () => {
                     <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
                     <p className="text-sm text-muted-foreground">{card.description}</p>
                     <p className="text-xs text-primary/60 mt-3 flex items-center gap-1">
-                      <Zap size={12} /> Hover to reveal
+                      <Zap size={12} /> {isMobile ? 'Tap to reveal' : 'Hover to reveal'}
                     </p>
                   </div>
 

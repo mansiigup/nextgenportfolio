@@ -112,7 +112,7 @@ const AIExperiments = () => {
 
                   {/* Expandable content */}
                   <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ml-14 ${
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ml-0 sm:ml-14 ${
                       isExpanded ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0'
                     }`}
                   >

@@ -1,6 +1,7 @@
 import { Lightbulb, FlaskConical, Puzzle, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState, useEffect } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const cards = [
   {
@@ -36,8 +37,8 @@ const InnovationHero = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const [isWordVisible, setIsWordVisible] = useState(true);
+  const isMobile = useIsMobile();
 
-  // Morphing text effect
   useEffect(() => {
     const interval = setInterval(() => {
       setIsWordVisible(false);
@@ -49,12 +50,18 @@ const InnovationHero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleCardInteraction = (index: number) => {
+    if (isMobile) {
+      setFlippedIndex(flippedIndex === index ? null : index);
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 bg-gradient-to-br from-accent via-background to-background relative overflow-hidden">
       {/* Animated decorative orbs */}
-      <div className="absolute top-16 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float-slower" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-3xl animate-float-slower" />
+      <div className="absolute top-16 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-10 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/5 rounded-full blur-3xl animate-float-slower" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-primary/[0.03] rounded-full blur-3xl animate-float-slower" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -99,7 +106,7 @@ const InnovationHero = () => {
           </h1>
 
           <p
-            className={`text-muted-foreground text-lg max-w-2xl mb-14 transition-all duration-700 delay-200 ${
+            className={`text-muted-foreground text-base md:text-lg max-w-2xl mb-14 transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
@@ -108,7 +115,7 @@ const InnovationHero = () => {
             meets execution.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {cards.map((card, index) => (
               <div
                 key={card.title}
@@ -120,11 +127,12 @@ const InnovationHero = () => {
                   animationFillMode: 'forwards',
                   perspective: '1000px',
                 }}
-                onMouseEnter={() => setFlippedIndex(index)}
-                onMouseLeave={() => setFlippedIndex(null)}
+                onClick={() => handleCardInteraction(index)}
+                onMouseEnter={() => !isMobile && setFlippedIndex(index)}
+                onMouseLeave={() => !isMobile && setFlippedIndex(null)}
               >
                 <div
-                  className="relative w-full transition-transform duration-500"
+                  className="relative w-full transition-transform duration-500 min-h-[200px]"
                   style={{
                     transformStyle: 'preserve-3d',
                     transform: flippedIndex === index ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -132,7 +140,7 @@ const InnovationHero = () => {
                 >
                   {/* Front */}
                   <div
-                    className="p-6 bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg"
+                    className="absolute inset-0 p-6 bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
                     <div className={`absolute inset-x-0 top-0 h-1 rounded-t-xl bg-gradient-to-r ${card.gradient} opacity-60`} />
@@ -142,7 +150,7 @@ const InnovationHero = () => {
                     <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
                     <p className="text-sm text-muted-foreground">{card.description}</p>
                     <p className="text-xs text-primary/60 mt-3 flex items-center gap-1">
-                      <Sparkles size={12} /> Hover to reveal
+                      <Sparkles size={12} /> {isMobile ? 'Tap to reveal' : 'Hover to reveal'}
                     </p>
                   </div>
 
