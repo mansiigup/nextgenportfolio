@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Target, Users, BarChart3, Lightbulb, Camera, Palette, Rocket, FlaskConical, Search, Layers, TrendingUp, RefreshCw } from 'lucide-react';
 import defaultProfilePicture from '@/assets/profile-picture.png';
 
