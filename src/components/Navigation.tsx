@@ -112,7 +112,7 @@ const Navigation = () => {
             isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="py-4 border-t border-border">
+          <div className="py-4 border-t border-background/10">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 <Link
@@ -124,8 +124,8 @@ const Navigation = () => {
                   }}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive(link.href)
-                      ? 'text-primary bg-accent'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      ? 'text-primary-foreground bg-primary/30'
+                      : 'text-background/70 hover:text-background hover:bg-background/10'
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
