@@ -263,8 +263,11 @@ const AboutHero = () => {
 
             {/* Title and Overview */}
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-block px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full mb-4">
-                <span className="text-sm font-medium text-primary">Product Leader & Innovator</span>
+              <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full text-sm font-medium text-primary">Product Leader & Innovator</span>
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-success/20 to-success/40 rounded-full text-sm font-medium text-success">Storyteller</span>
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-warning/20 to-warning/40 rounded-full text-sm font-medium text-warning">Mentor at Airtribe</span>
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-destructive/20 to-secondary/20 rounded-full text-sm font-medium text-destructive">AI Enthusiast</span>
               </div>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
