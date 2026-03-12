@@ -1,5 +1,22 @@
-import { Trophy, FileText, Code, ExternalLink, Sparkles } from 'lucide-react';
+import { Trophy, FileText, Code, ExternalLink, Sparkles, Award, MessageSquareText } from 'lucide-react';
+import { useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
+const judgeFeedback = `Nipun-Setu addresses a timely and high-impact challenge— helping learners who want to grow professionally but don't always know the next step to take. Judges appreciated the focus on bridging the gap between ambition and actionable guidance through personalized learning roadmaps.
+
+The concept of dynamically generating learning paths and breaking them into manageable, context-aware steps was seen as both creative and aligned with the direction of modern learning and professional development. The idea of combining onboarding, career matchmaking, expert access, and progress tracking shows thoughtful consideration of the broader learning journey.
+
+Several judges noted that the project feels more like a full platform than a simple prototype, with detailed thinking around how learners might discover their skill gaps and navigate toward meaningful growth opportunities. The clarity of the vision and the structured approach to building the platform were recognized as strong aspects of the project.
+
+The experience could potentially be strengthened further by focusing more deeply on the specific impact the platform aims to create for learners and by refining the scope of features to go deeper in a few key areas. Highlighting clearer examples of how a learner moves through the roadmap from starting point to outcomes could help make the value of the platform even more tangible.
+
+Overall, Nipun-Setu was seen as a thoughtful and ambitious concept with strong potential to support learners navigating career transitions and skill development, combining personalized guidance with structured learning pathways.`;
 
 const honors = [
   {
@@ -26,15 +43,20 @@ const honors = [
     icon: Code,
     title: 'Nipun Setu — AI Career Platform',
     organization: '75:15:1 Women\'s Day AI Builder Challenge × Future World Alliance',
-    description: 'Built Nipun Setu, an AI-powered career growth platform, as part of the 75:15:1 Women\'s Day AI Builder Challenge. It uses PathAI to create personalized learning roadmaps, daily tasks with credit rewards, and connects users with verified experts — solving the problem that 96% of online learners never finish courses.',
+    description: 'Built Nipun Setu, an AI-powered career growth platform, as part of the 75:15:1 Women\'s Day AI Builder Challenge.',
+    achievement: 'Won Community Favourite title out of 22 Projects',
     gradient: 'from-success to-emerald-500',
     badge: 'Builder',
     link: 'https://nipun-setu.lovable.app/',
     external: true,
+    hasFeedback: true,
+    hasCertificate: true,
   },
 ];
 
 const HonorsSection = () => {
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+
   return (
     <section className="py-20 bg-gradient-to-b from-background to-card relative overflow-hidden">
       {/* Decorative elements */}
@@ -87,22 +109,56 @@ const HonorsSection = () => {
                       </h3>
                       <p className="text-sm font-medium text-primary mb-3">{honor.organization}</p>
                     </div>
-                    {honor.link && honor.link !== '#' && (
-                      <a
-                        href={honor.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-1 text-muted-foreground hover:text-primary transition-colors shrink-0 cursor-pointer z-10"
-                        title="Learn more"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
+                    <div className="flex items-center gap-1.5 shrink-0 mt-1">
+                      {honor.hasFeedback && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFeedbackOpen(true);
+                          }}
+                          className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
+                          title="View judges feedback"
+                        >
+                          <MessageSquareText className="w-4 h-4" />
+                        </button>
+                      )}
+                      {honor.hasCertificate && (
+                        <a
+                          href="/documents/nipun_setu_certificate.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
+                          title="View certificate"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Award className="w-4 h-4" />
+                        </a>
+                      )}
+                      {honor.link && honor.link !== '#' && (
+                        <a
+                          href={honor.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors shrink-0 cursor-pointer z-10"
+                          title="Learn more"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {honor.description}
                   </p>
+
+                  {/* Achievement badge */}
+                  {honor.achievement && (
+                    <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-success/10 border border-success/20 rounded-full">
+                      <Trophy className="w-3.5 h-3.5 text-success" />
+                      <span className="text-xs font-semibold text-success">{honor.achievement}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Hover glow */}
@@ -112,6 +168,19 @@ const HonorsSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Judges Feedback Dialog */}
+      <Dialog open={feedbackOpen} onOpenChange={setFeedbackOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-xl">Feedback for Nipun-Setu</DialogTitle>
+            <DialogDescription>Judges' feedback from the 75:15:1 Women's Day AI Builder Challenge</DialogDescription>
+          </DialogHeader>
+          <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mt-2">
+            {judgeFeedback}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
