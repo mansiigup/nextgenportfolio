@@ -57,7 +57,7 @@ const honors = [
 ];
 
 const HonorsSection = () => {
-  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState<DialogType>(null);
 
   return (
     <section className="py-20 bg-gradient-to-b from-background to-card relative overflow-hidden">
