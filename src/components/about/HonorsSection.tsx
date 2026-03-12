@@ -116,7 +116,7 @@ const HonorsSection = () => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            setFeedbackOpen(true);
+                            setOpenDialog('feedback');
                           }}
                           className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
                           title="View judges feedback"
