@@ -125,16 +125,16 @@ const HonorsSection = () => {
                         </button>
                       )}
                       {honor.hasCertificate && (
-                        <a
-                          href="/documents/nipun_setu_certificate.pdf"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenDialog('certificate');
+                          }}
                           className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
                           title="View certificate"
-                          onClick={(e) => e.stopPropagation()}
                         >
                           <Award className="w-4 h-4" />
-                        </a>
+                        </button>
                       )}
                       {honor.link && honor.link !== '#' && (
                         <a
