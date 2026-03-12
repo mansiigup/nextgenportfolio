@@ -8,6 +8,8 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 
+type DialogType = 'feedback' | 'certificate' | null;
+
 const judgeFeedback = `Nipun-Setu addresses a timely and high-impact challenge— helping learners who want to grow professionally but don't always know the next step to take. Judges appreciated the focus on bridging the gap between ambition and actionable guidance through personalized learning roadmaps.
 
 The concept of dynamically generating learning paths and breaking them into manageable, context-aware steps was seen as both creative and aligned with the direction of modern learning and professional development. The idea of combining onboarding, career matchmaking, expert access, and progress tracking shows thoughtful consideration of the broader learning journey.
@@ -55,7 +57,7 @@ const honors = [
 ];
 
 const HonorsSection = () => {
-  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState<DialogType>(null);
 
   return (
     <section className="py-20 bg-gradient-to-b from-background to-card relative overflow-hidden">
@@ -114,7 +116,7 @@ const HonorsSection = () => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            setFeedbackOpen(true);
+                            setOpenDialog('feedback');
                           }}
                           className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
                           title="View judges feedback"
@@ -123,16 +125,16 @@ const HonorsSection = () => {
                         </button>
                       )}
                       {honor.hasCertificate && (
-                        <a
-                          href="/documents/nipun_setu_certificate.pdf"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenDialog('certificate');
+                          }}
                           className="text-muted-foreground hover:text-primary transition-colors cursor-pointer z-10"
                           title="View certificate"
-                          onClick={(e) => e.stopPropagation()}
                         >
                           <Award className="w-4 h-4" />
-                        </a>
+                        </button>
                       )}
                       {honor.link && honor.link !== '#' && (
                         <a
@@ -170,7 +172,7 @@ const HonorsSection = () => {
       </div>
 
       {/* Judges Feedback Dialog */}
-      <Dialog open={feedbackOpen} onOpenChange={setFeedbackOpen}>
+      <Dialog open={openDialog === 'feedback'} onOpenChange={(open) => setOpenDialog(open ? 'feedback' : null)}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-serif text-xl">Feedback for Nipun-Setu</DialogTitle>
@@ -178,6 +180,23 @@ const HonorsSection = () => {
           </DialogHeader>
           <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mt-2">
             {judgeFeedback}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Certificate Dialog */}
+      <Dialog open={openDialog === 'certificate'} onOpenChange={(open) => setOpenDialog(open ? 'certificate' : null)}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-xl">Certificate of Completion</DialogTitle>
+            <DialogDescription>75:15:1 Women's Day AI Builder Challenge — March 2026</DialogDescription>
+          </DialogHeader>
+          <div className="mt-2">
+            <img
+              src="/documents/nipun_setu_certificate.png"
+              alt="Certificate of Completion — 75:15:1 Women's Day AI Builder Challenge"
+              className="w-full rounded-lg border border-border"
+            />
           </div>
         </DialogContent>
       </Dialog>
