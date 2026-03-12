@@ -172,7 +172,7 @@ const HonorsSection = () => {
       </div>
 
       {/* Judges Feedback Dialog */}
-      <Dialog open={feedbackOpen} onOpenChange={setFeedbackOpen}>
+      <Dialog open={openDialog === 'feedback'} onOpenChange={(open) => setOpenDialog(open ? 'feedback' : null)}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-serif text-xl">Feedback for Nipun-Setu</DialogTitle>
@@ -180,6 +180,23 @@ const HonorsSection = () => {
           </DialogHeader>
           <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mt-2">
             {judgeFeedback}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Certificate Dialog */}
+      <Dialog open={openDialog === 'certificate'} onOpenChange={(open) => setOpenDialog(open ? 'certificate' : null)}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-xl">Certificate of Completion</DialogTitle>
+            <DialogDescription>75:15:1 Women's Day AI Builder Challenge — March 2026</DialogDescription>
+          </DialogHeader>
+          <div className="mt-2">
+            <img
+              src="/documents/nipun_setu_certificate.png"
+              alt="Certificate of Completion — 75:15:1 Women's Day AI Builder Challenge"
+              className="w-full rounded-lg border border-border"
+            />
           </div>
         </DialogContent>
       </Dialog>
