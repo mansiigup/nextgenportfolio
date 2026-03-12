@@ -8,6 +8,8 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 
+type DialogType = 'feedback' | 'certificate' | null;
+
 const judgeFeedback = `Nipun-Setu addresses a timely and high-impact challenge— helping learners who want to grow professionally but don't always know the next step to take. Judges appreciated the focus on bridging the gap between ambition and actionable guidance through personalized learning roadmaps.
 
 The concept of dynamically generating learning paths and breaking them into manageable, context-aware steps was seen as both creative and aligned with the direction of modern learning and professional development. The idea of combining onboarding, career matchmaking, expert access, and progress tracking shows thoughtful consideration of the broader learning journey.
